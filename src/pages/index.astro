@@ -8,66 +8,63 @@ import leistungen from '../data/leistungen.json';
 <Layout>
   <!-- Hero -->
   <section class="hero">
-    <div class="container hero__content">
-      <span class="hero__label">Physiotherapie in Wörth am Main</span>
-      <h1 class="hero__title">Ihre Gesundheit.<br/>Unser Antrieb.</h1>
-      <p class="hero__subtitle">
-        Ganzheitliche Physiotherapie, manuelle Therapie und innovative Behandlungsmethoden
-        — individuell auf Sie abgestimmt.
+    <div class="hero__content">
+      <span class="hero__eyebrow">Physiotherapie in Wörth am Main</span>
+      <h1 class="hero__title">Ihre Gesundheit.<br/><em>Unser Antrieb.</em></h1>
+      <p class="hero__sub">
+        Ganzheitliche Physiotherapie, manuelle Therapie und innovative
+        Behandlungsmethoden — individuell auf Sie abgestimmt.
       </p>
       <div class="hero__actions">
-        <a href="/kontakt" class="btn btn--amber">Termin anfragen</a>
-        <a href="/leistungen" class="btn btn--outline-white">Unsere Leistungen</a>
+        <a href="/kontakt" class="btn-primary">Termin anfragen</a>
+        <a href="/leistungen" class="btn-ghost">Unsere Leistungen →</a>
       </div>
     </div>
   </section>
 
   <!-- Trust Bar -->
-  <section class="trust-bar">
-    <div class="container">
-      <div class="trust-bar__grid">
-        <div class="trust-bar__item">
-          <span class="trust-bar__number">3</span>
-          <span class="trust-bar__text">Therapeuten</span>
-        </div>
-        <div class="trust-bar__item">
-          <span class="trust-bar__number">15+</span>
-          <span class="trust-bar__text">Jahre Erfahrung</span>
-        </div>
-        <div class="trust-bar__item">
-          <span class="trust-bar__number">2</span>
-          <span class="trust-bar__text">Standorte</span>
-        </div>
-        <div class="trust-bar__item">
-          <span class="trust-bar__number">100%</span>
-          <span class="trust-bar__text">Kassenzulassung</span>
-        </div>
+  <div class="trust-bar">
+    <div class="trust-bar__grid">
+      <div class="trust-bar__item">
+        <span class="trust-bar__number">3</span>
+        <span class="trust-bar__text">Therapeuten</span>
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__number">15+</span>
+        <span class="trust-bar__text">Jahre Erfahrung</span>
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__number">2</span>
+        <span class="trust-bar__text">Standorte</span>
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__number">100%</span>
+        <span class="trust-bar__text">Kassenzulassung</span>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Über uns -->
-  <section class="section">
-    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+  <section class="sec reveal">
+    <div class="container two-col">
       <div>
-        <span class="section-label">Über uns</span>
-        <h2 class="section-title">Praxis Med Vital</h2>
-        <div class="divider"></div>
-        <p>
+        <span class="eyebrow">Über uns</span>
+        <hr class="rule"/>
+        <h2 class="section-title" style="margin-top:18px">Praxis Med Vital</h2>
+        <p class="section-sub" style="margin-top:14px">
           In unserer Praxis verbinden wir klassische Physiotherapie mit innovativen, ganzheitlichen
           Behandlungsmethoden. Unser Ziel: nachhaltige Besserung — nicht nur Symptombekämpfung.
         </p>
-        <p style="margin-top:1rem">
+        <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:14px">
           Jeder Patient erhält bei uns einen individuellen Therapieplan, der auf seine
-          Bedürfnisse und Ziele abgestimmt ist. Dabei setzen wir auf evidenzbasierte Methoden
-          und persönliche Betreuung.
+          Bedürfnisse und Ziele abgestimmt ist.
         </p>
-        <a href="/ueber-uns" class="btn btn--outline" style="margin-top:2rem">Mehr erfahren</a>
+        <a href="/ueber-uns" class="btn-ghost btn-ghost--dark" style="margin-top:28px">Mehr erfahren →</a>
       </div>
-      <div style="background:var(--c-cream);border-radius:var(--radius-lg);padding:3rem;text-align:center">
-        <span style="font-size:4rem">🏥</span>
-        <h3 style="margin-top:1rem;font-size:var(--fs-xl)">Ganzheitlich &amp; individuell</h3>
-        <p style="color:var(--c-gray-600);margin-top:.75rem;font-size:var(--fs-sm)">
+      <div style="background:var(--g50);border-radius:6px;padding:48px 36px;text-align:center">
+        <span style="font-size:48px;display:block;margin-bottom:16px;opacity:.7">✦</span>
+        <h3 style="font-size:24px;margin-bottom:8px">Ganzheitlich &amp; individuell</h3>
+        <p style="font-size:14px;font-weight:300;color:var(--ink-mid)">
           Mehr als klassische Physiotherapie — wir behandeln den ganzen Menschen.
         </p>
       </div>
@@ -75,15 +72,16 @@ import leistungen from '../data/leistungen.json';
   </section>
 
   <!-- Team -->
-  <section class="section section--cream">
+  <section class="sec sec--cream reveal">
     <div class="container text-center">
-      <span class="section-label">Unser Team</span>
-      <h2 class="section-title">Kompetenz trifft Leidenschaft</h2>
-      <p class="section-subtitle">
+      <span class="eyebrow">Unser Team</span>
+      <hr class="rule"/>
+      <h2 class="section-title" style="margin-top:18px">Kompetenz trifft Leidenschaft</h2>
+      <p class="section-sub">
         Drei erfahrene Therapeuten mit unterschiedlichen Spezialisierungen — für eine umfassende Versorgung.
       </p>
     </div>
-    <div class="container">
+    <div class="container" style="margin-top:48px">
       <div class="team-grid">
         {team.map((member: any) => (
           <div class="team-card">
@@ -91,68 +89,69 @@ import leistungen from '../data/leistungen.json';
             <h3 class="team-card__name">{member.name}</h3>
             <p class="team-card__role">{member.role}</p>
             <p class="team-card__bio">{member.bio}</p>
-            <div class="card__tags" style="justify-content:center">
+            <div class="tag-list">
               {member.tags.map((tag: string) => (
-                <span class="card__tag">{tag}</span>
+                <span class="tag">{tag}</span>
               ))}
             </div>
           </div>
         ))}
       </div>
-      <div style="text-align:center;margin-top:2.5rem">
-        <a href="/team" class="btn btn--outline">Zum Team</a>
+      <div style="text-align:center;margin-top:40px">
+        <a href="/team" class="btn-ghost btn-ghost--dark">Zum Team →</a>
       </div>
     </div>
   </section>
 
   <!-- Leistungen -->
-  <section class="section">
+  <section class="sec reveal">
     <div class="container text-center">
-      <span class="section-label">Leistungen</span>
-      <h2 class="section-title">Unser Behandlungsspektrum</h2>
-      <p class="section-subtitle">
-        Von Krankengymnastik bis Manuelle Therapie — wir bieten ein breites Spektrum an Behandlungen.
+      <span class="eyebrow">Leistungen</span>
+      <hr class="rule"/>
+      <h2 class="section-title" style="margin-top:18px">Unser Behandlungsspektrum</h2>
+      <p class="section-sub">
+        Von Krankengymnastik bis Manuelle Therapie — ein breites Spektrum an evidenzbasierten Behandlungen.
       </p>
     </div>
-    <div class="container">
-      <div class="card-grid">
+    <div class="container" style="margin-top:48px">
+      <div class="leistung-grid">
         {leistungen.map((l: any) => (
-          <div class="card">
-            <span class="card__num">{l.num}</span>
-            <h3 class="card__title">{l.name}</h3>
-            <p class="card__text">{l.desc}</p>
-            <div class="card__tags">
+          <div class="leistung-card">
+            <span class="leistung-card__num">{l.num}</span>
+            <h3 class="leistung-card__title">{l.name}</h3>
+            <p class="leistung-card__desc">{l.desc}</p>
+            <div class="tag-list" style="justify-content:flex-start">
               {l.items.map((item: string) => (
-                <span class="card__tag">{item}</span>
+                <span class="tag">{item}</span>
               ))}
             </div>
           </div>
         ))}
       </div>
-      <div style="text-align:center;margin-top:2.5rem">
-        <a href="/leistungen" class="btn btn--outline">Alle Leistungen</a>
+      <div style="text-align:center;margin-top:40px">
+        <a href="/leistungen" class="btn-ghost btn-ghost--dark">Alle Leistungen →</a>
       </div>
     </div>
   </section>
 
   <!-- Besonderheiten -->
-  <section class="section section--forest">
+  <section class="sec sec--g900 reveal">
     <div class="container text-center">
-      <span class="section-label" style="color:var(--c-amber)">Besonderheiten</span>
-      <h2 class="section-title">Was uns auszeichnet</h2>
-      <p class="section-subtitle" style="color:rgba(255,255,255,.7)">
+      <span class="eyebrow">Besonderheiten</span>
+      <hr class="rule" style="margin-inline:auto"/>
+      <h2 class="section-title" style="margin-top:18px">Was uns auszeichnet</h2>
+      <p class="section-sub">
         Spezialisierte Behandlungsmethoden, die über die klassische Physiotherapie hinausgehen.
       </p>
     </div>
-    <div class="container">
+    <div class="container" style="margin-top:48px">
       <div class="features-grid">
         <div class="feature">
           <div class="feature__icon">AK</div>
           <h3 class="feature__title">Applied Kinesiology</h3>
           <p class="feature__text">
             Diagnostisches Verfahren, das Muskeltests nutzt, um funktionelle Zusammenhänge
-            im Körper zu erkennen und gezielt zu behandeln. Ideal bei unklaren Beschwerden
-            und chronischen Schmerzen.
+            im Körper zu erkennen und gezielt zu behandeln.
           </p>
         </div>
         <div class="feature">
@@ -160,17 +159,15 @@ import leistungen from '../data/leistungen.json';
           <h3 class="feature__title">Cranio Concept</h3>
           <p class="feature__text">
             Sanfte, manuelle Technik zur Behandlung des craniosacralen Systems.
-            Unterstützt die Selbstheilungskräfte des Körpers bei Kopfschmerzen,
-            Migräne und stressbedingten Beschwerden.
+            Unterstützt die Selbstheilungskräfte bei Kopfschmerzen und Migräne.
           </p>
         </div>
         <div class="feature">
           <div class="feature__icon">AT</div>
           <h3 class="feature__title">Atlas Therapie</h3>
           <p class="feature__text">
-            Gezielte Behandlung des ersten Halswirbels (Atlas) zur Korrektur von
-            Fehlstellungen. Kann positive Auswirkungen auf das gesamte Bewegungssystem
-            und die Körperstatik haben.
+            Gezielte Behandlung des ersten Halswirbels zur Korrektur von Fehlstellungen
+            mit positiven Auswirkungen auf das gesamte Bewegungssystem.
           </p>
         </div>
       </div>
@@ -178,37 +175,36 @@ import leistungen from '../data/leistungen.json';
   </section>
 
   <!-- Kontakt -->
-  <section class="section section--cream" id="kontakt">
+  <section class="sec sec--cream reveal" id="kontakt">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+      <div class="contact-grid">
         <div>
-          <span class="section-label">Kontakt</span>
-          <h2 class="section-title">Termin anfragen</h2>
-          <div class="divider"></div>
-          <p style="margin-bottom:2rem;color:var(--c-gray-600)">
+          <span class="eyebrow">Kontakt</span>
+          <hr class="rule"/>
+          <h2 class="section-title" style="margin-top:18px">Termin anfragen</h2>
+          <p class="section-sub" style="margin-top:14px">
             Nutzen Sie unser Kontaktformular oder rufen Sie uns direkt an.
-            Wir melden uns schnellstmöglich bei Ihnen.
           </p>
-          <div style="display:flex;flex-direction:column;gap:1rem">
-            <div style="display:flex;align-items:center;gap:.75rem">
-              <span style="width:40px;height:40px;border-radius:50%;background:var(--c-forest);color:var(--c-white);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0">T</span>
-              <div>
-                <strong>Telefon</strong><br/>
-                <a href={`tel:${site.phonePlain}`} style="color:var(--c-gray-600)">{site.phone}</a>
+          <div style="margin-top:32px">
+            <div class="contact-detail">
+              <div class="contact-detail__icon">T</div>
+              <div class="contact-detail__text">
+                <h4>Telefon</h4>
+                <p><a href={`tel:${site.phonePlain}`}>{site.phone}</a></p>
               </div>
             </div>
-            <div style="display:flex;align-items:center;gap:.75rem">
-              <span style="width:40px;height:40px;border-radius:50%;background:var(--c-forest);color:var(--c-white);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0">@</span>
-              <div>
-                <strong>E-Mail</strong><br/>
-                <a href={`mailto:${site.email}`} style="color:var(--c-gray-600)">{site.email}</a>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">@</div>
+              <div class="contact-detail__text">
+                <h4>E-Mail</h4>
+                <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
               </div>
             </div>
-            <div style="display:flex;align-items:center;gap:.75rem">
-              <span style="width:40px;height:40px;border-radius:50%;background:var(--c-forest);color:var(--c-white);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0">F</span>
-              <div>
-                <strong>Fax</strong><br/>
-                <span style="color:var(--c-gray-600)">{site.fax}</span>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">F</div>
+              <div class="contact-detail__text">
+                <h4>Fax</h4>
+                <p>{site.fax}</p>
               </div>
             </div>
           </div>
@@ -219,15 +215,15 @@ import leistungen from '../data/leistungen.json';
             <label>Nicht ausfüllen: <input name="bot-field" /></label>
           </p>
           <div class="form-group">
-            <label for="vorname">Vorname</label>
+            <label for="vorname">Vorname *</label>
             <input type="text" id="vorname" name="vorname" required />
           </div>
           <div class="form-group">
-            <label for="nachname">Nachname</label>
+            <label for="nachname">Nachname *</label>
             <input type="text" id="nachname" name="nachname" required />
           </div>
           <div class="form-group full">
-            <label for="email">E-Mail</label>
+            <label for="email">E-Mail *</label>
             <input type="email" id="email" name="email" required />
           </div>
           <div class="form-group full">
@@ -235,22 +231,14 @@ import leistungen from '../data/leistungen.json';
             <input type="tel" id="telefon" name="telefon" />
           </div>
           <div class="form-group full">
-            <label for="nachricht">Ihre Nachricht</label>
+            <label for="nachricht">Ihre Nachricht *</label>
             <textarea id="nachricht" name="nachricht" rows="5" required></textarea>
           </div>
           <div class="full">
-            <button type="submit" class="btn btn--amber">Nachricht senden</button>
+            <button type="submit" class="btn-primary">Nachricht senden</button>
           </div>
         </form>
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  @media(max-width:768px) {
-    [style*="grid-template-columns:1fr 1fr"] {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>

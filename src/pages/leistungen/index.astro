@@ -6,23 +6,23 @@ import leistungen from '../../data/leistungen.json';
 <Layout title="Leistungen – Praxis Med Vital" description="Unser Behandlungsspektrum: Manuelle Therapie, Lymphdrainage, Krankengymnastik und mehr.">
   <section class="page-header">
     <div class="container">
-      <span class="section-label">Leistungen</span>
+      <span class="eyebrow">Leistungen</span>
       <h1>Unser Behandlungsspektrum</h1>
       <p>Evidenzbasierte Therapie — individuell auf Ihre Bedürfnisse abgestimmt.</p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="sec reveal">
     <div class="container">
-      <div class="card-grid">
+      <div class="leistung-grid">
         {leistungen.map((l: any) => (
-          <div class="card">
-            <span class="card__num">{l.num}</span>
-            <h3 class="card__title">{l.name}</h3>
-            <p class="card__text">{l.desc}</p>
-            <div class="card__tags">
+          <div class="leistung-card">
+            <span class="leistung-card__num">{l.num}</span>
+            <h3 class="leistung-card__title">{l.name}</h3>
+            <p class="leistung-card__desc">{l.desc}</p>
+            <div class="tag-list" style="justify-content:flex-start">
               {l.items.map((item: string) => (
-                <span class="card__tag">{item}</span>
+                <span class="tag">{item}</span>
               ))}
             </div>
           </div>
@@ -31,16 +31,16 @@ import leistungen from '../../data/leistungen.json';
     </div>
   </section>
 
-  <!-- Besonderheiten -->
-  <section class="section section--forest">
+  <section class="sec sec--g900 reveal">
     <div class="container text-center">
-      <span class="section-label">Spezialisierungen</span>
-      <h2 class="section-title">Über den Standard hinaus</h2>
-      <p class="section-subtitle" style="color:rgba(255,255,255,.7)">
+      <span class="eyebrow">Spezialisierungen</span>
+      <hr class="rule" style="margin-inline:auto"/>
+      <h2 class="section-title" style="margin-top:18px">Über den Standard hinaus</h2>
+      <p class="section-sub">
         Zusätzlich zu unserem klassischen Angebot bieten wir spezialisierte Behandlungsmethoden.
       </p>
     </div>
-    <div class="container">
+    <div class="container" style="margin-top:48px">
       <div class="features-grid">
         <div class="feature">
           <div class="feature__icon">AK</div>
@@ -70,18 +70,17 @@ import leistungen from '../../data/leistungen.json';
     </div>
   </section>
 
-  <!-- Sektoraler HP -->
-  <section class="section section--cream">
+  <section class="sec sec--cream reveal">
     <div class="container text-center">
-      <span class="section-label">Ohne Überweisung</span>
-      <h2 class="section-title">Sektoraler Heilpraktiker</h2>
-      <div class="divider" style="margin-inline:auto"></div>
-      <p style="max-width:600px;margin:0 auto;color:var(--c-gray-600)">
+      <span class="eyebrow">Ohne Überweisung</span>
+      <hr class="rule" style="margin-inline:auto"/>
+      <h2 class="section-title" style="margin-top:18px">Sektoraler Heilpraktiker</h2>
+      <p class="section-sub">
         Als sektorale Heilpraktiker für Physiotherapie dürfen wir Sie auch ohne ärztliche
         Überweisung behandeln. Das bedeutet: schnellere Termine, eigenständige Befunderhebung
         und direkter Zugang zu allen physiotherapeutischen Heilmitteln.
       </p>
-      <a href="/kontakt" class="btn btn--amber" style="margin-top:2rem">Termin anfragen</a>
+      <a href="/kontakt" class="btn-primary" style="margin-top:28px">Termin anfragen</a>
     </div>
   </section>
 </Layout>

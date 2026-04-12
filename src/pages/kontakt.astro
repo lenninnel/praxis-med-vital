@@ -9,69 +9,68 @@ const woerth = standorte.find((s: any) => s.id === 'woerth');
 <Layout title="Kontakt – Praxis Med Vital" description="Nehmen Sie Kontakt auf und vereinbaren Sie Ihren Termin bei Praxis Med Vital.">
   <section class="page-header">
     <div class="container">
-      <span class="section-label">Kontakt</span>
+      <span class="eyebrow">Kontakt</span>
       <h1>Wir sind für Sie da</h1>
       <p>Rufen Sie an, schreiben Sie uns oder nutzen Sie das Kontaktformular.</p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="sec reveal">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
-        <!-- Kontaktdaten -->
+      <div class="contact-grid">
         <div>
-          <h2>Kontaktdaten</h2>
-          <div class="divider"></div>
+          <span class="eyebrow">Erreichbarkeit</span>
+          <hr class="rule"/>
+          <h2 class="section-title" style="margin-top:18px">Kontaktdaten</h2>
 
-          <div class="standort-info__detail">
-            <div class="standort-info__icon">A</div>
-            <div class="standort-info__text">
-              <h4>Adresse</h4>
-              <p>{woerth?.address}<br/>{woerth?.zip} {woerth?.city}</p>
+          <div style="margin-top:28px">
+            <div class="contact-detail">
+              <div class="contact-detail__icon">A</div>
+              <div class="contact-detail__text">
+                <h4>Adresse</h4>
+                <p>{woerth?.address}<br/>{woerth?.zip} {woerth?.city}</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">T</div>
+              <div class="contact-detail__text">
+                <h4>Telefon</h4>
+                <p><a href={`tel:${site.phonePlain}`}>{site.phone}</a></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">@</div>
+              <div class="contact-detail__text">
+                <h4>E-Mail</h4>
+                <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">F</div>
+              <div class="contact-detail__text">
+                <h4>Fax</h4>
+                <p>{site.fax}</p>
+              </div>
             </div>
           </div>
 
-          <div class="standort-info__detail">
-            <div class="standort-info__icon">T</div>
-            <div class="standort-info__text">
-              <h4>Telefon</h4>
-              <p><a href={`tel:${site.phonePlain}`}>{site.phone}</a></p>
-            </div>
-          </div>
-
-          <div class="standort-info__detail">
-            <div class="standort-info__icon">@</div>
-            <div class="standort-info__text">
-              <h4>E-Mail</h4>
-              <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
-            </div>
-          </div>
-
-          <div class="standort-info__detail">
-            <div class="standort-info__icon">F</div>
-            <div class="standort-info__text">
-              <h4>Fax</h4>
-              <p>{site.fax}</p>
-            </div>
-          </div>
-
-          <h3 style="margin-top:2rem;font-size:var(--fs-lg)">Öffnungszeiten</h3>
+          <h3 style="font-size:18px;margin-top:32px;margin-bottom:4px">Öffnungszeiten</h3>
           <table class="hours-table">
             {site.hours.map((h: any) => (
               <tr>
-                <td><strong>{h.days}</strong></td>
+                <td>{h.days}</td>
                 <td>{h.time}</td>
               </tr>
             ))}
           </table>
         </div>
 
-        <!-- Formular -->
         <div>
-          <h2>Termin anfragen</h2>
-          <div class="divider"></div>
-          <p style="margin-bottom:1.5rem;color:var(--c-gray-600);font-size:var(--fs-sm)">
-            Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.
+          <span class="eyebrow">Nachricht</span>
+          <hr class="rule"/>
+          <h2 class="section-title" style="margin-top:18px">Termin anfragen</h2>
+          <p style="font-size:14px;font-weight:300;color:var(--ink-mid);margin:14px 0 24px">
+            Füllen Sie das Formular aus und wir melden uns schnellstmöglich.
           </p>
           <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="max-width:100%">
             <input type="hidden" name="form-name" value="kontakt" />
@@ -105,10 +104,10 @@ const woerth = standorte.find((s: any) => s.id === 'woerth');
             </div>
             <div class="form-group full">
               <label for="nachricht">Ihre Nachricht *</label>
-              <textarea id="nachricht" name="nachricht" rows="6" required></textarea>
+              <textarea id="nachricht" name="nachricht" rows="5" required></textarea>
             </div>
             <div class="full">
-              <button type="submit" class="btn btn--amber">Nachricht senden</button>
+              <button type="submit" class="btn-primary">Nachricht senden</button>
             </div>
           </form>
         </div>
@@ -116,11 +115,3 @@ const woerth = standorte.find((s: any) => s.id === 'woerth');
     </div>
   </section>
 </Layout>
-
-<style>
-  @media(max-width:768px) {
-    [style*="grid-template-columns:1fr 1fr"] {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>

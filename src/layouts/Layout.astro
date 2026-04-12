@@ -26,10 +26,14 @@ const {
   <title>{title}</title>
 </head>
 <body>
+
   <!-- Header -->
-  <header class="site-header" id="site-header">
-    <nav class="nav container">
-      <a href="/" class="nav__logo">Med <span>Vital</span></a>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="nav__brand">
+        <span class="nav__logo">Med <span>Vital</span></span>
+        <span class="nav__tagline">Praxis &middot; Wörth am Main</span>
+      </a>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -43,7 +47,7 @@ const {
           <a href="/standorte" class="nav__link">Standorte</a>
           <a href="/kontakt" class="nav__link">Kontakt</a>
         </div>
-        <a href="/kontakt" class="btn btn--amber btn--sm nav__cta">Termin anfragen</a>
+        <a href="/kontakt" class="btn-primary nav__cta">Termin anfragen</a>
       </div>
     </nav>
   </header>
@@ -55,38 +59,39 @@ const {
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <span class="brand">Med <span>Vital</span></span>
-          <p>Ihre Praxis für Physiotherapie in Wörth am Main. Ganzheitlich, kompetent und persönlich.</p>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-col__title">Praxis</h4>
-          <a href="/ueber-uns">Über uns</a><br/>
-          <a href="/team">Team</a><br/>
-          <a href="/leistungen">Leistungen</a><br/>
-          <a href="/standorte">Standorte</a>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-col__title">Kontakt</h4>
-          <p>
-            <a href={`tel:${site.phonePlain}`}>{site.phone}</a><br/>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-          </p>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-col__title">Rechtliches</h4>
-          <a href="/impressum">Impressum</a><br/>
-          <a href="/datenschutz">Datenschutz</a>
-        </div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col__brand">Med <span>Vital</span></div>
+        <div class="footer-col__tagline">Praxis &middot; Wörth am Main</div>
+        <p>Ganzheitliche Physiotherapie — kompetent, persönlich und individuell auf Sie abgestimmt.</p>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; {new Date().getFullYear()} Praxis Med Vital. Alle Rechte vorbehalten.</span>
-        <span>
-          <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a>
-        </span>
+      <div class="footer-col">
+        <h4 class="footer-col__title">Leistungen</h4>
+        <a href="/leistungen">Manuelle Therapie</a>
+        <a href="/leistungen">Lymphdrainage</a>
+        <a href="/leistungen">Krankengymnastik</a>
+        <a href="/leistungen">Heilpraktiker</a>
       </div>
+      <div class="footer-col">
+        <h4 class="footer-col__title">Praxis</h4>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/team">Team</a>
+        <a href="/standorte">Standorte</a>
+        <a href="/kontakt">Kontakt</a>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col__title">Kontakt</h4>
+        <a href={`tel:${site.phonePlain}`}>{site.phone}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Praxis Med Vital &middot; Hurth, Wehrheim &amp; Kenner GbR</span>
+      <span>
+        <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a>
+      </span>
     </div>
   </footer>
 
@@ -95,11 +100,11 @@ const {
     <div class="cookie-banner__inner">
       <p class="cookie-banner__text">
         Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.
-        Mehr dazu in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
+        Mehr in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
       </p>
       <div class="cookie-banner__actions">
-        <button class="btn btn--amber btn--sm" id="cookie-accept">Akzeptieren</button>
-        <button class="btn btn--outline btn--sm" id="cookie-decline">Ablehnen</button>
+        <button class="btn-primary" id="cookie-accept">Akzeptieren</button>
+        <button class="btn-outline--dark btn-outline" id="cookie-decline">Ablehnen</button>
       </div>
     </div>
   </div>
@@ -109,12 +114,6 @@ const {
     const toggle = document.getElementById('nav-toggle');
     const menu = document.getElementById('nav-menu');
     toggle?.addEventListener('click', () => menu?.classList.toggle('open'));
-
-    // Header scroll
-    const header = document.getElementById('site-header');
-    window.addEventListener('scroll', () => {
-      header?.classList.toggle('scrolled', window.scrollY > 20);
-    });
 
     // Cookie banner
     const banner = document.getElementById('cookie-banner');
@@ -131,6 +130,15 @@ const {
       localStorage.setItem('cookie-consent', 'declined');
       banner?.classList.remove('show');
     });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+    }
   </script>
 </body>
 </html>
