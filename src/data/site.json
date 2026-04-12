@@ -1,0 +1,16 @@
+{
+  "name": "Praxis Med Vital",
+  "email": "info@therapie-woerth.com",
+  "phone": "09372 – 139 444",
+  "phonePlain": "093721394440",
+  "fax": "09372 – 135 543",
+  "hours": [
+    { "days": "Mo – Do", "time": "08:00 – 19:00 Uhr" },
+    { "days": "Freitag", "time": "08:00 – 15:00 Uhr" },
+    { "days": "Sa – So", "time": "Geschlossen" }
+  ],
+  "seo": {
+    "defaultTitle": "Praxis Med Vital – Physiotherapie Wörth am Main",
+    "defaultDescription": "Ihre Physiotherapiepraxis in Wörth am Main. Manuelle Therapie, Applied Kinesiology, Cranio Concept."
+  }
+}

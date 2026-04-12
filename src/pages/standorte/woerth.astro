@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import standorte from '../../data/standorte.json';
+
+const standort = standorte.find((s: any) => s.id === 'woerth')!;
+---
+
+<Layout title="Standort Wörth am Main – Praxis Med Vital" description="Unsere Praxis in Wörth am Main: Adresse, Öffnungszeiten und Anfahrt.">
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Standort</span>
+      <h1>{standort.name}</h1>
+      <p>{standort.address}, {standort.zip} {standort.city}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="standort-info">
+        <div>
+          <h2>Kontakt &amp; Adresse</h2>
+          <div class="divider"></div>
+
+          <div class="standort-info__detail">
+            <div class="standort-info__icon">A</div>
+            <div class="standort-info__text">
+              <h4>Adresse</h4>
+              <p>{standort.address}<br/>{standort.zip} {standort.city}</p>
+            </div>
+          </div>
+
+          <div class="standort-info__detail">
+            <div class="standort-info__icon">T</div>
+            <div class="standort-info__text">
+              <h4>Telefon</h4>
+              <p><a href={`tel:${standort.phonePlain}`}>{standort.phone}</a></p>
+            </div>
+          </div>
+
+          <div class="standort-info__detail">
+            <div class="standort-info__icon">@</div>
+            <div class="standort-info__text">
+              <h4>E-Mail</h4>
+              <p><a href={`mailto:${standort.email}`}>{standort.email}</a></p>
+            </div>
+          </div>
+
+          <div class="standort-info__detail">
+            <div class="standort-info__icon">P</div>
+            <div class="standort-info__text">
+              <h4>Parkplätze</h4>
+              <p>{standort.parking}</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Öffnungszeiten</h2>
+          <div class="divider"></div>
+          <table class="hours-table">
+            {standort.hours.map((h: any) => (
+              <tr>
+                <td><strong>{h.days}</strong></td>
+                <td>{h.time}</td>
+              </tr>
+            ))}
+          </table>
+
+          <div style="margin-top:2rem">
+            <a href="/kontakt" class="btn btn--amber">Termin anfragen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

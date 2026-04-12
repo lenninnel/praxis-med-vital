@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import leistungen from '../../data/leistungen.json';
+---
+
+<Layout title="Leistungen – Praxis Med Vital" description="Unser Behandlungsspektrum: Manuelle Therapie, Lymphdrainage, Krankengymnastik und mehr.">
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Leistungen</span>
+      <h1>Unser Behandlungsspektrum</h1>
+      <p>Evidenzbasierte Therapie — individuell auf Ihre Bedürfnisse abgestimmt.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid">
+        {leistungen.map((l: any) => (
+          <div class="card">
+            <span class="card__num">{l.num}</span>
+            <h3 class="card__title">{l.name}</h3>
+            <p class="card__text">{l.desc}</p>
+            <div class="card__tags">
+              {l.items.map((item: string) => (
+                <span class="card__tag">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Besonderheiten -->
+  <section class="section section--forest">
+    <div class="container text-center">
+      <span class="section-label">Spezialisierungen</span>
+      <h2 class="section-title">Über den Standard hinaus</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,.7)">
+        Zusätzlich zu unserem klassischen Angebot bieten wir spezialisierte Behandlungsmethoden.
+      </p>
+    </div>
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature__icon">AK</div>
+          <h3 class="feature__title">Applied Kinesiology</h3>
+          <p class="feature__text">
+            Funktionelle Diagnostik durch Muskeltests. Erkennung und Behandlung von
+            Zusammenhängen zwischen Struktur, Biochemie und Psyche.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">CC</div>
+          <h3 class="feature__title">Cranio Concept</h3>
+          <p class="feature__text">
+            Sanfte craniosacrale Therapie zur Behandlung von Kopfschmerzen, Migräne,
+            Kiefergelenksbeschwerden und stressbedingten Symptomen.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">AT</div>
+          <h3 class="feature__title">Atlas Therapie</h3>
+          <p class="feature__text">
+            Gezielte Korrektur von Fehlstellungen des ersten Halswirbels mit
+            positiven Auswirkungen auf das gesamte Bewegungssystem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektoraler HP -->
+  <section class="section section--cream">
+    <div class="container text-center">
+      <span class="section-label">Ohne Überweisung</span>
+      <h2 class="section-title">Sektoraler Heilpraktiker</h2>
+      <div class="divider" style="margin-inline:auto"></div>
+      <p style="max-width:600px;margin:0 auto;color:var(--c-gray-600)">
+        Als sektorale Heilpraktiker für Physiotherapie dürfen wir Sie auch ohne ärztliche
+        Überweisung behandeln. Das bedeutet: schnellere Termine, eigenständige Befunderhebung
+        und direkter Zugang zu allen physiotherapeutischen Heilmitteln.
+      </p>
+      <a href="/kontakt" class="btn btn--amber" style="margin-top:2rem">Termin anfragen</a>
+    </div>
+  </section>
+</Layout>

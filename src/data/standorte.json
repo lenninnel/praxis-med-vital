@@ -1,0 +1,33 @@
+[
+  {
+    "id": "woerth",
+    "name": "Wörth am Main",
+    "status": "active",
+    "address": "Pfarrer-Adam-Haus-Str. 5a",
+    "zip": "63939",
+    "city": "Wörth am Main",
+    "phone": "09372 – 139 444",
+    "phonePlain": "093721394440",
+    "email": "info@therapie-woerth.com",
+    "mapsEmbed": "",
+    "parking": "Parkplätze direkt vor der Praxis vorhanden.",
+    "hours": [
+      { "days": "Mo – Do", "time": "08:00 – 19:00 Uhr" },
+      { "days": "Freitag", "time": "08:00 – 15:00 Uhr" },
+      { "days": "Sa – So", "time": "Geschlossen" }
+    ]
+  },
+  {
+    "id": "erlenbach",
+    "name": "Erlenbach am Main",
+    "status": "coming-soon",
+    "address": "",
+    "zip": "",
+    "city": "Erlenbach am Main",
+    "phone": "",
+    "phonePlain": "",
+    "email": "info@therapie-woerth.com",
+    "openingNote": "Demnächst verfügbar — wir informieren Sie gerne.",
+    "hours": []
+  }
+]

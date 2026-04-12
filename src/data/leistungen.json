@@ -1,0 +1,30 @@
+[
+  {
+    "id": "lymphdrainage",
+    "num": "01",
+    "name": "Manuelle Lymphdrainage",
+    "desc": "Sanfte Entstauungstherapie bei Ödemen, Schwellungen und in der postoperativen Rehabilitation.",
+    "items": ["Manuelle Lymphdrainage (MLD)", "Komplexe physikalische Entstauung", "Kompressionsversorgung"]
+  },
+  {
+    "id": "manuelle-therapie",
+    "num": "02",
+    "name": "Manuelle Therapie",
+    "desc": "Gezielte Behandlung von Gelenk- und Muskeldysfunktionen durch spezifische Techniken.",
+    "items": ["Manuelle Therapie (MT)", "Kiefergelenk CMD", "Gelenkmobilisation & Traktion"]
+  },
+  {
+    "id": "krankengymnastik",
+    "num": "03",
+    "name": "Krankengymnastik",
+    "desc": "Klassische und gerätegestützte Physiotherapie für Prävention, Rehabilitation und Leistungserhalt.",
+    "items": ["Krankengymnastik (KG)", "Krankengymnastik am Gerät (KGG)", "Koordinativer Trainingszirkel"]
+  },
+  {
+    "id": "heilpraktiker",
+    "num": "04",
+    "name": "Sektoraler Heilpraktiker",
+    "desc": "Behandlung ohne ärztliche Überweisung — direkt und eigenständig.",
+    "items": ["Behandlung ohne Überweisung", "Eigenständige Befunderhebung", "Alle physiotherapeutischen Heilmittel"]
+  }
+]

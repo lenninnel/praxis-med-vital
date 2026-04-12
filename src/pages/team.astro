@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import team from '../data/team.json';
+---
+
+<Layout title="Team – Praxis Med Vital" description="Lernen Sie unser Team aus erfahrenen Physiotherapeuten kennen.">
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Unser Team</span>
+      <h1>Kompetenz &amp; Erfahrung</h1>
+      <p>Drei Therapeuten — ein Ziel: Ihre Gesundheit nachhaltig zu verbessern.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="team-grid">
+        {team.map((member: any) => (
+          <div class="team-card">
+            <div class="team-card__avatar">{member.initials}</div>
+            <h3 class="team-card__name">{member.name}</h3>
+            <p class="team-card__role">{member.role}</p>
+            <p class="team-card__bio">{member.bio}</p>
+            <div class="card__tags" style="justify-content:center">
+              {member.tags.map((tag: string) => (
+                <span class="card__tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container text-center">
+      <span class="section-label">Gemeinsam für Sie</span>
+      <h2 class="section-title">Unsere Philosophie</h2>
+      <div class="divider" style="margin-inline:auto"></div>
+      <p style="max-width:600px;margin:0 auto;color:var(--c-gray-600)">
+        Wir glauben an einen ganzheitlichen Ansatz: Jeder Mensch ist einzigartig und verdient
+        eine Behandlung, die auf seine individuellen Bedürfnisse zugeschnitten ist. Durch die
+        Kombination verschiedener Fachgebiete können wir Sie umfassend betreuen.
+      </p>
+      <a href="/kontakt" class="btn btn--amber" style="margin-top:2rem">Termin vereinbaren</a>
+    </div>
+  </section>
+</Layout>

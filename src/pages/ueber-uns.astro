@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Über uns – Praxis Med Vital" description="Erfahren Sie mehr über unsere Praxis, unsere Philosophie und unsere ganzheitlichen Behandlungsmethoden.">
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Über uns</span>
+      <h1>Praxis Med Vital</h1>
+      <p>Ganzheitliche Physiotherapie in Wörth am Main — seit über 15 Jahren.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:var(--max-w-narrow)">
+      <h2>Unsere Geschichte</h2>
+      <div class="divider"></div>
+      <p>
+        Praxis Med Vital wurde mit einer klaren Vision gegründet: Physiotherapie, die über
+        die reine Symptombehandlung hinausgeht. Als inhabergeführte Praxis setzen wir auf
+        persönliche Betreuung, individuelle Therapiepläne und innovative Behandlungsmethoden.
+      </p>
+      <p>
+        Unsere drei Therapeuten — Kai Hurth, Sven Wehrheim und Chris Kenner — bringen
+        unterschiedliche Spezialisierungen und jahrelange Erfahrung ein. Diese Vielfalt
+        ermöglicht es uns, ein breites Spektrum an Beschwerden kompetent zu behandeln.
+      </p>
+
+      <h2 style="margin-top:3rem">Unser Ansatz</h2>
+      <div class="divider"></div>
+      <p>
+        Wir verbinden bewährte physiotherapeutische Methoden mit spezialisierten Techniken wie
+        Applied Kinesiology, Cranio Concept und Atlas Therapie. Diese Kombination erlaubt es
+        uns, die Ursache Ihrer Beschwerden zu finden — nicht nur die Symptome zu lindern.
+      </p>
+      <p>
+        Jede Behandlung beginnt mit einer ausführlichen Anamnese und Befunderhebung. Auf
+        dieser Grundlage erstellen wir Ihren individuellen Therapieplan und begleiten Sie
+        auf Ihrem Weg zur Besserung.
+      </p>
+
+      <h2 style="margin-top:3rem">Unsere Werte</h2>
+      <div class="divider"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem">
+        <div>
+          <h4>Ganzheitlichkeit</h4>
+          <p style="font-size:var(--fs-sm);color:var(--c-gray-600);margin-top:.5rem">
+            Wir betrachten den Menschen als Ganzes — nicht nur die einzelne Beschwerde.
+          </p>
+        </div>
+        <div>
+          <h4>Individualität</h4>
+          <p style="font-size:var(--fs-sm);color:var(--c-gray-600);margin-top:.5rem">
+            Jeder Patient erhält eine auf seine Bedürfnisse abgestimmte Therapie.
+          </p>
+        </div>
+        <div>
+          <h4>Kompetenz</h4>
+          <p style="font-size:var(--fs-sm);color:var(--c-gray-600);margin-top:.5rem">
+            Regelmäßige Fortbildungen sichern unsere fachliche Qualität.
+          </p>
+        </div>
+        <div>
+          <h4>Transparenz</h4>
+          <p style="font-size:var(--fs-sm);color:var(--c-gray-600);margin-top:.5rem">
+            Wir erklären jeden Behandlungsschritt verständlich und nachvollziehbar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--forest">
+    <div class="container text-center">
+      <h2>Bereit für Ihren ersten Termin?</h2>
+      <p style="color:rgba(255,255,255,.7);max-width:480px;margin:1rem auto 2rem">
+        Wir freuen uns, Sie in unserer Praxis begrüßen zu dürfen.
+      </p>
+      <a href="/kontakt" class="btn btn--amber">Termin anfragen</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @media(max-width:600px) {
+    [style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

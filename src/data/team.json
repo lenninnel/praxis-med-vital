@@ -1,0 +1,29 @@
+[
+  {
+    "id": "kai-hurth",
+    "initials": "KH",
+    "name": "Kai Hurth",
+    "role": "Physiotherapeut · Inhaber",
+    "bio": "Staatlich geprüfter Physiotherapeut mit langjähriger Erfahrung in manueller Therapie und Kiefergelenksbehandlung.",
+    "photo": null,
+    "tags": ["Manuelle Therapie", "CMD", "Bobath", "KGG"]
+  },
+  {
+    "id": "sven-wehrheim",
+    "initials": "SW",
+    "name": "Sven Wehrheim",
+    "role": "Physiotherapeut · Inhaber",
+    "bio": "Spezialisiert auf ganzheitliche Therapiemethoden — Applied Kinesiology, Cranio Concept und sanfte Chiropraktik.",
+    "photo": null,
+    "tags": ["Applied Kinesiology", "Cranio Concept", "Atlas Therapie"]
+  },
+  {
+    "id": "chris-kenner",
+    "initials": "CK",
+    "name": "Chris Kenner",
+    "role": "Physiotherapeut · Inhaber",
+    "bio": "Experte für Lymphdrainage, gerätegestützte Trainingstherapie und Prävention.",
+    "photo": null,
+    "tags": ["Lymphdrainage", "KGG", "Prävention", "Heilpraktiker"]
+  }
+]

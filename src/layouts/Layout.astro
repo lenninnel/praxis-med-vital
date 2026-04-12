@@ -1,0 +1,136 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = site.seo.defaultTitle,
+  description = site.seo.defaultDescription,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>{title}</title>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container">
+      <a href="/" class="nav__logo">Med <span>Vital</span></a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <div class="nav__links">
+          <a href="/ueber-uns" class="nav__link">Über uns</a>
+          <a href="/team" class="nav__link">Team</a>
+          <a href="/leistungen" class="nav__link">Leistungen</a>
+          <a href="/standorte" class="nav__link">Standorte</a>
+          <a href="/kontakt" class="nav__link">Kontakt</a>
+        </div>
+        <a href="/kontakt" class="btn btn--amber btn--sm nav__cta">Termin anfragen</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="brand">Med <span>Vital</span></span>
+          <p>Ihre Praxis für Physiotherapie in Wörth am Main. Ganzheitlich, kompetent und persönlich.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__title">Praxis</h4>
+          <a href="/ueber-uns">Über uns</a><br/>
+          <a href="/team">Team</a><br/>
+          <a href="/leistungen">Leistungen</a><br/>
+          <a href="/standorte">Standorte</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__title">Kontakt</h4>
+          <p>
+            <a href={`tel:${site.phonePlain}`}>{site.phone}</a><br/>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__title">Rechtliches</h4>
+          <a href="/impressum">Impressum</a><br/>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; {new Date().getFullYear()} Praxis Med Vital. Alle Rechte vorbehalten.</span>
+        <span>
+          <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-banner__inner">
+      <p class="cookie-banner__text">
+        Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.
+        Mehr dazu in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
+      </p>
+      <div class="cookie-banner__actions">
+        <button class="btn btn--amber btn--sm" id="cookie-accept">Akzeptieren</button>
+        <button class="btn btn--outline btn--sm" id="cookie-decline">Ablehnen</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile nav
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    toggle?.addEventListener('click', () => menu?.classList.toggle('open'));
+
+    // Header scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header?.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Cookie banner
+    const banner = document.getElementById('cookie-banner');
+    const accept = document.getElementById('cookie-accept');
+    const decline = document.getElementById('cookie-decline');
+    if (!localStorage.getItem('cookie-consent')) {
+      banner?.classList.add('show');
+    }
+    accept?.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      banner?.classList.remove('show');
+    });
+    decline?.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'declined');
+      banner?.classList.remove('show');
+    });
+  </script>
+</body>
+</html>

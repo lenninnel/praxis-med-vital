@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import standorte from '../../data/standorte.json';
+---
+
+<Layout title="Standorte – Praxis Med Vital" description="Unsere Praxisstandorte in Wörth am Main und demnächst in Erlenbach am Main.">
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Standorte</span>
+      <h1>Unsere Praxen</h1>
+      <p>In Ihrer Nähe — persönlich und gut erreichbar.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(350px,1fr))">
+        {standorte.map((s: any) => (
+          <div class="standort-card">
+            <span class={`standort-card__status standort-card__status--${s.status === 'active' ? 'active' : 'coming-soon'}`}>
+              {s.status === 'active' ? 'Geöffnet' : 'Demnächst'}
+            </span>
+            <h3 style="margin-bottom:.5rem">{s.name}</h3>
+            {s.address ? (
+              <>
+                <p style="color:var(--c-gray-600);font-size:var(--fs-sm);margin-bottom:.5rem">
+                  {s.address}<br/>{s.zip} {s.city}
+                </p>
+                <p style="color:var(--c-gray-600);font-size:var(--fs-sm)">
+                  Tel: <a href={`tel:${s.phonePlain}`}>{s.phone}</a>
+                </p>
+                <a href={`/standorte/${s.id}`} class="btn btn--outline btn--sm" style="margin-top:1.5rem">Details ansehen</a>
+              </>
+            ) : (
+              <p style="color:var(--c-gray-600);font-size:var(--fs-sm);margin-bottom:1rem">
+                {s.openingNote}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

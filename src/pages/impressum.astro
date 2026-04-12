@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+import standorte from '../data/standorte.json';
+
+const woerth = standorte.find((s: any) => s.id === 'woerth');
+---
+
+<Layout title="Impressum – Praxis Med Vital" description="Impressum der Praxis Med Vital.">
+  <section class="page-header">
+    <div class="container">
+      <h1>Impressum</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-content">
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        Praxis Med Vital<br/>
+        Kai Hurth, Sven Wehrheim, Chris Kenner<br/>
+        {woerth?.address}<br/>
+        {woerth?.zip} {woerth?.city}
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: {site.phone}<br/>
+        Fax: {site.fax}<br/>
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>Berufsbezeichnung</h2>
+      <p>
+        Physiotherapeuten (staatlich geprüft)<br/>
+        Berufsbezeichnung verliehen in: Deutschland
+      </p>
+
+      <h2>Zuständige Aufsichtsbehörde</h2>
+      <p>Gesundheitsamt Miltenberg</p>
+
+      <h2>Berufsrechtliche Regelungen</h2>
+      <p>
+        Masseur- und Physiotherapeutengesetz (MPhG)<br/>
+        Regelungen einsehbar unter: <a href="https://www.gesetze-im-internet.de/mphg/" target="_blank" rel="noopener">gesetze-im-internet.de</a>
+      </p>
+
+      <h2>Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.
+      </p>
+      <p>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten
+        nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+        Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+        Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
+        Tätigkeit hinweisen.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen
+        Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.
+        Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber
+        der Seiten verantwortlich.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
+        unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung
+        und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
+        schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+      </p>
+    </div>
+  </section>
+</Layout>
