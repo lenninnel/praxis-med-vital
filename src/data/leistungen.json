@@ -1,30 +1,52 @@
-[
-  {
-    "id": "lymphdrainage",
-    "num": "01",
-    "name": "Manuelle Lymphdrainage",
-    "desc": "Sanfte Entstauungstherapie bei Ödemen, Schwellungen und in der postoperativen Rehabilitation.",
-    "items": ["Manuelle Lymphdrainage (MLD)", "Komplexe physikalische Entstauung", "Kompressionsversorgung"]
-  },
-  {
-    "id": "manuelle-therapie",
-    "num": "02",
-    "name": "Manuelle Therapie",
-    "desc": "Gezielte Behandlung von Gelenk- und Muskeldysfunktionen durch spezifische Techniken.",
-    "items": ["Manuelle Therapie (MT)", "Kiefergelenk CMD", "Gelenkmobilisation & Traktion"]
-  },
-  {
-    "id": "krankengymnastik",
-    "num": "03",
-    "name": "Krankengymnastik",
-    "desc": "Klassische und gerätegestützte Physiotherapie für Prävention, Rehabilitation und Leistungserhalt.",
-    "items": ["Krankengymnastik (KG)", "Krankengymnastik am Gerät (KGG)", "Koordinativer Trainingszirkel"]
-  },
-  {
-    "id": "heilpraktiker",
-    "num": "04",
-    "name": "Sektoraler Heilpraktiker",
-    "desc": "Behandlung ohne ärztliche Überweisung — direkt und eigenständig.",
-    "items": ["Behandlung ohne Überweisung", "Eigenständige Befunderhebung", "Alle physiotherapeutischen Heilmittel"]
-  }
-]
+{
+  "kategorien": [
+    {
+      "id": "orthopaedie",
+      "num": "01",
+      "titel": "Orthopädie",
+      "beschreibung": "Evidenzbasierte Behandlung des Bewegungsapparates — von akuten Verletzungen bis zur langfristigen Rehabilitation.",
+      "leistungen": [
+        { "name": "Manuelle Therapie (MT)", "desc": "Gezielte Behandlung von Gelenk- und Muskeldysfunktionen durch spezifische Mobilisationstechniken." },
+        { "name": "Manuelle Therapie Kiefergelenk (CMD)", "desc": "Spezialisierte Behandlung von Kiefergelenksbeschwerden und craniomandibulären Dysfunktionen." },
+        { "name": "Krankengymnastik (KG)", "desc": "Klassische physiotherapeutische Behandlung zur Wiederherstellung von Beweglichkeit und Kraft." },
+        { "name": "Krankengymnastik am Gerät (KGG)", "desc": "Gerätegestützte Therapie zur gezielten Kräftigung und Rehabilitation." },
+        { "name": "Sportphysiotherapie", "desc": "Prävention und Rehabilitation von Sportverletzungen — für Hobby- und Leistungssportler." },
+        { "name": "Med. Trainingstherapie", "desc": "Wissenschaftlich fundiertes Training zur Wiederherstellung von Kraft, Ausdauer und Koordination." },
+        { "name": "Gangbild Training & Analyse", "desc": "Systematische Analyse und Korrektur von Gangstörungen für mehr Sicherheit im Alltag." },
+        { "name": "Zirkeltraining §20 SGB V", "desc": "Präventionskurs nach §20 SGB V — von der Krankenkasse bezuschusst. Gelenkschonendes Ganzkörpertraining in der Gruppe." },
+        { "name": "Manuelle Lymphdrainage (MLD)", "desc": "Sanfte Entstauungstherapie bei Ödemen, Schwellungen und postoperativer Rehabilitation." }
+      ]
+    },
+    {
+      "id": "neurologie",
+      "num": "02",
+      "titel": "Neurologie",
+      "beschreibung": "Spezialisierte Therapie neurologischer Erkrankungen — für mehr Selbstständigkeit und Lebensqualität.",
+      "leistungen": [
+        { "name": "Bobath Therapie", "desc": "Neurophysiologisches Behandlungskonzept zur Förderung der Bewegungskontrolle nach neurologischen Erkrankungen." },
+        { "name": "Neurologisches Gangtraining", "desc": "Gezieltes Training zur Verbesserung des Gangbildes und der Gleichgewichtskontrolle." },
+        { "name": "Schlaganfall-Rehabilitation", "desc": "Intensive Therapie zur Wiederherstellung motorischer und funktioneller Fähigkeiten nach Schlaganfall." },
+        { "name": "Multiple Sklerose (MS)", "desc": "Symptomorientierte Physiotherapie zur Erhaltung von Mobilität und Alltagsfunktion." },
+        { "name": "Parkinson-Syndrom", "desc": "Spezialisierte Behandlung zur Verbesserung von Gleichgewicht, Gang und Bewegungsinitiierung." },
+        { "name": "Schädel-Hirn-Trauma", "desc": "Rehabilitation nach Hirnverletzungen — individuell angepasst an den Genesungsprozess." },
+        { "name": "Periphere Nervenläsionen", "desc": "Behandlung von Nervenverletzungen zur Förderung der Regeneration und Funktionswiederherstellung." },
+        { "name": "Polyneuropathie", "desc": "Therapie bei Erkrankungen des peripheren Nervensystems — Verbesserung von Sensibilität und Koordination." }
+      ]
+    },
+    {
+      "id": "spezialisierung",
+      "num": "03",
+      "titel": "Spezialisierung",
+      "beschreibung": "Zertifizierte Spezialmethoden für Privat- und Selbstzahler — ohne ärztliche Überweisung direkt buchbar.",
+      "leistungen": [
+        { "name": "Sektoraler Heilpraktiker Physiotherapie", "desc": "Sie erhalten ohne ärztliche Verordnung eine Therapie, die ohne Einschränkungen genau auf Ihre Bedürfnisse angepasst wird." },
+        { "name": "Applied Kinesiology", "desc": "Ganzheitliche Diagnose- und Behandlungsmethode, die Muskelfunktion, Struktur und Organsysteme verbindet." },
+        { "name": "Cranio Concept", "desc": "Sanfte Behandlung des craniosacralen Systems bei Kopfschmerzen, Migräne und stressbedingten Beschwerden." },
+        { "name": "Chirotherapie n. Mulligan", "desc": "Mobilisationstechnik mit Bewegung — schmerzfreie Gelenkmobilisation nach dem Mulligan-Konzept." },
+        { "name": "FOI (Funktionelle Osteopathische Integration)", "desc": "Ganzheitliche osteopathische Technik zur Harmonisierung von Struktur und Funktion des Körpers." },
+        { "name": "Atlas Therapie", "desc": "Gezielte Behandlung des ersten Halswirbels zur Korrektur von Fehlstellungen und Verbesserung der Körperstatik." }
+      ]
+    }
+  ],
+  "behandlungszeit": "40 / 60 Minuten"
+}

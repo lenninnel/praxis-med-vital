@@ -1,86 +1,163 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import leistungen from '../../data/leistungen.json';
+
+const { kategorien, behandlungszeit } = leistungen;
 ---
 
-<Layout title="Leistungen – Praxis Med Vital" description="Unser Behandlungsspektrum: Manuelle Therapie, Lymphdrainage, Krankengymnastik und mehr.">
+<Layout title="Leistungen – Praxis Med Vital" description="Unser Behandlungsspektrum: Orthopädie, Neurologie und zertifizierte Spezialmethoden — individuell abgestimmt.">
   <section class="page-header">
     <div class="container">
       <span class="eyebrow">Leistungen</span>
       <h1>Unser Behandlungsspektrum</h1>
-      <p>Evidenzbasierte Therapie — individuell auf Ihre Bedürfnisse abgestimmt.</p>
+      <p>Drei Schwerpunkte, ein Ziel: nachhaltige Besserung statt kurzfristiger Symptombekämpfung.</p>
     </div>
   </section>
 
-  <section class="sec reveal">
-    <div class="container">
-      <div class="leistung-grid">
-        {leistungen.map((l: any) => (
-          <div class="leistung-card">
-            <span class="leistung-card__num">{l.num}</span>
-            <h3 class="leistung-card__title">{l.name}</h3>
-            <p class="leistung-card__desc">{l.desc}</p>
-            <div class="tag-list" style="justify-content:flex-start">
-              {l.items.map((item: string) => (
-                <span class="tag">{item}</span>
-              ))}
+  {kategorien.map((kat: any) => (
+    <section class="sec kat-sec reveal" id={kat.id}>
+      <div class="container">
+        <div class="kat">
+          <div class="kat__head">
+            <span class="kat__num" aria-hidden="true">{kat.num}</span>
+            <div class="kat__intro">
+              <span class="eyebrow">Kategorie {kat.num}</span>
+              <h2 class="kat__titel">{kat.titel}</h2>
+              <p class="kat__desc">{kat.beschreibung}</p>
             </div>
           </div>
-        ))}
+
+          <ul class="kat__list">
+            {kat.leistungen.map((l: any) => (
+              <li class="kat-item">
+                <h3 class="kat-item__name">{l.name}</h3>
+                <p class="kat-item__desc">{l.desc}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  ))}
 
   <section class="sec sec--g900 reveal">
     <div class="container text-center">
-      <span class="eyebrow">Spezialisierungen</span>
+      <span class="eyebrow">Behandlungszeit</span>
       <hr class="rule" style="margin-inline:auto"/>
-      <h2 class="section-title" style="margin-top:18px">Über den Standard hinaus</h2>
-      <p class="section-sub">
-        Zusätzlich zu unserem klassischen Angebot bieten wir spezialisierte Behandlungsmethoden.
-      </p>
-    </div>
-    <div class="container" style="margin-top:48px">
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature__icon">AK</div>
-          <h3 class="feature__title">Applied Kinesiology</h3>
-          <p class="feature__text">
-            Funktionelle Diagnostik durch Muskeltests. Erkennung und Behandlung von
-            Zusammenhängen zwischen Struktur, Biochemie und Psyche.
-          </p>
-        </div>
-        <div class="feature">
-          <div class="feature__icon">CC</div>
-          <h3 class="feature__title">Cranio Concept</h3>
-          <p class="feature__text">
-            Sanfte craniosacrale Therapie zur Behandlung von Kopfschmerzen, Migräne,
-            Kiefergelenksbeschwerden und stressbedingten Symptomen.
-          </p>
-        </div>
-        <div class="feature">
-          <div class="feature__icon">AT</div>
-          <h3 class="feature__title">Atlas Therapie</h3>
-          <p class="feature__text">
-            Gezielte Korrektur von Fehlstellungen des ersten Halswirbels mit
-            positiven Auswirkungen auf das gesamte Bewegungssystem.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--cream reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Ohne Überweisung</span>
-      <hr class="rule" style="margin-inline:auto"/>
-      <h2 class="section-title" style="margin-top:18px">Sektoraler Heilpraktiker</h2>
-      <p class="section-sub">
-        Als sektorale Heilpraktiker für Physiotherapie dürfen wir Sie auch ohne ärztliche
-        Überweisung behandeln. Das bedeutet: schnellere Termine, eigenständige Befunderhebung
-        und direkter Zugang zu allen physiotherapeutischen Heilmitteln.
+      <h2 class="section-title" style="margin-top:18px">Zeit, die wirkt.</h2>
+      <p class="behandlungszeit">{behandlungszeit}</p>
+      <p class="section-sub" style="margin-inline:auto">
+        Wir nehmen uns bewusst Zeit für Sie — für Anamnese, Behandlung und Beratung.
       </p>
       <a href="/kontakt" class="btn-primary" style="margin-top:28px">Termin anfragen</a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .kat-sec + .kat-sec { padding-top: 0; }
+
+  .kat {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .kat__head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 28px;
+  }
+
+  .kat__num {
+    font-family: var(--ff-serif);
+    font-size: clamp(120px, 16vw, 200px);
+    font-weight: 700;
+    line-height: 0.85;
+    color: var(--g50);
+    letter-spacing: -0.02em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .kat__intro { padding-top: 18px; }
+
+  .kat__titel {
+    font-family: var(--ff-serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 600;
+    color: var(--g900);
+    line-height: 1.1;
+    margin-top: 6px;
+  }
+
+  .kat__desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-top: 14px;
+    max-width: 640px;
+  }
+
+  .kat__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 40px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+  }
+
+  .kat-item {
+    position: relative;
+    padding: 24px 0 24px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .kat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 32px;
+    width: 12px;
+    height: 2px;
+    background: var(--amber);
+  }
+
+  .kat-item__name {
+    font-family: var(--ff-serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--g900);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+
+  .kat-item__desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  .behandlungszeit {
+    font-family: var(--ff-serif);
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: -0.01em;
+    margin-top: 28px;
+    line-height: 1;
+  }
+
+  @media (max-width: 860px) {
+    .kat__list { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  @media (max-width: 640px) {
+    .kat__head { grid-template-columns: 1fr; gap: 8px; }
+    .kat__num { font-size: 110px; }
+    .kat__intro { padding-top: 0; }
+  }
+</style>

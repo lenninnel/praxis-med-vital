@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import site from '../data/site.json';
 import team from '../data/team.json';
 import leistungen from '../data/leistungen.json';
+
+const kategorien = leistungen.kategorien;
 ---
 
 <Layout>
@@ -114,18 +116,19 @@ import leistungen from '../data/leistungen.json';
       </p>
     </div>
     <div class="container" style="margin-top:48px">
-      <div class="leistung-grid">
-        {leistungen.map((l: any) => (
-          <div class="leistung-card">
-            <span class="leistung-card__num">{l.num}</span>
-            <h3 class="leistung-card__title">{l.name}</h3>
-            <p class="leistung-card__desc">{l.desc}</p>
-            <div class="tag-list" style="justify-content:flex-start">
-              {l.items.map((item: string) => (
-                <span class="tag">{item}</span>
+      <div class="kategorien-grid">
+        {kategorien.map((kat: any) => (
+          <a href={`/leistungen#${kat.id}`} class="kategorie-card">
+            <span class="kategorie-card__num">{kat.num}</span>
+            <h3 class="kategorie-card__title">{kat.titel}</h3>
+            <p class="kategorie-card__desc">{kat.beschreibung}</p>
+            <ul class="kategorie-card__list">
+              {kat.leistungen.slice(0, 3).map((l: any) => (
+                <li>{l.name}</li>
               ))}
-            </div>
-          </div>
+            </ul>
+            <span class="kategorie-card__link">Mehr erfahren →</span>
+          </a>
         ))}
       </div>
       <div style="text-align:center;margin-top:40px">
@@ -242,3 +245,104 @@ import leistungen from '../data/leistungen.json';
     </div>
   </section>
 </Layout>
+
+<style>
+  .kategorien-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .kategorie-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 36px 36px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+
+  .kategorie-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2.5px;
+    background: var(--g700);
+    transition: width .4s;
+  }
+
+  .kategorie-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(11,61,46,.07);
+    border-color: var(--g100);
+  }
+  .kategorie-card:hover::before { width: 100%; }
+
+  .kategorie-card__num {
+    font-family: var(--ff-serif);
+    font-size: 88px;
+    font-weight: 700;
+    color: var(--g50);
+    line-height: 1;
+    margin-bottom: 8px;
+    pointer-events: none;
+  }
+
+  .kategorie-card__title {
+    font-family: var(--ff-serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--g900);
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+
+  .kategorie-card__desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .kategorie-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .kategorie-card__list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--g900);
+    line-height: 1.5;
+  }
+
+  .kategorie-card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 10px;
+    height: 2px;
+    background: var(--amber);
+  }
+
+  .kategorie-card__link {
+    margin-top: auto;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: .04em;
+  }
+
+  @media (max-width: 960px) {
+    .kategorien-grid { grid-template-columns: 1fr; }
+  }
+</style>
