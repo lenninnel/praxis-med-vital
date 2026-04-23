@@ -184,7 +184,7 @@ strong{font-weight:500}
   background:var(--amber);transition:width .3s;
 }
 .nav__link:hover::after,.nav__link--active::after{width:100%}
-.nav__cta{margin-left:clamp(.5rem,1.5vw,1rem)}
+.nav__cta{margin-left:clamp(1.5rem,2.5vw,2rem)}
 
 /* Mobile nav */
 .nav__toggle{
