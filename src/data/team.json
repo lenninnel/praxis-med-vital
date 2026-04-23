@@ -1,14 +1,5 @@
 [
   {
-    "id": "kai-hurth",
-    "initials": "KH",
-    "name": "Kai Hurth",
-    "role": "Physiotherapeut · Inhaber",
-    "bio": "Staatlich geprüfter Physiotherapeut mit langjähriger Erfahrung in manueller Therapie und Kiefergelenksbehandlung.",
-    "photo": null,
-    "tags": ["Manuelle Therapie", "CMD", "Bobath", "KGG"]
-  },
-  {
     "id": "sven-wehrheim",
     "initials": "SW",
     "name": "Sven Wehrheim",
@@ -25,5 +16,14 @@
     "bio": "Experte für Lymphdrainage, gerätegestützte Trainingstherapie und Prävention.",
     "photo": null,
     "tags": ["Lymphdrainage", "KGG", "Prävention", "Heilpraktiker"]
+  },
+  {
+    "id": "kai-hurth",
+    "initials": "KH",
+    "name": "Kai Hurth",
+    "role": "Physiotherapeut · Inhaber",
+    "bio": "Staatlich geprüfter Physiotherapeut mit langjähriger Erfahrung in manueller Therapie und Kiefergelenksbehandlung.",
+    "photo": null,
+    "tags": ["Manuelle Therapie", "CMD", "Bobath", "KGG"]
   }
 ]

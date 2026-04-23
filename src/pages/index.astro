@@ -3,8 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import site from '../data/site.json';
 import team from '../data/team.json';
 import leistungen from '../data/leistungen.json';
+import standorte from '../data/standorte.json';
 
 const kategorien = leistungen.kategorien;
+const woerth = standorte.find((s: any) => s.id === 'woerth')!;
 ---
 
 <Layout>
@@ -183,6 +185,47 @@ const kategorien = leistungen.kategorien;
     </div>
   </section>
 
+  <!-- Patientenstimmen -->
+  <section class="sec sec--cream reveal">
+    <div class="container text-center">
+      <span class="eyebrow">Patientenstimmen</span>
+      <hr class="rule" style="margin-inline:auto"/>
+      <h2 class="section-title" style="margin-top:18px">Was unsere Patienten sagen.</h2>
+    </div>
+    <div class="container" style="margin-top:48px">
+      <div class="stimmen-grid">
+        <article class="stimme-card">
+          <div class="stimme-card__stars" aria-label="5 von 5 Sternen">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="stimme-card__text">
+            „Einfach super! Ich kann diese Praxis wirklich sehr empfehlen. Das ganze Team ist mega nett und total engagiert. Dort ist man im wahrsten Sinne des Wortes in besten Händen."
+          </p>
+          <p class="stimme-card__author">Patient · Google Bewertung</p>
+        </article>
+        <article class="stimme-card">
+          <div class="stimme-card__stars" aria-label="5 von 5 Sternen">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="stimme-card__text">
+            „Sehr gute Praxis mit erfahrenen und fachlich sehr kompetenten Therapeuten, schnelle und unkomplizierte Terminvereinbarung! Auch Geräte und Laufband stehen zur Verfügung."
+          </p>
+          <p class="stimme-card__author">Patient · Google Bewertung</p>
+        </article>
+      </div>
+      <p class="stimmen-link-wrap">
+        <a
+          href="https://maps.google.com/?q=Pfarrer-Adam-Haus-Str.+5a,+63939+W%C3%B6rth+am+Main"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="stimmen-link"
+        >
+          Weitere Bewertungen auf Google Maps →
+        </a>
+      </p>
+    </div>
+  </section>
+
   <!-- Kontakt -->
   <section class="sec sec--cream reveal" id="kontakt">
     <div class="container">
@@ -195,6 +238,13 @@ const kategorien = leistungen.kategorien;
             Nutzen Sie unser Kontaktformular oder rufen Sie uns direkt an.
           </p>
           <div style="margin-top:32px">
+            <div class="contact-detail">
+              <div class="contact-detail__icon">A</div>
+              <div class="contact-detail__text">
+                <h4>Adresse</h4>
+                <p>{woerth.address}<br/>{woerth.zip} {woerth.city}</p>
+              </div>
+            </div>
             <div class="contact-detail">
               <div class="contact-detail__icon">T</div>
               <div class="contact-detail__text">
@@ -217,6 +267,16 @@ const kategorien = leistungen.kategorien;
               </div>
             </div>
           </div>
+
+          <h3 style="font-family:var(--ff-serif);font-size:18px;font-weight:600;margin-top:32px;margin-bottom:10px;color:var(--g900)">Öffnungszeiten</h3>
+          <table class="hours-table">
+            {site.hours.map((h: any) => (
+              <tr>
+                <td>{h.days}</td>
+                <td>{h.time}</td>
+              </tr>
+            ))}
+          </table>
         </div>
         <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="kontakt" />
@@ -362,5 +422,70 @@ const kategorien = leistungen.kategorien;
 
   @media (max-width: 960px) {
     .kategorien-grid { grid-template-columns: 1fr; }
+  }
+
+  .stimmen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .stimme-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stimme-card__stars {
+    display: flex;
+    gap: 2px;
+    color: var(--amber);
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .stimme-card__text {
+    font-family: var(--ff-serif);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--g900);
+    font-style: italic;
+  }
+
+  .stimme-card__author {
+    margin-top: auto;
+    font-family: var(--ff-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-lt);
+  }
+
+  .stimmen-link-wrap {
+    text-align: center;
+    margin-top: 36px;
+  }
+
+  .stimmen-link {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--amber);
+    transition: color .2s;
+  }
+
+  .stimmen-link:hover { color: var(--amber-dk); }
+
+  @media (max-width: 860px) {
+    .stimmen-grid { grid-template-columns: 1fr; }
   }
 </style>

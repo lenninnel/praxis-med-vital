@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import leistungen from '../../data/leistungen.json';
 
 const { kategorien, behandlungszeit } = leistungen;
+const behzeitNum = behandlungszeit.replace(/\s*Minuten?\s*$/i, '').trim();
 ---
 
 <Layout title="Behandlungsfelder – Praxis Med Vital" description="Drei Behandlungsfelder, ein Ziel — Orthopädie, Neurologie und zertifizierte Spezialmethoden.">
@@ -53,23 +54,20 @@ const { kategorien, behandlungszeit } = leistungen;
                     </li>
                   ))}
                 </ul>
+                {kat.id === 'spezialisierung' && (
+                  <aside class="behzeit-box">
+                    <span class="behzeit-box__num">{behzeitNum}</span>
+                    <span class="behzeit-box__label">Minuten Behandlungszeit</span>
+                    <p class="behzeit-box__note">
+                      Alle Leistungen als Privat- oder Selbstzahler buchbar — ohne ärztliche Überweisung.
+                    </p>
+                  </aside>
+                )}
               </div>
             </div>
           </article>
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="sec sec--g900 reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Behandlungszeit</span>
-      <hr class="rule" style="margin-inline:auto"/>
-      <p class="behandlungszeit">{behandlungszeit}</p>
-      <p class="behandlungszeit__note">
-        Alle Leistungen auf ärztliche Verordnung oder als Selbstzahler buchbar.
-      </p>
-      <a href="/kontakt" class="btn-primary" style="margin-top:32px">Termin anfragen</a>
     </div>
   </section>
 </Layout>
@@ -231,23 +229,41 @@ const { kategorien, behandlungszeit } = leistungen;
 
   .acc-list__link:hover { color: var(--amber-dk); }
 
-  .behandlungszeit {
-    font-family: var(--ff-serif);
-    font-size: clamp(44px, 6.5vw, 80px);
-    font-weight: 600;
-    color: var(--amber);
-    letter-spacing: -0.01em;
-    line-height: 1.05;
+  .behzeit-box {
     margin-top: 24px;
+    background: var(--g900);
+    border-radius: 3px;
+    padding: 24px 32px;
+    color: var(--white);
   }
 
-  .behandlungszeit__note {
-    font-size: 15px;
+  .behzeit-box__num {
+    display: block;
+    font-family: var(--ff-serif);
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .behzeit-box__label {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--ff-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .behzeit-box__note {
+    margin-top: 14px;
+    font-size: 14px;
     font-weight: 300;
-    color: rgba(255,255,255,.65);
-    line-height: 1.7;
-    max-width: 520px;
-    margin: 18px auto 0;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
   }
 
   @media (max-width: 700px) {
