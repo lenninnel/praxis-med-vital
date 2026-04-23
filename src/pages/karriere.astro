@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+
+const vorteile = [
+  {
+    titel: 'Zwei Standorte',
+    text: 'Wörth am Main und bald Erlenbach — Entwicklungsmöglichkeiten an beiden Standorten.',
+  },
+  {
+    titel: 'Spezialisierung',
+    text: 'Wir fördern Fortbildungen in Applied Kinesiology, Cranio Concept, Mulligan und weiteren Spezialmethoden.',
+  },
+  {
+    titel: 'Team',
+    text: 'Kleine Praxis, echtes Miteinander — drei Inhaber die selbst behandeln und immer ansprechbar sind.',
+  },
+];
+
+const stellen = [
+  {
+    titel: 'Physiotherapeut/in (m/w/d)',
+    ort: 'Wörth am Main',
+    art: 'Voll- oder Teilzeit',
+    text: 'Sie behandeln eigenverantwortlich ein breites Patientenspektrum und bringen idealerweise Interesse an Spezialmethoden mit.',
+    cta: 'Jetzt bewerben',
+    href: `mailto:${site.email}?subject=${encodeURIComponent('Bewerbung Physiotherapeut/in')}`,
+  },
+  {
+    titel: 'Initiativbewerbung',
+    ort: 'Wörth am Main · Erlenbach am Main',
+    art: 'Alle Qualifikationen willkommen',
+    text: 'Sie finden keine passende Stelle? Schicken Sie uns trotzdem Ihre Unterlagen — wir freuen uns über engagierte Menschen, die zu uns passen.',
+    cta: 'Initiativ bewerben',
+    href: `mailto:${site.email}?subject=${encodeURIComponent('Initiativbewerbung Med Vital')}`,
+  },
+];
+---
+
+<Layout title="Karriere – Praxis Med Vital" description="Werde Teil unseres Teams. Offene Stellen und Initiativbewerbungen in der Praxis Med Vital — Wörth am Main und Erlenbach am Main.">
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow">Karriere</span>
+      <h1>Werde Teil unseres Teams.</h1>
+      <p>Wir wachsen — und suchen Menschen, die Physiotherapie genauso lieben wie wir. Bewirb dich jetzt oder schick uns einfach eine Initiativbewerbung.</p>
+    </div>
+  </section>
+
+  <section class="sec sec--cream reveal">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <span class="eyebrow">Warum Med Vital</span>
+        <hr class="rule" style="margin-inline:auto"/>
+        <h2 class="section-title" style="margin-top:18px">Was uns ausmacht</h2>
+      </div>
+      <div class="karriere-vorteile">
+        {vorteile.map((v) => (
+          <div class="vorteil-card">
+            <h3 class="vorteil-card__titel">{v.titel}</h3>
+            <p class="vorteil-card__text">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec reveal">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <span class="eyebrow">Offene Stellen</span>
+        <hr class="rule" style="margin-inline:auto"/>
+        <h2 class="section-title" style="margin-top:18px">Aktuell suchen wir:</h2>
+      </div>
+      <div class="stellen-grid">
+        {stellen.map((s) => (
+          <article class="stelle-card">
+            <h3 class="stelle-card__titel">{s.titel}</h3>
+            <div class="stelle-card__meta">
+              <span class="stelle-card__tag">{s.ort}</span>
+              <span class="stelle-card__tag">{s.art}</span>
+            </div>
+            <p class="stelle-card__text">{s.text}</p>
+            <a href={s.href} class="btn-primary stelle-card__cta">{s.cta}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--g900 reveal">
+    <div class="container text-center">
+      <span class="eyebrow">Persönlich</span>
+      <hr class="rule" style="margin-inline:auto"/>
+      <h2 class="section-title" style="margin-top:18px">Fragen zur Stelle?</h2>
+      <p class="section-sub" style="margin-inline:auto">
+        Sprechen Sie uns einfach an — Sven, Chris oder Kai sind persönlich erreichbar.
+      </p>
+      <a href={`tel:${site.phonePlain}`} class="btn-primary" style="margin-top:32px">{site.phone} anrufen</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .karriere-vorteile {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .vorteil-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+
+  .vorteil-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2.5px;
+    background: var(--amber);
+    transition: width .4s;
+  }
+
+  .vorteil-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(11, 61, 46, .07);
+    border-color: var(--g100);
+  }
+
+  .vorteil-card:hover::before { width: 100%; }
+
+  .vorteil-card__titel {
+    font-family: var(--ff-serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--g900);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .vorteil-card__text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  .stellen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .stelle-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, box-shadow .3s;
+  }
+
+  .stelle-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2.5px;
+    background: var(--amber);
+    transition: width .4s;
+  }
+
+  .stelle-card:hover {
+    border-color: var(--g100);
+    box-shadow: 0 8px 28px rgba(11, 61, 46, .07);
+  }
+
+  .stelle-card:hover::before { width: 100%; }
+
+  .stelle-card__titel {
+    font-family: var(--ff-serif);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--g900);
+    line-height: 1.2;
+  }
+
+  .stelle-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .stelle-card__tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--g50);
+    border-radius: 3px;
+    font-family: var(--ff-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--g900);
+  }
+
+  .stelle-card__text {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  .stelle-card__cta {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 860px) {
+    .karriere-vorteile { grid-template-columns: 1fr; }
+    .stellen-grid { grid-template-columns: 1fr; }
+    .stelle-card { padding: 32px 28px; }
+  }
+</style>
