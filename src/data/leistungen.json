@@ -4,24 +4,28 @@
       "id": "orthopaedie",
       "num": "01",
       "titel": "Orthopädie",
-      "beschreibung": "Evidenzbasierte Behandlung des Bewegungsapparates — von akuten Verletzungen bis zur langfristigen Rehabilitation.",
+      "beschreibung": "Evidenzbasierte Behandlung des Bewegungsapparates — von akuten Verletzungen bis zur langfristigen Rehabilitation. Ihre Alltagsmobilität steht bei uns an erster Stelle.",
       "leistungen": [
         { "name": "Manuelle Therapie (MT)", "desc": "Gezielte Behandlung von Gelenk- und Muskeldysfunktionen durch spezifische Mobilisationstechniken." },
-        { "name": "Manuelle Therapie Kiefergelenk (CMD)", "desc": "Spezialisierte Behandlung von Kiefergelenksbeschwerden und craniomandibulären Dysfunktionen." },
+        { "name": "Manuelle Therapie Kiefergelenk (CMD)", "desc": "Spezialisierte Behandlung von Kiefergelenksbeschwerden und craniomandibulären Dysfunktionen — ein wichtiger Schwerpunkt der Praxis." },
         { "name": "Krankengymnastik (KG)", "desc": "Klassische physiotherapeutische Behandlung zur Wiederherstellung von Beweglichkeit und Kraft." },
         { "name": "Krankengymnastik am Gerät (KGG)", "desc": "Gerätegestützte Therapie zur gezielten Kräftigung und Rehabilitation." },
         { "name": "Sportphysiotherapie", "desc": "Prävention und Rehabilitation von Sportverletzungen — für Hobby- und Leistungssportler." },
         { "name": "Med. Trainingstherapie", "desc": "Wissenschaftlich fundiertes Training zur Wiederherstellung von Kraft, Ausdauer und Koordination." },
         { "name": "Gangbild Training & Analyse", "desc": "Systematische Analyse und Korrektur von Gangstörungen für mehr Sicherheit im Alltag." },
-        { "name": "Zirkeltraining §20 SGB V", "desc": "Präventionskurs nach §20 SGB V — von der Krankenkasse bezuschusst. Gelenkschonendes Ganzkörpertraining in der Gruppe." },
-        { "name": "Manuelle Lymphdrainage (MLD)", "desc": "Sanfte Entstauungstherapie bei Ödemen, Schwellungen und postoperativer Rehabilitation." }
+        { "name": "Manuelle Lymphdrainage (MLD)", "desc": "Sanfte Entstauungstherapie bei Ödemen, Schwellungen und postoperativer Rehabilitation." },
+        { "name": "Lasertherapie", "desc": "Schmerzarme Behandlung mit Laserlicht zur Förderung der Geweberegeneration und Schmerzreduktion." },
+        { "name": "Trigger-Punkt-Reflextherapie", "desc": "Gezielte Behandlung schmerzhafter Muskelverhärtungen zur Lösung von Verspannungen und Reflexschmerzen." },
+        { "name": "Orthopädisches Zirkeltraining", "desc": "Besonders gelenkschonendes Zirkeltraining — auch bei starken Einschränkungen geeignet. Ein Alleinstellungsmerkmal der Praxis." },
+        { "name": "Zirkeltraining §20 SGB V", "desc": "Präventionskurs nach §20 SGB V — von der Krankenkasse bezuschusst. Gelenkschonendes Ganzkörpertraining." },
+        { "name": "Computergestütztes Beckenbodentraining", "desc": "Modernes biofeedbackgestütztes Training zur Stärkung und Koordination der Beckenbodenmuskulatur." }
       ]
     },
     {
       "id": "neurologie",
       "num": "02",
       "titel": "Neurologie",
-      "beschreibung": "Spezialisierte Therapie neurologischer Erkrankungen — für mehr Selbstständigkeit und Lebensqualität.",
+      "beschreibung": "Spezialisierte physiotherapeutische Therapie neurologischer Erkrankungen — für mehr Selbstständigkeit, Mobilität und Lebensqualität.",
       "leistungen": [
         { "name": "Bobath Therapie", "desc": "Neurophysiologisches Behandlungskonzept zur Förderung der Bewegungskontrolle nach neurologischen Erkrankungen." },
         { "name": "Neurologisches Gangtraining", "desc": "Gezieltes Training zur Verbesserung des Gangbildes und der Gleichgewichtskontrolle." },
@@ -37,14 +41,14 @@
       "id": "spezialisierung",
       "num": "03",
       "titel": "Spezialisierung",
-      "beschreibung": "Zertifizierte Spezialmethoden für Privat- und Selbstzahler — ohne ärztliche Überweisung direkt buchbar.",
+      "beschreibung": "Zertifizierte Spezialmethoden für Privat- und Selbstzahler — ohne ärztliche Überweisung direkt buchbar. Nur von Therapeuten mit staatlich anerkanntem Diplom durchgeführt.",
       "leistungen": [
-        { "name": "Sektoraler Heilpraktiker Physiotherapie", "desc": "Sie erhalten ohne ärztliche Verordnung eine Therapie, die ohne Einschränkungen genau auf Ihre Bedürfnisse angepasst wird." },
-        { "name": "Applied Kinesiology", "desc": "Ganzheitliche Diagnose- und Behandlungsmethode, die Muskelfunktion, Struktur und Organsysteme verbindet." },
-        { "name": "Cranio Concept", "desc": "Sanfte Behandlung des craniosacralen Systems bei Kopfschmerzen, Migräne und stressbedingten Beschwerden." },
-        { "name": "Chirotherapie n. Mulligan", "desc": "Mobilisationstechnik mit Bewegung — schmerzfreie Gelenkmobilisation nach dem Mulligan-Konzept." },
+        { "name": "Sektoraler Heilpraktiker Physiotherapie", "desc": "Sie können ohne ärztliche Verordnung bei uns unkompliziert eine Therapie bekommen — ohne Einschränkungen, genau auf Ihre Bedürfnisse angepasst." },
+        { "name": "Applied Kinesiology (DÄGAK)", "desc": "Ganzheitliche Diagnose- und Behandlungsmethode auf Basis manueller Muskeltests. Ermöglicht die strategische Suche nach Auslösern wiederkehrender Beschwerden — auch wenn die Ursache fernab des Symptoms liegt. Nur von Therapeuten mit staatlich anerkanntem Diplom durchgeführt.", "detail": "/leistungen/applied-kinesiology" },
+        { "name": "Cranio Concept / CMD", "desc": "Manualkinesiologische und osteopathische Behandlung der craniomandibulären Dysfunktion (Kiefergelenk). Bietet umfassende CMD-Behandlung und gibt der Physiotherapie einen Sonderstatus in der zahnärztlichen Versorgung.", "detail": "/leistungen/cranio-concept" },
+        { "name": "Chirotherapie n. Mulligan", "desc": "Schmerzfreie Gelenkmobilisation mit Bewegung nach dem Mulligan-Konzept." },
         { "name": "FOI (Funktionelle Osteopathische Integration)", "desc": "Ganzheitliche osteopathische Technik zur Harmonisierung von Struktur und Funktion des Körpers." },
-        { "name": "Atlas Therapie", "desc": "Gezielte Behandlung des ersten Halswirbels zur Korrektur von Fehlstellungen und Verbesserung der Körperstatik." }
+        { "name": "Sanfte Chiropraktik & Atlas Therapie", "desc": "Behandlung von Blockierungen der oberen Halswirbelsäule und des Atlaswirbels. Sanfte Mobilisation ohne Impuls — durch Integration gezielter Atemtechniken sicher und gefahrlos. Viele vegetative Symptome lassen sich auf diesem Weg therapieren.", "detail": "/leistungen/chiropraktik-atlas" }
       ]
     }
   ],

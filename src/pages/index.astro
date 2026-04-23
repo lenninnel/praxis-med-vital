@@ -13,6 +13,9 @@ const kategorien = leistungen.kategorien;
     <div class="hero__content">
       <span class="hero__eyebrow">Physiotherapie in Wörth am Main</span>
       <h1 class="hero__title">Ihre Gesundheit.<br/><em>Unser Antrieb.</em></h1>
+      <p class="hero__claim">
+        Wir untersuchen Sie, wir behandeln Sie und trainieren Sie. Ihre Alltagsmobilität steht bei uns an erster Stelle.
+      </p>
       <p class="hero__sub">
         Ganzheitliche Physiotherapie, manuelle Therapie und innovative
         Behandlungsmethoden — individuell auf Sie abgestimmt.
@@ -60,6 +63,9 @@ const kategorien = leistungen.kategorien;
         <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:14px">
           Jeder Patient erhält bei uns einen individuellen Therapieplan, der auf seine
           Bedürfnisse und Ziele abgestimmt ist.
+        </p>
+        <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:14px">
+          Mit unserem besonders gelenkschonenden orthopädisch-koordinativen Trainingszirkel haben wir zusätzliche Möglichkeiten, Patienten intensiver zu behandeln — selbst starke Einschränkungen können hier trainiert werden.
         </p>
         <a href="/ueber-uns" class="btn-ghost btn-ghost--dark" style="margin-top:28px">Mehr erfahren →</a>
       </div>
@@ -247,6 +253,18 @@ const kategorien = leistungen.kategorien;
 </Layout>
 
 <style>
+  .hero__claim {
+    font-family: var(--ff-serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 640px;
+    margin-bottom: 22px;
+    border-left: 2px solid var(--amber);
+    padding-left: 20px;
+  }
+
   .kategorien-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

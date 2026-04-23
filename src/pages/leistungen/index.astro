@@ -47,6 +47,9 @@ const { kategorien, behandlungszeit } = leistungen;
                     <li class="acc-list__item">
                       <h3 class="acc-list__name">{l.name}</h3>
                       <p class="acc-list__desc">{l.desc}</p>
+                      {l.detail && (
+                        <a href={l.detail} class="acc-list__link">Mehr erfahren →</a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -215,6 +218,18 @@ const { kategorien, behandlungszeit } = leistungen;
     color: var(--ink-lt);
     line-height: 1.6;
   }
+
+  .acc-list__link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--amber);
+    transition: color .2s;
+  }
+
+  .acc-list__link:hover { color: var(--amber-dk); }
 
   .behandlungszeit {
     font-family: var(--ff-serif);

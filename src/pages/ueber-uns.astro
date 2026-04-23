@@ -1,74 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const werte = [
+  { titel: 'Ganzheitlich', text: 'Wir behandeln nicht nur Symptome — wir suchen die Ursache.' },
+  { titel: 'Individuell', text: 'Jeder Patient erhält einen Therapieplan, der auf seine Bedürfnisse abgestimmt ist.' },
+  { titel: 'Kompetent', text: 'Staatlich anerkannte Therapeuten mit zertifizierten Spezialmethoden.' },
+];
 ---
 
-<Layout title="Über uns – Praxis Med Vital" description="Erfahren Sie mehr über unsere Praxis, unsere Philosophie und unsere ganzheitlichen Behandlungsmethoden.">
+<Layout title="Über uns – Praxis Med Vital" description="Unsere Philosophie: Wir untersuchen, behandeln und trainieren — Ihre Alltagsmobilität steht bei uns an erster Stelle.">
   <section class="page-header">
     <div class="container">
-      <span class="eyebrow">Über uns</span>
-      <h1>Praxis Med Vital</h1>
+      <span class="eyebrow">Über die Praxis</span>
+      <h1>Unsere Philosophie</h1>
       <p>Ganzheitliche Physiotherapie in Wörth am Main — seit über 15 Jahren.</p>
     </div>
   </section>
 
   <section class="sec reveal">
     <div class="container" style="max-width:760px;margin:0 auto">
-      <span class="eyebrow">Unsere Geschichte</span>
-      <hr class="rule"/>
-      <h2 class="section-title" style="margin-top:18px">Wie alles begann</h2>
-      <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:18px">
-        Praxis Med Vital wurde mit einer klaren Vision gegründet: Physiotherapie, die über
-        die reine Symptombehandlung hinausgeht. Als inhabergeführte Praxis setzen wir auf
-        persönliche Betreuung, individuelle Therapiepläne und innovative Behandlungsmethoden.
+      <p class="philo-lead">
+        Wenn Sie den Bedarf sehen, Ihre körperlichen Beeinträchtigungen mit einer Vielzahl an verschiedenen Therapien zu verbessern bzw. zu verändern, dann sind Sie bei uns genau richtig.
       </p>
-      <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:14px">
-        Unsere drei Therapeuten — Kai Hurth, Sven Wehrheim und Chris Kenner — bringen
-        unterschiedliche Spezialisierungen und jahrelange Erfahrung ein. Diese Vielfalt
-        ermöglicht es uns, ein breites Spektrum an Beschwerden kompetent zu behandeln.
+      <p class="philo-body">
+        Wir untersuchen Sie, wir behandeln Sie und trainieren Sie. Mit unserem besonders gelenkschonenden orthopädisch-koordinativen Trainingszirkel haben wir zusätzliche Möglichkeiten Patienten intensiver zu behandeln. Selbst starke Einschränkungen können hier trainiert werden.
+      </p>
+      <p class="philo-closing">
+        Ihre Alltagsmobilität steht bei uns an erster Stelle.
       </p>
     </div>
   </section>
 
   <section class="sec sec--cream reveal">
-    <div class="container" style="max-width:760px;margin:0 auto">
-      <span class="eyebrow">Methodik</span>
-      <hr class="rule"/>
-      <h2 class="section-title" style="margin-top:18px">Unser Ansatz</h2>
-      <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:18px">
-        Wir verbinden bewährte physiotherapeutische Methoden mit spezialisierten Techniken wie
-        Applied Kinesiology, Cranio Concept und Atlas Therapie. Diese Kombination erlaubt es
-        uns, die Ursache Ihrer Beschwerden zu finden — nicht nur die Symptome zu lindern.
-      </p>
-      <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:14px">
-        Jede Behandlung beginnt mit einer ausführlichen Anamnese und Befunderhebung. Auf
-        dieser Grundlage erstellen wir Ihren individuellen Therapieplan und begleiten Sie
-        auf Ihrem Weg zur Besserung.
-      </p>
-    </div>
-  </section>
-
-  <section class="sec reveal">
-    <div class="container" style="max-width:760px;margin:0 auto">
-      <span class="eyebrow">Was uns leitet</span>
-      <hr class="rule"/>
-      <h2 class="section-title" style="margin-top:18px">Unsere Werte</h2>
-      <div class="values-grid">
-        <div>
-          <h4>Ganzheitlichkeit</h4>
-          <p>Wir betrachten den Menschen als Ganzes — nicht nur die einzelne Beschwerde.</p>
-        </div>
-        <div>
-          <h4>Individualität</h4>
-          <p>Jeder Patient erhält eine auf seine Bedürfnisse abgestimmte Therapie.</p>
-        </div>
-        <div>
-          <h4>Kompetenz</h4>
-          <p>Regelmäßige Fortbildungen sichern unsere fachliche Qualität.</p>
-        </div>
-        <div>
-          <h4>Transparenz</h4>
-          <p>Wir erklären jeden Behandlungsschritt verständlich und nachvollziehbar.</p>
-        </div>
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <span class="eyebrow">Was uns leitet</span>
+        <hr class="rule" style="margin-inline:auto"/>
+        <h2 class="section-title" style="margin-top:18px">Unsere Werte</h2>
+      </div>
+      <div class="werte-grid">
+        {werte.map((w) => (
+          <div class="wert-card">
+            <h3 class="wert-card__titel">{w.titel}</h3>
+            <p class="wert-card__text">{w.text}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -83,3 +59,88 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<style>
+  .philo-lead {
+    font-family: var(--ff-serif);
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--g900);
+    margin-top: 8px;
+    padding-left: 20px;
+    border-left: 2px solid var(--amber);
+  }
+
+  .philo-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin-top: 28px;
+  }
+
+  .philo-closing {
+    font-family: var(--ff-serif);
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--g900);
+    margin-top: 28px;
+  }
+
+  .werte-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .wert-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px 32px;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2.5px;
+    background: var(--amber);
+    transition: width .4s;
+  }
+
+  .wert-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(11, 61, 46, .07);
+    border-color: var(--g100);
+  }
+
+  .wert-card:hover::before { width: 100%; }
+
+  .wert-card__titel {
+    font-family: var(--ff-serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--g900);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .wert-card__text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 860px) {
+    .werte-grid { grid-template-columns: 1fr; }
+  }
+</style>
