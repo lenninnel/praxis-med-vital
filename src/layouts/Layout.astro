@@ -113,7 +113,10 @@ const {
     // Mobile nav
     const toggle = document.getElementById('nav-toggle');
     const menu = document.getElementById('nav-menu');
-    toggle?.addEventListener('click', () => menu?.classList.toggle('open'));
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('open');
+      toggle.classList.toggle('open');
+    });
 
     // Cookie banner
     const banner = document.getElementById('cookie-banner');
