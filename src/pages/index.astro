@@ -26,6 +26,10 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
         <a href="/kontakt" class="btn-primary">Termin anfragen</a>
         <a href="/leistungen" class="btn-ghost">Unsere Leistungen →</a>
       </div>
+      <a href={`tel:${site.phonePlain}`} class="hero__tel">
+        <span class="hero__tel-icon" aria-hidden="true">📞</span>
+        {site.phone}
+      </a>
     </div>
   </section>
 
@@ -120,7 +124,7 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
       <hr class="rule"/>
       <h2 class="section-title" style="margin-top:18px">Unser Behandlungsspektrum</h2>
       <p class="section-sub">
-        Von Krankengymnastik bis Manuelle Therapie — ein breites Spektrum an evidenzbasierten Behandlungen.
+        Von Krankengymnastik bis Manuelle Therapie — bewährte physiotherapeutische Methoden, ergänzt durch komplementäre Spezialmethoden.
       </p>
     </div>
     <div class="container" style="margin-top:48px">
@@ -313,6 +317,21 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
 </Layout>
 
 <style>
+  .hero__tel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--ff-sans);
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .hero__tel:hover { color: rgba(255, 255, 255, 0.9); }
+  .hero__tel-icon { font-size: 16px; line-height: 1; }
+
   .hero__claim {
     font-family: var(--ff-serif);
     font-size: clamp(20px, 2.2vw, 26px);

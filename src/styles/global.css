@@ -534,23 +534,41 @@ strong{font-weight:500}
 /* ---------- Cookie Banner ---------- */
 .cookie-banner{
   position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:var(--white);
-  border-top:1px solid var(--border);
-  box-shadow:0 -4px 24px rgba(0,0,0,.08);
-  padding:20px clamp(1.25rem,4vw,3rem);
-  display:none;
+  background:var(--g900);
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:12px 5%;
+  display:none;align-items:center;justify-content:space-between;
+  gap:16px;
 }
-.cookie-banner.show{display:block}
-.cookie-banner__inner{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:24px;flex-wrap:wrap;
-}
+.cookie-banner.show{display:flex}
+.cookie-banner__inner{display:contents}
 .cookie-banner__text{
-  font-size:13px;font-weight:300;color:var(--ink-mid);flex:1;min-width:200px;
+  font-size:12px;font-weight:300;color:rgba(255,255,255,.6);
+  line-height:1.55;margin:0;flex:1;
 }
-.cookie-banner__text a{color:var(--g900);text-decoration:underline}
-.cookie-banner__actions{display:flex;gap:10px;flex-shrink:0}
+.cookie-banner__text a{color:var(--amber);text-decoration:none}
+.cookie-banner__text a:hover{color:var(--amber-dk)}
+.cookie-banner__actions{display:flex;gap:8px;flex-shrink:0}
+.cookie-banner__btn{
+  font-family:var(--ff-sans);
+  font-size:11px;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:8px 16px;border-radius:2px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.cookie-banner__btn--accept{
+  background:var(--amber);color:var(--white);border:none;
+}
+.cookie-banner__btn--accept:hover{background:var(--amber-dk)}
+.cookie-banner__btn--decline{
+  background:transparent;color:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.2);
+}
+.cookie-banner__btn--decline:hover{color:var(--white);border-color:rgba(255,255,255,.4)}
+@media(max-width:560px){
+  .cookie-banner{flex-direction:column;align-items:stretch;gap:10px;padding:14px 5%}
+  .cookie-banner__actions{justify-content:flex-end}
+}
 
 /* ---------- Legal ---------- */
 .legal-content{max-width:760px;margin:0 auto}

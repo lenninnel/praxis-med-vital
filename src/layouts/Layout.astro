@@ -90,7 +90,7 @@ const {
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Praxis Med Vital &middot; Wehrheim, Kenner &amp; Hurth GbR</span>
+      <span>&copy; {new Date().getFullYear()} Praxis Med Vital &middot; Wehrheim, Kenner &amp; Hurth GbR</span>
       <span>
         <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a>
       </span>
@@ -99,15 +99,13 @@ const {
 
   <!-- Cookie Banner -->
   <div class="cookie-banner" id="cookie-banner">
-    <div class="cookie-banner__inner">
-      <p class="cookie-banner__text">
-        Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.
-        Mehr in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
-      </p>
-      <div class="cookie-banner__actions">
-        <button class="btn-primary" id="cookie-accept">Akzeptieren</button>
-        <button class="btn-outline--dark btn-outline" id="cookie-decline">Ablehnen</button>
-      </div>
+    <p class="cookie-banner__text">
+      Wir verwenden technisch notwendige Cookies.
+      <a href="/datenschutz">Datenschutzerklärung</a>
+    </p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookie-accept">Akzeptieren</button>
+      <button class="cookie-banner__btn cookie-banner__btn--decline" id="cookie-decline">Ablehnen</button>
     </div>
   </div>
 
