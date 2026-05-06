@@ -20,10 +20,17 @@ ul,ol{list-style:none}
   --ink:#1a100a;
   --ink-mid:#5a4a3c;
   --ink-lt:#9a8878;
-  --gold:#b8872a;
+  --gold:#c4a05a;
   --gold-lt:#c9a24a;
   --white:#faf8f4;
   --border:#ddd5c6;
+
+  /* Wellness palette — soft sage + stone for dark surfaces */
+  --sage:#2d3a2e;
+  --sage-mid:#3d4f3e;
+  --sage-lt:#eef2ec;
+  --stone:#4a3f35;
+  --stone-lt:#f0ebe3;
 
   /* Legacy aliases (so existing inline styles keep working) */
   --g900:var(--ink);
@@ -125,14 +132,35 @@ strong{font-weight:400;color:var(--ink)}
 .sec--cream{background:var(--cream)}
 .sec--cream-dk{background:var(--cream-dk)}
 .sec--white{background:var(--white)}
+.sec--stone-lt{background:var(--stone-lt)}
+.sec--sage-lt{background:var(--sage-lt)}
+
+/* Hairline divider between adjacent light sections */
+.sec--cream,
+.sec--cream-dk,
+.sec--white,
+.sec--stone-lt,
+.sec--sage-lt{border-top:0.5px solid var(--border)}
+
+.sec--sage{background:var(--sage);color:rgba(240,235,225,.85)}
+.sec--stone{background:var(--stone);color:rgba(240,235,225,.85)}
 .sec--ink,
-.sec--g900{background:var(--ink);color:var(--cream)}
+.sec--g900{background:var(--sage);color:rgba(240,235,225,.85)}
+
+.sec--sage .section-title,
+.sec--stone .section-title,
 .sec--ink .section-title,
-.sec--g900 .section-title{color:rgba(245,240,232,.92)}
+.sec--g900 .section-title{color:rgba(240,235,225,.92)}
+.sec--sage .section-sub,
+.sec--stone .section-sub,
 .sec--ink .section-sub,
-.sec--g900 .section-sub{color:rgba(245,240,232,.55)}
+.sec--g900 .section-sub{color:rgba(240,235,225,.55)}
+.sec--sage .eyebrow,
+.sec--stone .eyebrow,
 .sec--ink .eyebrow,
-.sec--g900 .eyebrow{color:rgba(245,240,232,.55)}
+.sec--g900 .eyebrow{color:rgba(240,235,225,.55)}
+.sec--sage .eyebrow::before,
+.sec--stone .eyebrow::before,
 .sec--ink .eyebrow::before,
 .sec--g900 .eyebrow::before{background:var(--gold-lt)}
 
@@ -149,11 +177,15 @@ strong{font-weight:400;color:var(--ink)}
 }
 .btn-primary:hover{background:#000;color:var(--white)}
 .sec--ink .btn-primary,
-.sec--g900 .btn-primary{
+.sec--g900 .btn-primary,
+.sec--sage .btn-primary,
+.sec--stone .btn-primary{
   background:var(--cream);color:var(--ink);
 }
 .sec--ink .btn-primary:hover,
-.sec--g900 .btn-primary:hover{background:var(--white)}
+.sec--g900 .btn-primary:hover,
+.sec--sage .btn-primary:hover,
+.sec--stone .btn-primary:hover{background:var(--white)}
 
 .btn-ghost{
   display:inline-flex;align-items:center;gap:10px;
@@ -170,9 +202,13 @@ strong{font-weight:400;color:var(--ink)}
 .btn-ghost--dark{color:var(--ink);border-color:var(--gold)}
 .btn-ghost--dark:hover{color:var(--gold)}
 .sec--ink .btn-ghost,
-.sec--g900 .btn-ghost{color:var(--gold-lt);border-color:var(--gold)}
+.sec--g900 .btn-ghost,
+.sec--sage .btn-ghost,
+.sec--stone .btn-ghost{color:var(--gold-lt);border-color:var(--gold)}
 .sec--ink .btn-ghost:hover,
-.sec--g900 .btn-ghost:hover{color:var(--cream)}
+.sec--g900 .btn-ghost:hover,
+.sec--sage .btn-ghost:hover,
+.sec--stone .btn-ghost:hover{color:var(--cream)}
 
 .btn-outline{
   display:inline-flex;align-items:center;gap:10px;
@@ -427,7 +463,7 @@ strong{font-weight:400;color:var(--ink)}
 
 /* ---------- Trust Bar ---------- */
 .trust-bar{
-  background:var(--ink);
+  background:var(--sage);
   padding:32px 8%;
 }
 .trust-bar__grid{
@@ -439,26 +475,26 @@ strong{font-weight:400;color:var(--ink)}
 .trust-bar__dot{
   display:inline-block;
   width:3px;height:3px;
-  background:var(--gold);
+  background:rgba(196,160,90,0.5);
   border-radius:50%;
 }
 .trust-bar__number{
   font-family:var(--ff-serif);
   font-style:italic;
   font-size:26px;font-weight:400;
-  color:var(--cream);display:block;
+  color:rgba(240,235,225,.85);display:block;
 }
 .trust-bar__text{
   font-family:var(--ff-sans);
   font-size:10px;font-weight:300;
   letter-spacing:.18em;
   text-transform:uppercase;
-  color:rgba(245,240,232,.5);
+  color:rgba(240,235,225,.45);
 }
 .trust-bar__tel{
   font-family:var(--ff-serif);font-style:italic;
   font-size:22px;font-weight:400;
-  color:var(--cream);
+  color:rgba(240,235,225,.85);
   transition:color .2s;
 }
 .trust-bar__tel:hover{color:var(--gold-lt)}
@@ -535,7 +571,7 @@ strong{font-weight:400;color:var(--ink)}
 .leistung-card__num{
   font-family:var(--ff-serif);font-style:italic;
   font-size:56px;font-weight:400;
-  color:var(--cream-dkr);
+  color:var(--sage-lt);
   line-height:1;margin-bottom:12px;
 }
 .leistung-card__title{
@@ -596,12 +632,12 @@ strong{font-weight:400;color:var(--ink)}
 .feature__title{
   font-family:var(--ff-serif);font-style:italic;
   font-size:22px;font-weight:400;
-  color:rgba(245,240,232,.92);margin-bottom:12px;
+  color:rgba(240,235,225,.92);margin-bottom:12px;
 }
 .feature__text{
   font-family:var(--ff-sans);
   font-size:13px;font-weight:300;
-  color:rgba(245,240,232,.55);line-height:1.7;
+  color:rgba(240,235,225,.55);line-height:1.7;
 }
 
 /* ---------- Contact Form ---------- */
@@ -785,8 +821,8 @@ strong{font-weight:400;color:var(--ink)}
 
 /* ---------- Footer ---------- */
 .site-footer{
-  background:var(--ink);
-  color:rgba(245,240,232,.55);
+  background:var(--stone);
+  color:rgba(240,235,225,.55);
   padding:80px 8% 0;
 }
 .footer-grid{
@@ -799,20 +835,20 @@ strong{font-weight:400;color:var(--ink)}
 .footer-col__brand{
   font-family:var(--ff-serif);font-style:italic;
   font-size:24px;font-weight:400;
-  color:var(--cream);line-height:1.05;margin-bottom:6px;
+  color:rgba(240,235,225,.85);line-height:1.05;margin-bottom:6px;
 }
-.footer-col__brand span{color:var(--gold);font-style:italic}
+.footer-col__brand span{color:var(--gold-lt);font-style:italic}
 .footer-col__tagline{
   font-family:var(--ff-sans);
   font-size:9px;font-weight:300;letter-spacing:.18em;
-  text-transform:uppercase;color:rgba(245,240,232,.35);margin-bottom:20px;
+  text-transform:uppercase;color:rgba(240,235,225,.35);margin-bottom:20px;
 }
 .footer-col__title{
   font-family:var(--ff-sans);
   font-style:normal;
   font-size:10px;font-weight:400;
   letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(245,240,232,.4);margin-bottom:18px;
+  color:rgba(240,235,225,.45);margin-bottom:18px;
 }
 .footer-col p{
   font-family:var(--ff-sans);
@@ -826,23 +862,23 @@ strong{font-weight:400;color:var(--ink)}
   transition:color .2s;
   letter-spacing:.02em;
 }
-.footer-col a:hover{color:var(--cream)}
+.footer-col a:hover{color:rgba(240,235,225,.95)}
 .footer-bottom{
   margin-top:56px;padding:24px 0;
-  border-top:0.5px solid rgba(245,240,232,.08);
+  border-top:0.5px solid rgba(240,235,225,.08);
   display:flex;justify-content:space-between;align-items:center;
   font-family:var(--ff-sans);
   font-size:11px;font-weight:300;flex-wrap:wrap;gap:8px;
-  color:rgba(245,240,232,.4);
+  color:rgba(240,235,225,.4);
 }
 .footer-bottom a{transition:color .2s}
-.footer-bottom a:hover{color:var(--cream)}
+.footer-bottom a:hover{color:rgba(240,235,225,.95)}
 
 /* ---------- Cookie Banner ---------- */
 .cookie-banner{
   position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:var(--ink);
-  border-top:0.5px solid rgba(245,240,232,.1);
+  background:var(--stone);
+  border-top:0.5px solid rgba(240,235,225,.1);
   padding:14px 5%;
   display:none;align-items:center;justify-content:space-between;
   gap:18px;
@@ -850,7 +886,7 @@ strong{font-weight:400;color:var(--ink)}
 .cookie-banner.show{display:flex}
 .cookie-banner__text{
   font-family:var(--ff-sans);
-  font-size:12px;font-weight:300;color:rgba(245,240,232,.65);
+  font-size:12px;font-weight:300;color:rgba(240,235,225,.7);
   line-height:1.55;margin:0;flex:1;
 }
 .cookie-banner__text a{color:var(--gold-lt);transition:color .2s}
@@ -868,10 +904,10 @@ strong{font-weight:400;color:var(--ink)}
 }
 .cookie-banner__btn--accept:hover{background:var(--white)}
 .cookie-banner__btn--decline{
-  background:transparent;color:rgba(245,240,232,.65);
-  border:0.5px solid rgba(245,240,232,.25);
+  background:transparent;color:rgba(240,235,225,.7);
+  border:0.5px solid rgba(240,235,225,.25);
 }
-.cookie-banner__btn--decline:hover{color:var(--cream);border-color:rgba(245,240,232,.5)}
+.cookie-banner__btn--decline:hover{color:var(--cream);border-color:rgba(240,235,225,.5)}
 @media(max-width:560px){
   .cookie-banner{flex-direction:column;align-items:stretch;gap:12px;padding:14px 5%}
   .cookie-banner__actions{justify-content:flex-end}
