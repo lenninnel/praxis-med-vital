@@ -25,11 +25,11 @@ ul,ol{list-style:none}
   --white:#faf8f4;
   --border:#ddd5c6;
 
-  /* Wellness palette — soft sage + stone for dark surfaces */
-  --sage:#2d3a2e;
-  --sage-mid:#3d4f3e;
+  /* Wellness palette — warm stone for dark surfaces */
+  --sage:#6b5c4a;
+  --sage-mid:#7d6d5a;
   --sage-lt:#eef2ec;
-  --stone:#4a3f35;
+  --stone:#5a4d42;
   --stone-lt:#f0ebe3;
 
   /* Legacy aliases (so existing inline styles keep working) */
@@ -502,11 +502,13 @@ strong{font-weight:400;color:var(--ink)}
 /* ---------- Team Cards ---------- */
 .team-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  grid-template-columns:repeat(3,1fr);
   background:var(--border);
   gap:1px;
   border:1px solid var(--border);
 }
+@media(max-width:900px){.team-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.team-grid{grid-template-columns:1fr}}
 .team-card{
   background:var(--cream);
   padding:48px 36px 40px;text-align:center;
