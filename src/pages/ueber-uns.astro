@@ -17,7 +17,7 @@ const werte = [
     </div>
   </section>
 
-  <section class="sec reveal">
+  <section class="sec sec--cream reveal">
     <div class="container" style="max-width:760px;margin:0 auto">
       <p class="philo-lead">
         Wenn Sie den Bedarf sehen, Ihre körperlichen Beeinträchtigungen mit einer Vielzahl an verschiedenen Therapien zu verbessern bzw. zu verändern, dann sind Sie bei uns genau richtig.
@@ -31,12 +31,11 @@ const werte = [
     </div>
   </section>
 
-  <section class="sec sec--cream reveal">
+  <section class="sec sec--white reveal">
     <div class="container">
-      <div class="text-center" style="margin-bottom:48px">
+      <div class="text-center" style="margin-bottom:56px">
         <span class="eyebrow">Was uns leitet</span>
-        <hr class="rule" style="margin-inline:auto"/>
-        <h2 class="section-title" style="margin-top:18px">Unsere Werte</h2>
+        <h2 class="section-title">Unsere Werte</h2>
       </div>
       <div class="werte-grid">
         {werte.map((w) => (
@@ -49,13 +48,14 @@ const werte = [
     </div>
   </section>
 
-  <section class="sec sec--g900 reveal">
+  <section class="sec sec--ink reveal">
     <div class="container text-center">
+      <span class="eyebrow">Bereit?</span>
       <h2 class="section-title">Bereit für Ihren ersten Termin?</h2>
       <p class="section-sub">
         Wir freuen uns, Sie in unserer Praxis begrüßen zu dürfen.
       </p>
-      <a href="/kontakt" class="btn-primary" style="margin-top:28px">Termin anfragen</a>
+      <a href="/kontakt" class="btn-primary" style="margin-top:36px">Termin anfragen</a>
     </div>
   </section>
 </Layout>
@@ -63,81 +63,67 @@ const werte = [
 <style>
   .philo-lead {
     font-family: var(--ff-serif);
-    font-size: clamp(22px, 2.4vw, 28px);
+    font-style: italic;
+    font-size: clamp(24px, 2.8vw, 32px);
     font-weight: 400;
-    line-height: 1.5;
-    color: var(--g900);
-    margin-top: 8px;
-    padding-left: 20px;
-    border-left: 2px solid var(--amber);
+    line-height: 1.4;
+    color: var(--ink);
+    padding-left: 24px;
+    border-left: 0.5px solid var(--gold);
   }
 
   .philo-body {
+    font-family: var(--ff-sans);
     font-size: 16px;
     font-weight: 300;
     line-height: 1.8;
     color: var(--ink-mid);
-    margin-top: 28px;
+    margin-top: 32px;
   }
 
   .philo-closing {
     font-family: var(--ff-serif);
-    font-size: clamp(18px, 2vw, 22px);
-    font-weight: 500;
     font-style: italic;
-    color: var(--g900);
-    margin-top: 28px;
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-top: 32px;
   }
 
   .werte-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    max-width: 960px;
+    gap: 1px;
+    max-width: 1000px;
     margin: 0 auto;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
 
   .wert-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 36px 32px;
-    transition: transform .3s, box-shadow .3s, border-color .3s;
-    position: relative;
-    overflow: hidden;
+    background: var(--cream);
+    padding: 48px 36px;
+    transition: background .3s;
   }
 
-  .wert-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 0; height: 2.5px;
-    background: var(--amber);
-    transition: width .4s;
-  }
-
-  .wert-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(11, 61, 46, .07);
-    border-color: var(--g100);
-  }
-
-  .wert-card:hover::before { width: 100%; }
+  .wert-card:hover { background: var(--white); }
 
   .wert-card__titel {
     font-family: var(--ff-serif);
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--g900);
-    margin-bottom: 10px;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
     line-height: 1.2;
   }
 
   .wert-card__text {
+    font-family: var(--ff-sans);
     font-size: 14px;
     font-weight: 300;
     color: var(--ink-mid);
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   @media (max-width: 860px) {

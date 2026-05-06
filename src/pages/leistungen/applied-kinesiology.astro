@@ -20,9 +20,11 @@ const anwendungen = [
     </div>
   </section>
 
-  <section class="sec reveal">
+  <section class="sec sec--cream reveal">
     <div class="container" style="max-width:760px;margin:0 auto">
-      <p class="detail-lead">
+      <a href="/leistungen#spezialisierung" class="back-link" style="margin-bottom:40px">← Zurück zu Spezialisierung</a>
+
+      <p class="detail-lead" style="margin-top:24px">
         Applied Kinesiology ist eine ganzheitliche Untersuchungs- und Therapiemethode, die auf der manuellen Testung von Muskeln basiert. Sie ermöglicht die strategische Suche nach Auslösern für immer wiederkehrende Beschwerden — häufig liegt die Ursache fernab vom Symptom.
       </p>
 
@@ -43,9 +45,8 @@ const anwendungen = [
         ))}
       </ul>
 
-      <div style="margin-top:40px">
+      <div class="detail-cta">
         <a href="/kontakt" class="btn-primary">Termin anfragen</a>
-        <a href="/leistungen#spezialisierung" class="btn-ghost btn-ghost--dark" style="margin-left:12px">← Zurück zu Spezialisierung</a>
       </div>
     </div>
   </section>
@@ -54,82 +55,95 @@ const anwendungen = [
 <style>
   .detail-lead {
     font-family: var(--ff-serif);
-    font-size: clamp(20px, 2.2vw, 24px);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 28px);
     font-weight: 400;
-    line-height: 1.5;
-    color: var(--g900);
-    padding-left: 20px;
-    border-left: 2px solid var(--amber);
+    line-height: 1.45;
+    color: var(--ink);
+    padding-left: 24px;
+    border-left: 0.5px solid var(--gold);
   }
 
   .detail-h2 {
     font-family: var(--ff-serif);
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 600;
-    color: var(--g900);
-    margin-top: 48px;
-    margin-bottom: 16px;
-    line-height: 1.2;
+    font-style: italic;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-top: 56px;
+    margin-bottom: 18px;
+    line-height: 1.15;
   }
 
   .detail-body {
+    font-family: var(--ff-sans);
     font-size: 16px;
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.85;
     color: var(--ink-mid);
   }
 
   .detail-hinweis {
-    margin-top: 40px;
-    padding: 24px 28px;
-    background: var(--cream);
-    border-left: 3px solid var(--amber);
-    border-radius: 4px;
+    margin-top: 48px;
+    padding: 28px 32px;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 2px solid var(--gold);
   }
 
   .detail-hinweis__label {
     display: block;
     font-family: var(--ff-sans);
-    font-size: 10.5px;
-    font-weight: 500;
+    font-size: 10px;
+    font-weight: 400;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 10px;
+    color: var(--gold);
+    margin-bottom: 12px;
   }
 
   .detail-hinweis p {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--g900);
+    font-family: var(--ff-sans);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink);
   }
 
   .detail-list {
     list-style: none;
     padding: 0;
-    margin-top: 16px;
+    margin-top: 18px;
   }
 
   .detail-list li {
     position: relative;
-    padding: 14px 0 14px 26px;
+    padding: 16px 0 16px 32px;
+    font-family: var(--ff-sans);
     font-size: 15px;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--ink-mid);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
   }
 
   .detail-list li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 22px;
-    width: 16px;
-    height: 1px;
-    background: var(--amber);
+    top: 27px;
+    width: 18px;
+    height: 0.5px;
+    background: var(--gold);
   }
 
   .detail-list li:last-child { border-bottom: 0; }
+
+  .detail-cta {
+    margin-top: 56px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 </style>

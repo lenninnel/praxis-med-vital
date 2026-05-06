@@ -12,7 +12,7 @@ import standorte from '../../data/standorte.json';
     </div>
   </section>
 
-  <section class="sec reveal">
+  <section class="sec sec--cream reveal">
     <div class="container">
       <div class="card-grid">
         {standorte.map((s: any) => (
@@ -20,19 +20,19 @@ import standorte from '../../data/standorte.json';
             <span class={`standort-card__status standort-card__status--${s.status === 'active' ? 'active' : 'coming-soon'}`}>
               {s.status === 'active' ? 'Geöffnet' : 'Demnächst'}
             </span>
-            <h3 style="font-size:26px;margin-bottom:8px">{s.name}</h3>
+            <h3>{s.name}</h3>
             {s.address ? (
               <>
-                <p style="font-size:14px;font-weight:300;color:var(--ink-mid);margin-bottom:6px">
+                <p style="font-family:var(--ff-sans);font-size:14px;font-weight:300;color:var(--ink-mid);margin-bottom:8px;line-height:1.7">
                   {s.address}<br/>{s.zip} {s.city}
                 </p>
-                <p style="font-size:14px;font-weight:300;color:var(--ink-mid)">
-                  Tel: <a href={`tel:${s.phonePlain}`} style="color:var(--g700)">{s.phone}</a>
+                <p style="font-family:var(--ff-serif);font-style:italic;font-size:18px;font-weight:400;color:var(--ink);margin-bottom:24px">
+                  <a href={`tel:${s.phonePlain}`}>{s.phone}</a>
                 </p>
-                <a href={`/standorte/${s.id}`} class="btn-ghost btn-ghost--dark" style="margin-top:20px">Details ansehen →</a>
+                <a href={`/standorte/${s.id}`} class="btn-ghost btn-ghost--dark">Details ansehen →</a>
               </>
             ) : (
-              <p style="font-size:14px;font-weight:300;color:var(--ink-mid)">
+              <p style="font-family:var(--ff-sans);font-size:14px;font-weight:300;color:var(--ink-mid);line-height:1.7">
                 {s.openingNote}
               </p>
             )}
