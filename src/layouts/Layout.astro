@@ -22,7 +22,7 @@ const {
   <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <title>{title}</title>
 </head>
 <body>
@@ -35,20 +35,22 @@ const {
         <span class="nav__tagline">Praxis &middot; Wörth am Main</span>
       </a>
 
-      <div class="nav__links" id="nav-links">
-        <a href={`${import.meta.env.BASE_URL}ueber-uns`} class="nav__link">Über uns</a>
-        <a href={`${import.meta.env.BASE_URL}team`} class="nav__link">Team</a>
-        <a href={`${import.meta.env.BASE_URL}leistungen`} class="nav__link">Leistungen</a>
-        <a href={`${import.meta.env.BASE_URL}faq`} class="nav__link">FAQ</a>
-        <a href={`${import.meta.env.BASE_URL}standorte`} class="nav__link">Standorte</a>
-        <a href={`${import.meta.env.BASE_URL}kontakt`} class="nav__link">Kontakt</a>
-      </div>
-
       <div class="nav__actions">
-        <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary nav__cta">Termin anfragen</a>
-        <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen" aria-controls="nav-links" aria-expanded="false">
+        <a href={`${import.meta.env.BASE_URL}kontakt`} class="nav__cta">Termin anfragen</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen" aria-controls="nav-menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
+      </div>
+
+      <div class="nav__menu" id="nav-menu" role="menu">
+        <a href={import.meta.env.BASE_URL} role="menuitem">Start</a>
+        <a href={`${import.meta.env.BASE_URL}ueber-uns`} role="menuitem">Über uns</a>
+        <a href={`${import.meta.env.BASE_URL}team`} role="menuitem">Team</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`} role="menuitem">Leistungen</a>
+        <a href={`${import.meta.env.BASE_URL}faq`} role="menuitem">FAQ</a>
+        <a href={`${import.meta.env.BASE_URL}standorte`} role="menuitem">Standorte</a>
+        <a href={`${import.meta.env.BASE_URL}karriere`} role="menuitem">Karriere</a>
+        <a href={`${import.meta.env.BASE_URL}kontakt`} role="menuitem">Kontakt</a>
       </div>
     </nav>
   </header>
@@ -111,24 +113,28 @@ const {
   </div>
 
   <script>
-    // Mobile nav
+    // Hamburger dropdown
     const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
+    const menu = document.getElementById('nav-menu');
     const backdrop = document.getElementById('nav-backdrop');
 
     const setNavOpen = (open) => {
-      links?.classList.toggle('open', open);
+      menu?.classList.toggle('open', open);
       backdrop?.classList.toggle('open', open);
       toggle?.classList.toggle('open', open);
       toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
     };
 
-    toggle?.addEventListener('click', () => {
-      setNavOpen(!links?.classList.contains('open'));
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setNavOpen(!menu?.classList.contains('open'));
     });
     backdrop?.addEventListener('click', () => setNavOpen(false));
-    links?.querySelectorAll('a').forEach((a) => {
+    menu?.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => setNavOpen(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setNavOpen(false);
     });
 
     // Cookie banner

@@ -12,7 +12,7 @@ import team from '../data/team.json';
     </div>
   </section>
 
-  <section class="sec reveal">
+  <section class="sec sec--cream reveal">
     <div class="container">
       <div class="team-grid">
         {team.map((member: any) => (
@@ -32,17 +32,16 @@ import team from '../data/team.json';
     </div>
   </section>
 
-  <section class="sec sec--cream reveal">
+  <section class="sec sec--white reveal">
     <div class="container text-center">
       <span class="eyebrow">Gemeinsam für Sie</span>
-      <hr class="rule"/>
-      <h2 class="section-title" style="margin-top:18px">Unsere Philosophie</h2>
+      <h2 class="section-title">Unsere Philosophie</h2>
       <p class="section-sub">
         Wir glauben an einen ganzheitlichen Ansatz: Jeder Mensch ist einzigartig und verdient
         eine Behandlung, die auf seine individuellen Bedürfnisse zugeschnitten ist. Durch die
         Kombination verschiedener Fachgebiete können wir Sie umfassend betreuen.
       </p>
-      <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary" style="margin-top:28px">Termin vereinbaren</a>
+      <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary" style="margin-top:36px">Termin vereinbaren</a>
     </div>
   </section>
 </Layout>
