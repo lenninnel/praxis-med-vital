@@ -1,44 +1,29 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import standorte from '../../data/standorte.json';
+import PageHeader from '../../components/PageHeader.astro';
+import LocationCard from '../../components/LocationCard.astro';
+import Reveal from '../../components/Reveal.tsx';
+import CtaBand from '../../components/CtaBand.astro';
 ---
-
-<Layout title="Standorte – Praxis Med Vital" description="Unsere Praxisstandorte in Wörth am Main und demnächst in Erlenbach am Main.">
-  <section class="page-header">
+<Layout
+  title="Standorte – med.vital"
+  description="Unsere Praxisstandorte in Wörth am Main und demnächst in Erlenbach am Main — persönlich und gut erreichbar."
+>
+  <PageHeader eyebrow="Standorte" title="2× in Ihrer Nähe" sub="Persönliche Therapie im Main-Tal — kurze Wege, vertraute Gesichter." />
+  <section class="section">
     <div class="container">
-      <span class="eyebrow">Standorte</span>
-      <h1>Unsere Praxen</h1>
-      <p>In Ihrer Nähe — persönlich und gut erreichbar.</p>
+      <Reveal client:visible>
+        <div class="grid gap-8 md:grid-cols-2">
+          {standorte.map((s: any) => (
+            <LocationCard name={s.name} status={s.status} address={s.address} zip={s.zip} city={s.city}
+              phone={s.phone} phonePlain={s.phonePlain} email={s.email}
+              image={s.id === 'woerth' ? '/img/standort-woerth.png' : null}
+              href={`/standorte/${s.id}`} />
+          ))}
+        </div>
+      </Reveal>
     </div>
   </section>
-
-  <section class="sec sec--cream reveal">
-    <div class="container">
-      <div class="card-grid">
-        {standorte.map((s: any) => (
-          <div class="standort-card">
-            <span class={`standort-card__status standort-card__status--${s.status === 'active' ? 'active' : 'coming-soon'}`}>
-              {s.status === 'active' ? 'Geöffnet' : 'Demnächst'}
-            </span>
-            <h3>{s.name}</h3>
-            {s.address ? (
-              <>
-                <p style="font-family:var(--ff-sans);font-size:14px;font-weight:300;color:var(--ink-mid);margin-bottom:8px;line-height:1.7">
-                  {s.address}<br/>{s.zip} {s.city}
-                </p>
-                <p style="font-family:var(--ff-serif);font-style:italic;font-size:18px;font-weight:400;color:var(--ink);margin-bottom:24px">
-                  <a href={`tel:${s.phonePlain}`}>{s.phone}</a>
-                </p>
-                <a href={`/standorte/${s.id}`} class="btn-ghost btn-ghost--dark">Details ansehen →</a>
-              </>
-            ) : (
-              <p style="font-family:var(--ff-sans);font-size:14px;font-weight:300;color:var(--ink-mid);line-height:1.7">
-                {s.openingNote}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <CtaBand />
 </Layout>

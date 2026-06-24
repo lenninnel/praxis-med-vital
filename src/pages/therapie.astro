@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import pillars from '../data/pillars.json';
+import leistungen from '../data/leistungen.json';
+import PillarHero from '../components/PillarHero.astro';
+import Reveal from '../components/Reveal.tsx';
+import CtaBand from '../components/CtaBand.astro';
+
+const p = pillars.therapie;
+const kategorien = leistungen.kategorien;
+---
+<Layout
+  title="Therapie – med.vital | Physiotherapie in Wörth am Main"
+  description="Ganzheitliche Physiotherapie auf höchstem Niveau: Orthopädie, Neurologie und spezialisierte Methoden wie Applied Kinesiology und Cranio Concept."
+>
+  <PillarHero label={p.label} kicker={p.kicker} intro={p.intro} benefits={p.benefits} imageLabel="Behandlung" image="/img/therapie.png" />
+
+  <section class="section bg-cream-dk">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="font-serif text-h2 text-ink">{p.servicesTitle}</h2>
+        <p class="lede mx-auto mt-4">Von der Orthopädie über die Neurologie bis zu komplementären Spezialmethoden — abgestimmt auf Sie.</p>
+      </div>
+
+      {kategorien.map((kat: any) => (
+        <Reveal client:visible>
+          <div class="mt-16 first:mt-14">
+            <div class="flex items-baseline gap-4">
+              <span class="font-serif text-3xl text-gold/40">{kat.num}</span>
+              <h3 class="font-serif text-3xl text-ink">{kat.titel}</h3>
+            </div>
+            <p class="lede mt-3 max-w-3xl">{kat.beschreibung}</p>
+            <div class="mt-8 grid gap-x-12 gap-y-7 sm:grid-cols-2">
+              {kat.leistungen.map((l: any) => (
+                <div class="border-l border-gold/40 pl-5">
+                  <h4 class="font-serif text-lg text-ink">{l.name}</h4>
+                  <p class="mt-1 font-sans text-[13px] font-light leading-relaxed text-ink-mid">{l.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </section>
+
+  <CtaBand title="Bereit für Ihre Behandlung?" />
+</Layout>

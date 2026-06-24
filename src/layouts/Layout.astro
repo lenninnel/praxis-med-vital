@@ -1,16 +1,24 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import site from '../data/site.json';
+import Nav from '../components/Nav.tsx';
+import SmoothScroll from '../components/SmoothScroll.tsx';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  headerOffset?: boolean; // add top padding so content clears the fixed header
 }
 
 const {
   title = site.seo.defaultTitle,
   description = site.seo.defaultDescription,
+  headerOffset = true,
 } = Astro.props;
+
+const current = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -20,147 +28,63 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Mulish:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <ViewTransitions />
   <title>{title}</title>
 </head>
 <body>
+  <SmoothScroll client:load />
+  <Nav
+    client:load
+    nav={site.nav}
+    brand={site.brand}
+    tagline={site.tagline}
+    current={current}
+  />
 
-  <!-- Header -->
-  <header class="site-header">
-    <nav class="nav">
-      <a href="/" class="nav__brand">
-        <span class="nav__logo">Med <span>Vital</span></span>
-        <span class="nav__tagline">Praxis &middot; Wörth am Main</span>
-      </a>
-
-      <div class="nav__actions">
-        <a href="/kontakt" class="nav__cta">Termin anfragen</a>
-        <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen" aria-controls="nav-menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="nav__menu" id="nav-menu" role="menu">
-        <a href="/" role="menuitem">Start</a>
-        <a href="/ueber-uns" role="menuitem">Über uns</a>
-        <a href="/team" role="menuitem">Team</a>
-        <a href="/leistungen" role="menuitem">Leistungen</a>
-        <a href="/faq" role="menuitem">FAQ</a>
-        <a href="/standorte" role="menuitem">Standorte</a>
-        <a href="/karriere" role="menuitem">Karriere</a>
-        <a href="/kontakt" role="menuitem">Kontakt</a>
-      </div>
-    </nav>
-  </header>
-  <div class="nav__backdrop" id="nav-backdrop" aria-hidden="true"></div>
-
-  <!-- Main -->
-  <main>
+  <main class={headerOffset ? 'pt-[72px]' : ''}>
     <slot />
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-col__brand">Med <span>Vital</span></div>
-        <div class="footer-col__tagline">Praxis &middot; Wörth am Main</div>
-        <p>Ganzheitliche Physiotherapie — kompetent, persönlich und individuell auf Sie abgestimmt.</p>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col__title">Leistungen</h4>
-        <a href="/leistungen">Manuelle Therapie</a>
-        <a href="/leistungen">Lymphdrainage</a>
-        <a href="/leistungen">Krankengymnastik</a>
-        <a href="/leistungen">Heilpraktiker</a>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col__title">Praxis</h4>
-        <a href="/ueber-uns">Über uns</a>
-        <a href="/team">Team</a>
-        <a href="/standorte">Standorte</a>
-        <a href="/karriere">Karriere</a>
-        <a href="/kontakt">Kontakt</a>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col__title">Kontakt</h4>
-        <a href={`tel:${site.phonePlain}`}>{site.phone}</a>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-        <a href="/impressum">Impressum</a>
-        <a href="/datenschutz">Datenschutz</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; {new Date().getFullYear()} Praxis Med Vital &middot; Wehrheim, Kenner &amp; Hurth GbR</span>
-      <span>
-        <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a>
-      </span>
-    </div>
-  </footer>
+  <Footer />
 
-  <!-- Cookie Banner -->
-  <div class="cookie-banner" id="cookie-banner">
-    <p class="cookie-banner__text">
+  <!-- Cookie banner -->
+  <div
+    id="cookie-banner"
+    class="fixed inset-x-0 bottom-0 z-[200] hidden items-center justify-between gap-5 border-t border-cream/10 bg-stone px-[5%] py-4"
+  >
+    <p class="m-0 flex-1 font-sans text-[12px] font-light leading-snug text-cream/70">
       Wir verwenden technisch notwendige Cookies.
-      <a href="/datenschutz">Datenschutzerklärung</a>
+      <a class="text-gold-lt transition-colors hover:text-cream" href="/datenschutz">Datenschutzerklärung</a>
     </p>
-    <div class="cookie-banner__actions">
-      <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookie-accept">Akzeptieren</button>
-      <button class="cookie-banner__btn cookie-banner__btn--decline" id="cookie-decline">Ablehnen</button>
+    <div class="flex flex-shrink-0 gap-2.5">
+      <button id="cookie-accept" class="rounded-btn bg-cream px-4 py-2 font-sans text-[10px] font-semibold uppercase tracking-label text-ink transition-colors hover:bg-white">Akzeptieren</button>
+      <button id="cookie-decline" class="rounded-btn border border-cream/25 px-4 py-2 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/70 transition-colors hover:border-cream/50 hover:text-cream">Ablehnen</button>
     </div>
   </div>
 
-  <script>
-    // Hamburger dropdown
-    const toggle = document.getElementById('nav-toggle');
-    const menu = document.getElementById('nav-menu');
-    const backdrop = document.getElementById('nav-backdrop');
-
-    const setNavOpen = (open) => {
-      menu?.classList.toggle('open', open);
-      backdrop?.classList.toggle('open', open);
-      toggle?.classList.toggle('open', open);
-      toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-
-    toggle?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setNavOpen(!menu?.classList.contains('open'));
-    });
-    backdrop?.addEventListener('click', () => setNavOpen(false));
-    menu?.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => setNavOpen(false));
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setNavOpen(false);
-    });
-
-    // Cookie banner
-    const banner = document.getElementById('cookie-banner');
-    const accept = document.getElementById('cookie-accept');
-    const decline = document.getElementById('cookie-decline');
-    if (!localStorage.getItem('cookie-consent')) {
-      banner?.classList.add('show');
-    }
-    accept?.addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
-      banner?.classList.remove('show');
-    });
-    decline?.addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'declined');
-      banner?.classList.remove('show');
-    });
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { threshold: 0.12 });
-      reveals.forEach(el => io.observe(el));
-    }
+  <script is:inline>
+    (function () {
+      var banner = document.getElementById('cookie-banner');
+      var accept = document.getElementById('cookie-accept');
+      var decline = document.getElementById('cookie-decline');
+      if (!banner) return;
+      if (!localStorage.getItem('cookie-consent')) banner.classList.replace('hidden', 'flex');
+      function close(v) {
+        localStorage.setItem('cookie-consent', v);
+        banner.classList.replace('flex', 'hidden');
+      }
+      accept && accept.addEventListener('click', function () { close('accepted'); });
+      decline && decline.addEventListener('click', function () { close('declined'); });
+    })();
   </script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+interface Props {
+  name: string;
+  status: 'active' | 'coming-soon';
+  address?: string;
+  zip?: string;
+  city: string;
+  phone?: string;
+  phonePlain?: string;
+  email?: string;
+  href?: string;
+  image?: string | null;
+}
+const { name, status, address, zip, city, phone, phonePlain, email, href = '/standorte', image = null } = Astro.props;
+const isActive = status === 'active';
+---
+<article class="group overflow-hidden rounded-card border border-line bg-cream shadow-card transition-shadow duration-300 hover:shadow-soft">
+  <div class="relative overflow-hidden">
+    <ImagePlaceholder src={image} ratio="16 / 10" rounded={false} label="Praxisfoto" sublabel="folgt in Kürze" alt={`Praxis ${name}`} class="transition-transform duration-[1200ms] ease-smooth group-hover:scale-[1.05]" />
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent"></div>
+    <h3 class="absolute bottom-5 left-6 font-serif text-3xl text-cream drop-shadow">{name}</h3>
+    {!isActive && (
+      <span class="absolute right-5 top-5 rounded-pill border border-cream/40 bg-ink/30 px-3 py-1 font-sans text-[9px] font-semibold uppercase tracking-label text-cream backdrop-blur-sm">
+        Bald verfügbar
+      </span>
+    )}
+  </div>
+
+  <div class="p-7">
+    {isActive ? (
+      <div class="space-y-1 font-sans text-[14px] font-light text-ink-mid">
+        <p>{address}</p>
+        <p>{zip} {city}</p>
+        {phone && <p class="pt-2"><a class="font-serif text-lg text-ink transition-colors hover:text-gold" href={`tel:${phonePlain}`}>{phone}</a></p>}
+        {email && <p><a class="transition-colors hover:text-gold" href={`mailto:${email}`}>{email}</a></p>}
+      </div>
+    ) : (
+      <p class="font-sans text-[14px] font-light leading-relaxed text-ink-mid">
+        In {city} entsteht unser zweiter Standort. Wir informieren Sie, sobald es so weit ist.
+      </p>
+    )}
+    <a
+      href={href}
+      class="mt-6 inline-flex border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors hover:text-gold"
+    >
+      {isActive ? 'Standort ansehen →' : 'Mehr erfahren →'}
+    </a>
+  </div>
+</article>

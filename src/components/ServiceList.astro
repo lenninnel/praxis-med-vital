@@ -1,0 +1,24 @@
+---
+import Reveal from './Reveal.tsx';
+interface Service { name: string; text: string; }
+interface Props { title: string; services: Service[]; }
+const { title, services } = Astro.props;
+---
+<section class="section bg-cream-dk">
+  <div class="container">
+    <Reveal client:visible>
+      <h2 class="text-center font-serif text-h2 text-ink">{title}</h2>
+      <div class="mx-auto mt-12 max-w-3xl border-y border-line">
+        {services.map((s, i) => (
+          <div class="flex gap-6 border-b border-line py-7 last:border-0">
+            <span class="font-serif text-xl leading-none text-gold">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="font-serif text-xl text-ink">{s.name}</h3>
+              <p class="mt-1.5 font-sans text-[14px] font-light leading-relaxed text-ink-mid">{s.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Reveal>
+  </div>
+</section>

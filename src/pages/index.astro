@@ -2,308 +2,242 @@
 import Layout from '../layouts/Layout.astro';
 import site from '../data/site.json';
 import team from '../data/team.json';
-import leistungen from '../data/leistungen.json';
+import pillars from '../data/pillars.json';
+import standorte from '../data/standorte.json';
+import faqs from '../data/faq.json';
+import Reveal from '../components/Reveal.tsx';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PillarCard from '../components/PillarCard.astro';
+import LocationCard from '../components/LocationCard.astro';
+import TeamCard from '../components/TeamCard.astro';
+import FaqAccordion from '../components/FaqAccordion.tsx';
+import CountUp from '../components/CountUp.tsx';
+import Marquee from '../components/Marquee.tsx';
+import Testimonials from '../components/Testimonials.tsx';
 
-const kategorien = leistungen.kategorien;
+const pillarImages: Record<string, string> = {
+  therapie: '/img/therapie.png',
+  training: '/img/training.png',
+  coaching: '/img/coaching.png',
+};
+const pillarList = pillars.order.map((slug) => ({ slug, image: pillarImages[slug], ...(pillars as any)[slug] }));
+
+const methods = [
+  'Manuelle Therapie', 'Lymphdrainage', 'Applied Kinesiology', 'Cranio Concept',
+  'Krankengymnastik', 'Bobath', 'Atlas Therapie', 'CMD', 'Trainingstherapie', 'Prävention',
+];
+
+const reviews = [
+  { text: 'Einfach super! Ich kann diese Praxis wirklich sehr empfehlen. Das ganze Team ist mega nett und total engagiert — dort ist man in besten Händen.', author: 'Patient · Google Bewertung' },
+  { text: 'Sehr gute Praxis mit erfahrenen, fachlich kompetenten Therapeuten. Schnelle, unkomplizierte Terminvereinbarung — auch Geräte und Laufband stehen zur Verfügung.', author: 'Patient · Google Bewertung' },
+];
 ---
-
-<Layout>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__content">
-      <span class="hero__eyebrow">Physiotherapie · Wörth am Main</span>
-      <h1 class="hero__title">[Slogan]</h1>
-      <p class="hero__sub">
-        Ganzheitliche Physiotherapie, manuelle Therapie und innovative
-        Behandlungsmethoden — individuell auf Sie abgestimmt.
-      </p>
-      <div class="hero__actions">
-        <a href="/leistungen" class="btn-ghost">Leistungen entdecken →</a>
-      </div>
-    </div>
-    <div class="hero__visual" aria-hidden="true">
-      <div class="hero__image-placeholder">
-        <div class="hero__image-inner">
-          <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1">
-            <rect x="6" y="6" width="36" height="36" rx="2"/>
-            <circle cx="18" cy="20" r="3"/>
-            <path d="M6 32l10-10 16 16"/>
-            <path d="M28 28l6-6 8 8"/>
-          </svg>
-          <p class="hero__image-label">Praxisfoto</p>
-          <p class="hero__image-sub">folgt in Kürze</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Bar -->
-  <div class="trust-bar">
-    <div class="trust-bar__grid">
-      <div class="trust-bar__inner">
-        <span class="trust-bar__number">10+</span>
-        <span class="trust-bar__text">Therapeuten</span>
-      </div>
-      <span class="trust-bar__dot" aria-hidden="true"></span>
-      <div class="trust-bar__inner">
-        <span class="trust-bar__number">15+</span>
-        <span class="trust-bar__text">Jahre Erfahrung</span>
-      </div>
-      <span class="trust-bar__dot" aria-hidden="true"></span>
-      <div class="trust-bar__inner">
-        <a href={`tel:${site.phonePlain}`} class="trust-bar__tel">{site.phone}</a>
-      </div>
-      <span class="trust-bar__dot" aria-hidden="true"></span>
-      <div class="trust-bar__inner">
-        <span class="trust-bar__number">2</span>
-        <span class="trust-bar__text">Standorte</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Über uns -->
-  <section class="sec sec--white reveal">
-    <div class="container two-col">
-      <div>
-        <span class="eyebrow">Über uns</span>
-        <h2 class="section-title">Praxis Med Vital</h2>
-        <p class="section-sub">
-          In unserer Praxis verbinden wir klassische Physiotherapie mit innovativen, ganzheitlichen
-          Behandlungsmethoden. Unser Ziel: nachhaltige Besserung — nicht nur Symptombekämpfung.
+<Layout headerOffset={false}>
+  {/* ============ HERO ============ */}
+  <section class="relative grid min-h-[100svh] grid-cols-1 md:grid-cols-[1fr_1.08fr]">
+    <div class="relative z-10 flex flex-col justify-center px-[8%] pb-20 pt-32 md:pt-[88px]">
+      <Reveal client:load>
+        <span class="eyebrow mb-7">{site.tagline}</span>
+        <h1 class="font-serif text-display text-ink">
+          High-End Therapie —<br /><em class="italic text-gold">direkt bei Ihnen</em>
+        </h1>
+        <p class="lede mt-7 text-[17px]">
+          Ganzheitliche Therapie, modernes Training und persönliches Coaching — individuell auf
+          Sie abgestimmt, in Wörth am Main und Erlenbach.
         </p>
-        <p style="font-size:14px;font-weight:300;color:var(--ink-mid);margin-top:16px;line-height:1.7">
-          Jeder Patient erhält bei uns einen individuellen Therapieplan, der auf seine
-          Bedürfnisse und Ziele abgestimmt ist. Mit unserem besonders gelenkschonenden orthopädisch-koordinativen Trainingszirkel haben wir zusätzliche Möglichkeiten — selbst starke Einschränkungen können hier trainiert werden.
-        </p>
-        <a href="/ueber-uns" class="btn-ghost btn-ghost--dark" style="margin-top:32px">Mehr erfahren →</a>
-      </div>
-      <div class="philo-quote">
-        <span class="philo-quote__mark">+</span>
-        <p class="philo-quote__text">
-          Ganzheitlich &amp; individuell — mehr als klassische Physiotherapie. Wir behandeln den ganzen Menschen.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section class="sec sec--stone-lt reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Unser Team</span>
-      <h2 class="section-title">Kompetenz trifft Leidenschaft</h2>
-      <p class="section-sub">
-        Drei erfahrene Therapeuten mit unterschiedlichen Spezialisierungen — für eine umfassende Versorgung.
-      </p>
-    </div>
-    <div class="container" style="margin-top:56px">
-      <div class="team-grid">
-        {team.map((member: any) => (
-          <div class="team-card">
-            <div class="team-card__avatar">{member.initials}</div>
-            <h3 class="team-card__name">{member.name}</h3>
-            <p class="team-card__role">{member.role}</p>
-            <p class="team-card__bio">{member.bio}</p>
-            <div class="tag-list">
-              {member.tags.map((tag: string) => (
-                <span class="tag">{tag}</span>
-              ))}
+        <div class="mt-9 space-y-5">
+          <div class="flex items-start gap-4">
+            <span class="mt-0.5 grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-gold/40 text-gold">
+              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 9 7 13 15 5"/></svg>
+            </span>
+            <div>
+              <p class="font-sans text-[14px] font-semibold text-ink">Individuell. Präzise. Auf höchstem Niveau.</p>
+              <p class="font-sans text-[13px] font-light text-ink-mid">Moderne Methoden, abgestimmt auf Ihren Körper und Ihre Ziele.</p>
             </div>
           </div>
-        ))}
+          <div class="flex items-start gap-4">
+            <span class="mt-0.5 grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-gold/40 text-gold">
+              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 16s5-4.6 5-8a5 5 0 0 0-10 0c0 3.4 5 8 5 8z"/><circle cx="9" cy="8" r="1.6"/></svg>
+            </span>
+            <div>
+              <p class="font-sans text-[14px] font-semibold text-ink">2× in Ihrer Nähe</p>
+              <p class="font-sans text-[13px] font-light text-ink-mid">Wörth am Main — und bald auch Erlenbach.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-7">
+          <Button href={site.nav.cta.href} variant="primary">Termin vereinbaren</Button>
+          <a href={`tel:${site.phonePlain}`} class="font-serif text-2xl text-ink-mid transition-colors hover:text-gold">{site.phone}</a>
+        </div>
+      </Reveal>
+    </div>
+
+    {/* cinematic hero image */}
+    <div class="relative min-h-[46vh] overflow-hidden bg-cream-dk md:min-h-full">
+      <img src="/img/hero-room.png" alt="Ruhiger Behandlungsraum bei med.vital" class="absolute inset-0 h-full w-full object-cover animate-kenburns" />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-cream/35 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="pointer-events-none absolute bottom-7 left-[8%] z-10 hidden items-center gap-3 text-ink-mid md:flex">
+      <span class="font-sans text-[10px] font-semibold uppercase tracking-label">Entdecken</span>
+      <span class="block h-8 w-px bg-gradient-to-b from-gold to-transparent"></span>
+    </div>
+  </section>
+
+  {/* ============ STATS ============ */}
+  <section class="bg-stone px-[8%] py-16">
+    <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-16 gap-y-10 text-center">
+      <div>
+        <div class="font-serif text-5xl text-cream/90"><CountUp client:visible to={10} suffix="+" /></div>
+        <div class="mt-2 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/45">Therapeuten</div>
       </div>
-      <div style="text-align:center;margin-top:48px">
-        <a href="/team" class="btn-ghost btn-ghost--dark">Zum Team →</a>
+      <span class="hidden h-10 w-px bg-cream/15 sm:block"></span>
+      <div>
+        <div class="font-serif text-5xl text-cream/90"><CountUp client:visible to={15} suffix="+" /></div>
+        <div class="mt-2 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/45">Jahre Erfahrung</div>
+      </div>
+      <span class="hidden h-10 w-px bg-cream/15 sm:block"></span>
+      <a href={`tel:${site.phonePlain}`} class="font-serif text-3xl italic text-cream/90 transition-colors hover:text-gold-lt">{site.phone}</a>
+      <span class="hidden h-10 w-px bg-cream/15 sm:block"></span>
+      <div>
+        <div class="font-serif text-5xl text-cream/90"><CountUp client:visible to={2} /></div>
+        <div class="mt-2 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/45">Standorte</div>
       </div>
     </div>
   </section>
 
-  <!-- Leistungen -->
-  <section class="sec sec--cream reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Leistungen</span>
-      <h2 class="section-title">Behandlungsspektrum</h2>
-      <p class="section-sub">
-        Bewährte physiotherapeutische Methoden, ergänzt durch komplementäre Spezialmethoden.
-      </p>
+  {/* ============ PILLARS (image cards) ============ */}
+  <section class="section">
+    <div class="container">
+      <Reveal client:visible>
+        <SectionHeading center eyebrow="Leistungen" title="Drei Wege zu Ihrer Gesundheit"
+          sub="Therapie, Training und Coaching greifen ineinander — vom ersten Befund bis zum nachhaltigen Alltag." />
+      </Reveal>
+      <Reveal client:visible delay={0.05}>
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          {pillarList.map((p) => (
+            <PillarCard label={p.label} tagline={p.navTagline} href={`/${p.slug}`} icon={p.slug as any} image={p.image} />
+          ))}
+        </div>
+      </Reveal>
     </div>
-    <div class="container" style="margin-top:56px">
-      <div class="leistung-grid">
-        {kategorien.map((kat: any) => (
-          <a href={`/leistungen#${kat.id}`} class="leistung-card">
-            <span class="leistung-card__num">{kat.num}</span>
-            <h3 class="leistung-card__title">{kat.titel}</h3>
-            <p class="leistung-card__desc">{kat.beschreibung}</p>
-            <ul class="leistung-card__items">
-              {kat.leistungen.slice(0, 3).map((l: any) => (
-                <li>{l.name}</li>
-              ))}
-            </ul>
-            <span class="back-link" style="margin-top:auto">Mehr erfahren →</span>
+  </section>
+
+  {/* ============ METHODS MARQUEE ============ */}
+  <Marquee client:visible items={methods} />
+
+  {/* ============ ÜBER UNS ============ */}
+  <section class="section">
+    <div class="container">
+      <Reveal client:visible>
+        <div class="grid items-center gap-16 lg:grid-cols-2">
+          <div>
+            <SectionHeading eyebrow="Über uns" title="Mehr als klassische Physiotherapie"
+              sub="In unserer Praxis verbinden wir bewährte Physiotherapie mit innovativen, ganzheitlichen Methoden. Unser Ziel ist nachhaltige Besserung — nicht nur Symptombekämpfung." />
+            <p class="lede mt-5 text-[15px]">
+              Jeder Mensch erhält bei uns einen individuellen Plan. Mit unserem besonders
+              gelenkschonenden orthopädisch-koordinativen Trainingszirkel können selbst starke
+              Einschränkungen trainiert werden.
+            </p>
+            <Button href="/ueber-uns" variant="ghost" class="mt-8" arrow>Mehr erfahren</Button>
+          </div>
+          <div class="relative flex items-center justify-center rounded-card border border-line bg-cream-dk px-10 py-16 text-center">
+            <div>
+              <span class="font-serif text-6xl text-gold">+</span>
+              <p class="mx-auto mt-5 max-w-sm font-serif text-2xl italic leading-snug text-ink">
+                Ganzheitlich &amp; individuell — wir behandeln den ganzen Menschen, nicht nur das Symptom.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  {/* ============ STANDORTE ============ */}
+  <section class="section bg-stone-lt">
+    <div class="container">
+      <Reveal client:visible>
+        <SectionHeading center eyebrow="Standorte" title="2× in Ihrer Nähe"
+          sub="Persönliche Therapie an zwei Standorten im Main-Tal — kurze Wege, vertraute Gesichter." />
+        <div class="mt-14 grid gap-8 md:grid-cols-2">
+          {standorte.map((s: any) => (
+            <LocationCard
+              name={s.name} status={s.status} address={s.address} zip={s.zip} city={s.city}
+              phone={s.phone} phonePlain={s.phonePlain} email={s.email}
+              image={s.id === 'woerth' ? '/img/standort-woerth.png' : null}
+              href={`/standorte/${s.id}`}
+            />
+          ))}
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  {/* ============ TEAM ============ */}
+  <section class="section">
+    <div class="container">
+      <Reveal client:visible>
+        <SectionHeading center eyebrow="Unser Team" title="Kompetenz trifft Leidenschaft"
+          sub="Drei erfahrene Therapeuten mit unterschiedlichen Spezialisierungen — für eine umfassende Versorgung." />
+        <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {team.map((m: any) => (
+            <TeamCard id={m.id} name={m.name} role={m.role} qualification={m.qualification}
+              bio={m.bio} tags={m.tags} initials={m.initials} photo={m.photo} />
+          ))}
+        </div>
+        <div class="mt-12 text-center">
+          <Button href="/team" variant="ghost" arrow>Zum Team</Button>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  {/* ============ TESTIMONIALS ============ */}
+  <section class="section bg-sage-lt">
+    <div class="container">
+      <Reveal client:visible>
+        <SectionHeading center eyebrow="Patientenstimmen" title="Was unsere Patienten sagen" />
+        <div class="mt-12">
+          <Testimonials client:visible items={reviews} />
+        </div>
+        <div class="mt-10 text-center">
+          <a href="https://maps.google.com/?q=Pfarrer-Adam-Haus-Str.+5a,+63939+W%C3%B6rth+am+Main" target="_blank" rel="noopener noreferrer"
+             class="inline-flex border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors hover:text-gold">
+            Bewertungen auf Google Maps →
           </a>
-        ))}
-      </div>
-      <div style="text-align:center;margin-top:48px">
-        <a href="/leistungen" class="btn-ghost btn-ghost--dark">Alle Leistungen →</a>
-      </div>
+        </div>
+      </Reveal>
     </div>
   </section>
 
-  <!-- Besonderheiten -->
-  <section class="sec sec--sage reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Besonderheiten</span>
-      <h2 class="section-title">Was uns auszeichnet</h2>
-      <p class="section-sub">
-        Spezialisierte Behandlungsmethoden, die über die klassische Physiotherapie hinausgehen.
-      </p>
-    </div>
-    <div class="container" style="margin-top:56px">
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature__icon">AK</div>
-          <h3 class="feature__title">Applied Kinesiology</h3>
-          <p class="feature__text">
-            Diagnostisches Verfahren, das Muskeltests nutzt, um funktionelle Zusammenhänge
-            im Körper zu erkennen und gezielt zu behandeln.
-          </p>
+  {/* ============ FAQ TEASER ============ */}
+  <section class="section">
+    <div class="container">
+      <Reveal client:visible>
+        <SectionHeading center eyebrow="Häufige Fragen" title="Rund um Ihren Termin"
+          sub="Die wichtigsten Antworten von der Rezeptannahme bis zur ersten Behandlung." />
+        <div class="mt-12">
+          <FaqAccordion client:visible items={faqs} limit={4} />
         </div>
-        <div class="feature">
-          <div class="feature__icon">CC</div>
-          <h3 class="feature__title">Cranio Concept</h3>
-          <p class="feature__text">
-            Sanfte, manuelle Technik zur Behandlung des craniosacralen Systems.
-            Unterstützt die Selbstheilungskräfte bei Kopfschmerzen und Migräne.
-          </p>
+        <div class="mt-12 text-center">
+          <Button href="/faq" variant="ghost" arrow>Alle Fragen ansehen</Button>
         </div>
-        <div class="feature">
-          <div class="feature__icon">AT</div>
-          <h3 class="feature__title">Atlas Therapie</h3>
-          <p class="feature__text">
-            Gezielte Behandlung des ersten Halswirbels zur Korrektur von Fehlstellungen
-            mit positiven Auswirkungen auf das gesamte Bewegungssystem.
-          </p>
-        </div>
-      </div>
+      </Reveal>
     </div>
   </section>
 
-  <!-- Patientenstimmen -->
-  <section class="sec sec--sage-lt reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Patientenstimmen</span>
-      <h2 class="section-title">Was unsere Patienten sagen</h2>
-    </div>
-    <div class="container" style="margin-top:56px">
-      <div class="stimmen-grid">
-        <article class="stimme-card">
-          <p class="stimme-card__text">
-            „Einfach super! Ich kann diese Praxis wirklich sehr empfehlen. Das ganze Team ist mega nett und total engagiert. Dort ist man im wahrsten Sinne des Wortes in besten Händen."
-          </p>
-          <p class="stimme-card__author">Patient · Google Bewertung</p>
-        </article>
-        <article class="stimme-card">
-          <p class="stimme-card__text">
-            „Sehr gute Praxis mit erfahrenen und fachlich sehr kompetenten Therapeuten, schnelle und unkomplizierte Terminvereinbarung! Auch Geräte und Laufband stehen zur Verfügung."
-          </p>
-          <p class="stimme-card__author">Patient · Google Bewertung</p>
-        </article>
+  {/* ============ CTA ============ */}
+  <section class="bg-sage px-[8%] py-24 text-center">
+    <Reveal client:visible>
+      <p class="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-cream/45">Kontakt</p>
+      <h2 class="mx-auto mt-4 max-w-2xl font-serif text-h2 text-cream/95">Vereinbaren Sie Ihren Termin.</h2>
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-8">
+        <a href={`tel:${site.phonePlain}`} class="font-serif text-3xl italic text-cream/90 transition-colors hover:text-gold-lt">{site.phone}</a>
+        <span class="text-cream/20">·</span>
+        <a href="/kontakt" class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-gold-lt transition-colors hover:text-cream">Zum Kontaktformular</a>
       </div>
-      <p style="text-align:center;margin-top:40px">
-        <a
-          href="https://maps.google.com/?q=Pfarrer-Adam-Haus-Str.+5a,+63939+W%C3%B6rth+am+Main"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-ghost btn-ghost--dark"
-        >
-          Bewertungen auf Google Maps →
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section style="background: var(--sage); padding: 80px 8%; text-align: center;">
-    <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-bottom:16px;">Kontakt</p>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(36px,4vw,56px);font-weight:400;color:rgba(240,235,225,0.92);margin-bottom:32px;line-height:1.1;">
-      Vereinbaren Sie<br>Ihren Termin.
-    </h2>
-    <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
-      <a href="tel:093721394440" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:rgba(240,235,225,0.85);text-decoration:none;">09372 – 139 444</a>
-      <span style="color:rgba(240,235,225,0.2);font-size:20px;">·</span>
-      <a href="/kontakt" style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:0.5px solid var(--gold);padding-bottom:2px;">
-        Zum Kontaktformular
-      </a>
-    </div>
+    </Reveal>
   </section>
 </Layout>
-
-<style>
-  .philo-quote {
-    background: var(--cream);
-    border: 0.5px solid var(--border);
-    padding: 56px 44px;
-    text-align: center;
-    position: relative;
-  }
-  .philo-quote__mark {
-    display: inline-block;
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: 64px;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 24px;
-  }
-  .philo-quote__text {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.5;
-    max-width: 380px;
-    margin: 0 auto;
-  }
-
-  .stimmen-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    max-width: 960px;
-    margin: 0 auto;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .stimme-card {
-    background: var(--white);
-    padding: 48px 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .stimme-card__text {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.55;
-    color: var(--ink);
-  }
-
-  .stimme-card__author {
-    margin-top: auto;
-    font-family: var(--ff-sans);
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--ink-lt);
-  }
-
-  @media (max-width: 860px) {
-    .stimmen-grid { grid-template-columns: 1fr; }
-  }
-</style>

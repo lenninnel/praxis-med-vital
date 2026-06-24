@@ -1,5 +1,8 @@
 {
-  "name": "Praxis Med Vital",
+  "name": "med.vital",
+  "legalName": "Praxis Med Vital · Wehrheim, Kenner & Hurth GbR",
+  "brand": { "pre": "med.", "post": "vital" },
+  "tagline": "Therapie · Training · Coaching",
   "email": "info@therapie-woerth.com",
   "phone": "09372 – 139 444",
   "phonePlain": "093721394440",
@@ -9,8 +12,29 @@
     { "days": "Freitag", "time": "08:00 – 15:00 Uhr" },
     { "days": "Sa – So", "time": "Geschlossen" }
   ],
+  "nav": {
+    "primary": [
+      { "label": "Therapie", "href": "/therapie" },
+      { "label": "Training", "href": "/training" },
+      { "label": "Coaching", "href": "/coaching" },
+      { "label": "Standorte", "href": "/standorte" }
+    ],
+    "full": [
+      { "label": "Start", "href": "/" },
+      { "label": "Therapie", "href": "/therapie" },
+      { "label": "Training", "href": "/training" },
+      { "label": "Coaching", "href": "/coaching" },
+      { "label": "Über uns", "href": "/ueber-uns" },
+      { "label": "Team", "href": "/team" },
+      { "label": "Standorte", "href": "/standorte" },
+      { "label": "FAQ", "href": "/faq" },
+      { "label": "Karriere", "href": "/karriere" },
+      { "label": "Kontakt", "href": "/kontakt" }
+    ],
+    "cta": { "label": "Termin vereinbaren", "href": "/kontakt" }
+  },
   "seo": {
-    "defaultTitle": "Praxis Med Vital – Physiotherapie Wörth am Main",
-    "defaultDescription": "Ihre Physiotherapiepraxis in Wörth am Main. Manuelle Therapie, Applied Kinesiology, Cranio Concept."
+    "defaultTitle": "med.vital – Therapie, Training & Coaching in Wörth am Main",
+    "defaultDescription": "Ganzheitliche Therapie, Training und Coaching in Wörth am Main und Erlenbach – individuell auf Sie abgestimmt, auf höchstem Niveau."
   }
 }

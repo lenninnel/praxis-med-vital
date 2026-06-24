@@ -1,0 +1,17 @@
+---
+import site from '../data/site.json';
+import Reveal from './Reveal.tsx';
+interface Props { title?: string; }
+const { title = 'Vereinbaren Sie Ihren Termin.' } = Astro.props;
+---
+<section class="bg-sage px-[8%] py-24 text-center">
+  <Reveal client:visible>
+    <p class="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-cream/45">Kontakt</p>
+    <h2 class="mx-auto mt-4 max-w-2xl font-serif text-h2 text-cream/95">{title}</h2>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-8">
+      <a href={`tel:${site.phonePlain}`} class="font-serif text-3xl italic text-cream/90 transition-colors hover:text-gold-lt">{site.phone}</a>
+      <span class="text-cream/20">·</span>
+      <a href="/kontakt" class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-gold-lt transition-colors hover:text-cream">Zum Kontaktformular</a>
+    </div>
+  </Reveal>
+</section>

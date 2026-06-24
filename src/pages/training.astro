@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import pillars from '../data/pillars.json';
+import PillarHero from '../components/PillarHero.astro';
+import ServiceList from '../components/ServiceList.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const p = pillars.training;
+---
+<Layout
+  title="Training – med.vital | Gerätetraining & Prävention in Wörth am Main"
+  description="Gezieltes Training für mehr Kraft, Vitalität und Lebensfreude — Prävention, Gerätetraining, Ausdauer und freies Training, fachlich begleitet."
+>
+  <PillarHero label={p.label} kicker={p.kicker} intro={p.intro} benefits={p.benefits} imageLabel="Trainingsfläche" image="/img/training.png" />
+  <ServiceList title={p.servicesTitle} services={p.services} />
+  <CtaBand title="Starten Sie Ihr Training." />
+</Layout>
