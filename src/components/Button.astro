@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/base';
 type Variant = 'primary' | 'ghost' | 'outline';
 interface Props {
   href?: string;
@@ -24,7 +25,7 @@ const Tag = href ? 'a' : 'button';
 ---
 <Tag
   class={`${base} ${styles[variant]} ${cls}`}
-  {...href ? { href } : { type }}
+  {...href ? { href: withBase(href) } : { type }}
 >
   <slot />
   {arrow && (

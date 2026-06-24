@@ -1,5 +1,6 @@
 ---
 import ImagePlaceholder from './ImagePlaceholder.astro';
+import { withBase } from '../lib/base';
 interface Props {
   id: string;
   name: string;
@@ -15,7 +16,7 @@ const { id, name, role, qualification, bio, tags = [], initials, photo = null, h
 const link = href ?? `/team/${id}`;
 const sub = [qualification, role].filter(Boolean).join(' · ');
 ---
-<a href={link} class="group block">
+<a href={withBase(link)} class="group block">
   <div class="overflow-hidden rounded-card border border-line bg-cream-dk">
     <ImagePlaceholder src={photo} ratio="4 / 5" rounded={false} label={initials} sublabel="Porträt folgt" alt={name} />
   </div>

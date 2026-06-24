@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { withBase } from '../lib/base';
 
 type Link = { label: string; href: string };
 type NavData = {
@@ -40,8 +41,10 @@ export default function Nav({ nav, brand, tagline, current = '' }: Props) {
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  const isActive = (href: string) =>
-    href === '/' ? current === '/' : current.startsWith(href);
+  const isActive = (href: string) => {
+    const h = withBase(href);
+    return href === '/' ? current === h : current.startsWith(h);
+  };
 
   return (
     <header
@@ -51,7 +54,7 @@ export default function Nav({ nav, brand, tagline, current = '' }: Props) {
     >
       <nav className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-[4%]">
         {/* Brand */}
-        <a href="/" className="flex items-center gap-2.5" aria-label="med.vital — Startseite">
+        <a href={withBase('/')} className="flex items-center gap-2.5" aria-label="med.vital — Startseite">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-ink">
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
           </span>
@@ -71,7 +74,7 @@ export default function Nav({ nav, brand, tagline, current = '' }: Props) {
           {nav.primary.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={withBase(l.href)}
               className={`font-sans text-[11px] font-semibold uppercase tracking-label transition-colors hover:text-ink ${
                 isActive(l.href) ? 'text-ink' : 'text-ink-mid'
               }`}
@@ -84,7 +87,7 @@ export default function Nav({ nav, brand, tagline, current = '' }: Props) {
         {/* Actions */}
         <div className="flex items-center gap-5">
           <a
-            href={nav.cta.href}
+            href={withBase(nav.cta.href)}
             className="hidden rounded-btn bg-gold px-5 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk sm:inline-flex"
           >
             {nav.cta.label}
@@ -134,7 +137,7 @@ export default function Nav({ nav, brand, tagline, current = '' }: Props) {
               {nav.full.map((l) => (
                 <a
                   key={l.href}
-                  href={l.href}
+                  href={withBase(l.href)}
                   role="menuitem"
                   onClick={() => setOpen(false)}
                   className="block border-b border-white/5 px-6 py-3 font-sans text-[13px] font-medium uppercase tracking-[0.08em] text-cream/80 transition-colors last:border-0 hover:bg-white/5 hover:text-gold-lt"

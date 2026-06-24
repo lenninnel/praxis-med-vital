@@ -4,6 +4,7 @@ import team from '../../data/team.json';
 import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
 import Reveal from '../../components/Reveal.tsx';
 import CtaBand from '../../components/CtaBand.astro';
+import { withBase } from '../../lib/base';
 
 export function getStaticPaths() {
   return team.map((m: any) => ({ params: { slug: m.id }, props: { member: m } }));
@@ -14,7 +15,7 @@ const paras = (member.bioLong || member.bio || '').split('\n\n');
 <Layout title={`${member.name} – med.vital`} description={member.bio}>
   <section class="section">
     <div class="container">
-      <a href="/team" class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Zum Team</a>
+      <a href={withBase('/team')} class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Zum Team</a>
 
       <div class="mt-8 grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-start">
         <Reveal client:load>

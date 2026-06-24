@@ -4,6 +4,7 @@ import standorte from '../../data/standorte.json';
 import PageHeader from '../../components/PageHeader.astro';
 import Reveal from '../../components/Reveal.tsx';
 import CtaBand from '../../components/CtaBand.astro';
+import { withBase } from '../../lib/base';
 
 const s = standorte.find((x: any) => x.id === 'woerth')!;
 const details = [
@@ -21,7 +22,7 @@ const details = [
 
   <section class="section">
     <div class="container">
-      <a href="/standorte" class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Alle Standorte</a>
+      <a href={withBase('/standorte')} class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Alle Standorte</a>
 
       <Reveal client:visible>
         <div class="mt-10 grid gap-14 md:grid-cols-2">
@@ -51,7 +52,7 @@ const details = [
                 </tr>
               ))}
             </table>
-            <a href="/kontakt" class="mt-8 inline-flex rounded-btn bg-gold px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">Termin anfragen</a>
+            <a href={withBase('/kontakt')} class="mt-8 inline-flex rounded-btn bg-gold px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">Termin anfragen</a>
           </div>
         </div>
       </Reveal>

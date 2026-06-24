@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/base';
 interface Props {
   ratio?: string;        // e.g. '4 / 5', '16 / 9', '1 / 1'
   label?: string;
@@ -21,7 +22,7 @@ const radius = rounded ? 'rounded-card' : '';
 ---
 {src ? (
   <img
-    src={src}
+    src={withBase(src)}
     alt={alt}
     loading="lazy"
     decoding="async"

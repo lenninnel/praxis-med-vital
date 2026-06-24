@@ -15,6 +15,7 @@ import FaqAccordion from '../components/FaqAccordion.tsx';
 import CountUp from '../components/CountUp.tsx';
 import Marquee from '../components/Marquee.tsx';
 import Testimonials from '../components/Testimonials.tsx';
+import { withBase } from '../lib/base';
 
 const pillarImages: Record<string, string> = {
   therapie: '/img/therapie.png',
@@ -75,7 +76,7 @@ const reviews = [
 
     {/* cinematic hero image */}
     <div class="relative min-h-[46vh] overflow-hidden bg-cream-dk md:min-h-full">
-      <img src="/img/hero-room.png" alt="Ruhiger Behandlungsraum bei med.vital" class="absolute inset-0 h-full w-full object-cover animate-kenburns" />
+      <img src={withBase('/img/hero-room.png')} alt="Ruhiger Behandlungsraum bei med.vital" class="absolute inset-0 h-full w-full object-cover animate-kenburns" />
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-cream/35 via-transparent to-transparent"></div>
     </div>
 
@@ -236,7 +237,7 @@ const reviews = [
       <div class="mt-9 flex flex-wrap items-center justify-center gap-8">
         <a href={`tel:${site.phonePlain}`} class="font-serif text-3xl italic text-cream/90 transition-colors hover:text-gold-lt">{site.phone}</a>
         <span class="text-cream/20">·</span>
-        <a href="/kontakt" class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-gold-lt transition-colors hover:text-cream">Zum Kontaktformular</a>
+        <a href={withBase('/kontakt')} class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-gold-lt transition-colors hover:text-cream">Zum Kontaktformular</a>
       </div>
     </Reveal>
   </section>

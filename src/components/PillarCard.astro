@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/base';
 interface Props {
   label: string;
   tagline: string;
@@ -18,9 +19,9 @@ const icons: Record<string, string> = {
 };
 ---
 {image ? (
-  <a href={href} class="group relative block aspect-[4/5] overflow-hidden rounded-card">
+  <a href={withBase(href)} class="group relative block aspect-[4/5] overflow-hidden rounded-card">
     <img
-      src={image}
+      src={withBase(image)}
       alt={label}
       loading="lazy"
       decoding="async"
@@ -39,7 +40,7 @@ const icons: Record<string, string> = {
     </div>
   </a>
 ) : (
-  <a href={href} class="group flex flex-col items-center px-6 text-center">
+  <a href={withBase(href)} class="group flex flex-col items-center px-6 text-center">
     <span class="mb-6 grid h-16 w-16 place-items-center rounded-full border border-gold/40 text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold/5">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[icon]} />
     </span>

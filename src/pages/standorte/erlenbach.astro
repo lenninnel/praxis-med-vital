@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Reveal from '../../components/Reveal.tsx';
+import { withBase } from '../../lib/base';
 ---
 <Layout
   title="Erlenbach am Main – med.vital"
@@ -11,7 +12,7 @@ import Reveal from '../../components/Reveal.tsx';
 
   <section class="section">
     <div class="container">
-      <a href="/standorte" class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Alle Standorte</a>
+      <a href={withBase('/standorte')} class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Alle Standorte</a>
 
       <Reveal client:visible>
         <div class="mx-auto mt-12 flex max-w-xl flex-col items-center rounded-card border border-line bg-cream-dk px-8 py-20 text-center">
@@ -22,8 +23,8 @@ import Reveal from '../../components/Reveal.tsx';
             gerne, sobald es Neuigkeiten gibt.
           </p>
           <div class="mt-9 flex flex-wrap items-center justify-center gap-6">
-            <a href="/kontakt" class="rounded-btn bg-gold px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">Benachrichtigung anfragen</a>
-            <a href="/standorte/woerth" class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors hover:text-gold">Standort Wörth →</a>
+            <a href={withBase('/kontakt')} class="rounded-btn bg-gold px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">Benachrichtigung anfragen</a>
+            <a href={withBase('/standorte/woerth')} class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors hover:text-gold">Standort Wörth →</a>
           </div>
         </div>
       </Reveal>

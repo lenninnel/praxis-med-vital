@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ViewTransitions } from 'astro:transitions';
+import { withBase } from '../lib/base';
 import site from '../data/site.json';
 import Nav from '../components/Nav.tsx';
 import SmoothScroll from '../components/SmoothScroll.tsx';
@@ -27,7 +28,7 @@ const current = Astro.url.pathname;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -63,7 +64,7 @@ const current = Astro.url.pathname;
   >
     <p class="m-0 flex-1 font-sans text-[12px] font-light leading-snug text-cream/70">
       Wir verwenden technisch notwendige Cookies.
-      <a class="text-gold-lt transition-colors hover:text-cream" href="/datenschutz">Datenschutzerklärung</a>
+      <a class="text-gold-lt transition-colors hover:text-cream" href={withBase('/datenschutz')}>Datenschutzerklärung</a>
     </p>
     <div class="flex flex-shrink-0 gap-2.5">
       <button id="cookie-accept" class="rounded-btn bg-cream px-4 py-2 font-sans text-[10px] font-semibold uppercase tracking-label text-ink transition-colors hover:bg-white">Akzeptieren</button>
