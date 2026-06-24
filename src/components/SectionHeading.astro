@@ -1,0 +1,18 @@
+---
+import Eyebrow from './Eyebrow.astro';
+interface Props {
+  eyebrow?: string;
+  title: string;          // may contain inline HTML (e.g. <em>)
+  sub?: string;           // may contain inline HTML
+  center?: boolean;
+  as?: 'h1' | 'h2';
+  class?: string;
+}
+const { eyebrow, title, sub, center = false, as = 'h2', class: cls = '' } = Astro.props;
+const Title = as;
+---
+<div class={`${center ? 'text-center' : ''} ${cls}`}>
+  {eyebrow && <Eyebrow center={center} class="mb-5">{eyebrow}</Eyebrow>}
+  <Title class="font-serif text-h2 text-ink" set:html={title} />
+  {sub && <p class={`lede mt-5 ${center ? 'mx-auto' : ''}`} set:html={sub} />}
+</div>

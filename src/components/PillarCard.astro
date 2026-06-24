@@ -1,0 +1,53 @@
+---
+import { withBase } from '../lib/base';
+interface Props {
+  label: string;
+  tagline: string;
+  href: string;
+  icon: 'therapie' | 'training' | 'coaching';
+  image?: string | null;
+}
+const { label, tagline, href, icon, image = null } = Astro.props;
+
+const icons: Record<string, string> = {
+  therapie:
+    '<path d="M12 20.5s-6.5-4.2-9-8.2a4.3 4.3 0 0 1 8-2.3 4.3 4.3 0 0 1 8 2.3c-2.5 4-9 8.2-9 8.2z"/>',
+  training:
+    '<path d="M5 9v6M9 7v10M15 7v10M19 9v6"/><path d="M9 12h6"/>',
+  coaching:
+    '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/>',
+};
+---
+{image ? (
+  <a href={withBase(href)} class="group relative block aspect-[4/5] overflow-hidden rounded-card">
+    <img
+      src={withBase(image)}
+      alt={label}
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-smooth group-hover:scale-[1.06]"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/5"></div>
+    <div class="absolute inset-x-0 bottom-0 p-7">
+      <span class="mb-4 grid h-11 w-11 place-items-center rounded-full border border-cream/40 text-cream">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[icon]} />
+      </span>
+      <h3 class="font-serif text-[28px] text-cream">{label}</h3>
+      <p class="mt-1.5 max-w-[15rem] font-sans text-[13px] font-light leading-relaxed text-cream/75">{tagline}</p>
+      <span class="mt-4 inline-flex items-center gap-1.5 border-b border-gold pb-1 font-sans text-[10px] font-semibold uppercase tracking-label text-cream transition-all duration-300 group-hover:gap-2.5">
+        mehr erfahren →
+      </span>
+    </div>
+  </a>
+) : (
+  <a href={withBase(href)} class="group flex flex-col items-center px-6 text-center">
+    <span class="mb-6 grid h-16 w-16 place-items-center rounded-full border border-gold/40 text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold/5">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[icon]} />
+    </span>
+    <h3 class="mb-2.5 font-serif text-[26px] text-ink">{label}</h3>
+    <p class="mb-5 max-w-[15rem] font-sans text-sm font-light leading-relaxed text-ink-mid">{tagline}</p>
+    <span class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors group-hover:text-gold">
+      mehr erfahren →
+    </span>
+  </a>
+)}

@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import pillars from '../data/pillars.json';
+import PillarHero from '../components/PillarHero.astro';
+import ServiceList from '../components/ServiceList.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const p = pillars.coaching;
+---
+<Layout
+  title="Coaching – med.vital | Gesundheitscoaching in Wörth am Main"
+  description="Coaching für nachhaltige Gesundheit und ein bewusstes Leben — Ernährung, Stressmanagement und Lebensstil, individuell begleitet."
+>
+  <PillarHero label={p.label} kicker={p.kicker} intro={p.intro} benefits={p.benefits} imageLabel="Coaching" image="/img/coaching.png" />
+  <ServiceList title={p.servicesTitle} services={p.services} />
+  <CtaBand title="Entfalten Sie Ihr Potenzial." />
+</Layout>

@@ -1,0 +1,51 @@
+---
+import site from '../data/site.json';
+import { withBase } from '../lib/base';
+const year = new Date().getFullYear();
+const linkCls = 'block py-1 font-sans text-[13px] font-light transition-colors hover:text-cream/95';
+---
+<footer class="bg-stone px-[6%] pt-20 text-cream/55">
+  <div class="mx-auto grid max-w-[1280px] gap-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+    <div>
+      <div class="font-serif text-2xl text-cream/90">
+        {site.brand.pre}<span class="text-gold-lt">{site.brand.post}</span>
+      </div>
+      <div class="mt-1 font-sans text-[9px] font-medium uppercase tracking-label text-cream/35">{site.tagline}</div>
+      <p class="mt-5 max-w-xs font-sans text-[13px] font-light leading-relaxed">
+        Ganzheitliche Therapie, Training und Coaching — kompetent, persönlich und individuell auf Sie abgestimmt.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="mb-4 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/45">Leistungen</h4>
+      <a class={linkCls} href={withBase('/therapie')}>Therapie</a>
+      <a class={linkCls} href={withBase('/training')}>Training</a>
+      <a class={linkCls} href={withBase('/coaching')}>Coaching</a>
+    </div>
+
+    <div>
+      <h4 class="mb-4 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/45">Praxis</h4>
+      <a class={linkCls} href={withBase('/ueber-uns')}>Über uns</a>
+      <a class={linkCls} href={withBase('/team')}>Team</a>
+      <a class={linkCls} href={withBase('/standorte')}>Standorte</a>
+      <a class={linkCls} href={withBase('/karriere')}>Karriere</a>
+    </div>
+
+    <div>
+      <h4 class="mb-4 font-sans text-[10px] font-semibold uppercase tracking-label text-cream/45">Kontakt</h4>
+      <a class={linkCls} href={`tel:${site.phonePlain}`}>{site.phone}</a>
+      <a class={linkCls} href={`mailto:${site.email}`}>{site.email}</a>
+      <a class={linkCls} href={withBase('/impressum')}>Impressum</a>
+      <a class={linkCls} href={withBase('/datenschutz')}>Datenschutz</a>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-14 flex max-w-[1280px] flex-wrap items-center justify-between gap-2 border-t border-cream/10 py-6 font-sans text-[11px] font-light text-cream/40">
+    <span>&copy; {year} {site.legalName}</span>
+    <span>
+      <a class="transition-colors hover:text-cream/95" href={withBase('/impressum')}>Impressum</a>
+      &middot;
+      <a class="transition-colors hover:text-cream/95" href={withBase('/datenschutz')}>Datenschutz</a>
+    </span>
+  </div>
+</footer>

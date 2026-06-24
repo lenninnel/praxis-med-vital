@@ -1,0 +1,53 @@
+[
+  {
+    "frage": "Ich habe ein Rezept von meinem Arzt erhalten — wie geht es nun weiter?",
+    "intro": "Super, dann haben Sie schon das Wichtigste vorliegen! Kontaktieren Sie uns für eine Terminvereinbarung. Bitte halten Sie folgende Informationen bereit:",
+    "bullets": [
+      { "label": "Rezeptdatum", "text": "Ein Rezept ist nur 28 Tage nach Ausstellungsdatum gültig (14 Tage bei „dringendem Behandlungsbedarf\"). Wir bemühen uns um schnellstmögliche Terminvergabe, können aber manchmal keinen Beginn innerhalb der 28 Tage garantieren. Vereinbaren Sie zunächst Ihre Termine und lassen Sie das Rezeptdatum gegebenenfalls von Ihrer Arztpraxis umdatieren." },
+      { "label": "Verordnetes Heilmittel", "text": "z. B. KG (Krankengymnastik), MT (Manuelle Therapie), MLD (Manuelle Lymphdrainage)." },
+      { "label": "Anzahl der Behandlungseinheiten", "text": "Damit wir die passende Terminkette für Sie planen können." }
+    ]
+  },
+  {
+    "frage": "Ich bin privatversichert — wie läuft das ab?",
+    "intro": "Bitte teilen Sie uns bei der Terminvereinbarung mit, ob Sie privat- oder beihilfeversichert sind. Beim ersten Termin erhalten Sie eine Honorarvereinbarung, die Sie einmalig unterschrieben bei uns abgeben. Die Höhe der Erstattung durch Ihre Krankenkasse hängt von Ihrem gewählten Tarif ab."
+  },
+  {
+    "frage": "Wie lange dauert eine Behandlung?",
+    "intro": "Die Behandlungsdauer hängt von Ihrer Verordnung ab:",
+    "bullets": [
+      { "label": "Krankengymnastik, Manuelle Therapie", "text": "ca. 20 Minuten inkl. Vor- und Nachbereitung." },
+      { "label": "Manuelle Lymphdrainage", "text": "30–60 Minuten je nach Verordnung." },
+      { "label": "Krankengymnastik am Gerät (KGG)", "text": "ca. 60 Minuten." },
+      { "label": "Privatbehandlungen", "text": "40 oder 60 Minuten." }
+    ],
+    "outro": "Bitte erscheinen Sie immer 5 Minuten vor Behandlungsbeginn, da ein verspäteter Start nicht nachgeholt werden kann."
+  },
+  {
+    "frage": "Wie läuft mein erster Termin ab?",
+    "intro": "Kommen Sie bitte 10–15 Minuten früher und melden sich an der Rezeption an. Bringen Sie mit:",
+    "bullets": [
+      { "label": "Ihr gültiges Rezept", "text": "" },
+      { "label": "Relevante Arztbriefe und Befunde", "text": "" },
+      { "label": "Ihre Krankenversichertenkarte", "text": "" },
+      { "label": "Ein großes Handtuch", "text": "" }
+    ],
+    "outro": "Nach dem Ausfüllen eines kurzen Fragebogens holt Sie Ihr Therapeut im Wartebereich ab. Es folgt der Erstbefund: Ihr Therapeut bespricht Ihre Einschränkungen und Ziele und führt spezifische Tests durch — die Grundlage für eine individuell abgestimmte Therapie."
+  },
+  {
+    "frage": "Ich kann einen Termin nicht wahrnehmen — was nun?",
+    "intro": "Bitte informieren Sie uns spätestens 24 Stunden vor Behandlungsbeginn per Telefon, E-Mail oder Anrufbeantworter. Bei kurzfristigen Absagen unter 24 Stunden, die keine anderweitige Besetzung ermöglichen, behalten wir uns vor, die Behandlung nach § 615 BGB privat in Rechnung zu stellen."
+  },
+  {
+    "frage": "Muss ich etwas zu meiner Behandlung zuzahlen?",
+    "intro": "Als gesetzlich Versicherter leisten Sie in der Regel eine gesetzliche Zuzahlung von 10 % des Rezeptwertes plus 10 € Rezeptgebühr — sofern Sie nicht von der Zuzahlung befreit sind. Privatpatienten und Selbstzahler erhalten eine individuelle Honorarvereinbarung. Bei Fragen zur Zuzahlung sprechen Sie uns gerne direkt an."
+  },
+  {
+    "frage": "Kann ich nach Beendigung meines Rezepts weiterbehandelt werden?",
+    "intro": "Ja — als Selbstzahler können Sie jederzeit weitere Behandlungen in Anspruch nehmen, auch ohne neues Rezept. Alternativ können Sie Ihren Arzt um eine neue Verordnung bitten. Als sektorale Heilpraktiker können wir Sie zudem ohne ärztliche Überweisung direkt und individuell behandeln."
+  },
+  {
+    "frage": "Kann ich auch ohne Rezept behandelt werden?",
+    "intro": "Ja. Als sektorale Heilpraktiker für Physiotherapie können wir Sie ohne ärztliche Verordnung behandeln — direkt, unkompliziert und vollständig auf Ihre Bedürfnisse zugeschnitten. Die Behandlung wird als Privatleistung abgerechnet. Sprechen Sie uns einfach an."
+  }
+]

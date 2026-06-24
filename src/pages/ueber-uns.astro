@@ -1,132 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Reveal from '../components/Reveal.tsx';
+import CtaBand from '../components/CtaBand.astro';
 
 const werte = [
   { titel: 'Ganzheitlich', text: 'Wir behandeln nicht nur Symptome — wir suchen die Ursache.' },
-  { titel: 'Individuell', text: 'Jeder Patient erhält einen Therapieplan, der auf seine Bedürfnisse abgestimmt ist.' },
+  { titel: 'Individuell', text: 'Jeder Mensch erhält einen Therapieplan, der auf seine Bedürfnisse abgestimmt ist.' },
   { titel: 'Kompetent', text: 'Staatlich anerkannte Therapeuten mit zertifizierten Spezialmethoden.' },
 ];
 ---
+<Layout
+  title="Über uns – med.vital"
+  description="Unsere Philosophie: ganzheitliche Therapie, Training und Coaching in Wörth am Main. Ihre Alltagsmobilität steht bei uns an erster Stelle."
+>
+  <PageHeader eyebrow="Über die Praxis" title="Unsere Philosophie" sub="Ganzheitliche Therapie in Wörth am Main — seit über 15 Jahren." />
 
-<Layout title="Über uns – Praxis Med Vital" description="Unsere Philosophie: Wir untersuchen, behandeln und trainieren — Ihre Alltagsmobilität steht bei uns an erster Stelle.">
-  <section class="page-header">
+  <section class="section">
+    <div class="container max-w-[760px]">
+      <Reveal client:visible>
+        <p class="border-l border-gold pl-6 font-serif text-[clamp(1.5rem,2.8vw,2rem)] italic leading-snug text-ink">
+          Wenn Sie den Bedarf sehen, Ihre körperlichen Beeinträchtigungen mit einer Vielzahl an
+          Therapien zu verbessern, dann sind Sie bei uns genau richtig.
+        </p>
+        <p class="lede mt-8 text-[16px]">
+          Wir untersuchen Sie, wir behandeln Sie und wir trainieren Sie. Mit unserem besonders
+          gelenkschonenden orthopädisch-koordinativen Trainingszirkel können wir auch intensiver
+          behandeln — selbst starke Einschränkungen lassen sich hier trainieren.
+        </p>
+        <p class="mt-8 font-serif text-2xl italic text-ink">Ihre Alltagsmobilität steht bei uns an erster Stelle.</p>
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="section bg-cream-dk">
     <div class="container">
-      <span class="eyebrow">Über die Praxis</span>
-      <h1>Unsere Philosophie</h1>
-      <p>Ganzheitliche Physiotherapie in Wörth am Main — seit über 15 Jahren.</p>
+      <Reveal client:visible>
+        <div class="text-center">
+          <span class="eyebrow eyebrow--center mb-5">Was uns leitet</span>
+          <h2 class="font-serif text-h2 text-ink">Unsere Werte</h2>
+        </div>
+        <div class="mx-auto mt-14 grid max-w-4xl gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-3">
+          {werte.map((w) => (
+            <div class="bg-cream p-10">
+              <h3 class="font-serif text-2xl text-ink">{w.titel}</h3>
+              <p class="mt-3 font-sans text-[14px] font-light leading-relaxed text-ink-mid">{w.text}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
     </div>
   </section>
 
-  <section class="sec sec--cream reveal">
-    <div class="container" style="max-width:760px;margin:0 auto">
-      <p class="philo-lead">
-        Wenn Sie den Bedarf sehen, Ihre körperlichen Beeinträchtigungen mit einer Vielzahl an verschiedenen Therapien zu verbessern bzw. zu verändern, dann sind Sie bei uns genau richtig.
-      </p>
-      <p class="philo-body">
-        Wir untersuchen Sie, wir behandeln Sie und trainieren Sie. Mit unserem besonders gelenkschonenden orthopädisch-koordinativen Trainingszirkel haben wir zusätzliche Möglichkeiten Patienten intensiver zu behandeln. Selbst starke Einschränkungen können hier trainiert werden.
-      </p>
-      <p class="philo-closing">
-        Ihre Alltagsmobilität steht bei uns an erster Stelle.
-      </p>
-    </div>
-  </section>
-
-  <section class="sec sec--white reveal">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:56px">
-        <span class="eyebrow">Was uns leitet</span>
-        <h2 class="section-title">Unsere Werte</h2>
-      </div>
-      <div class="werte-grid">
-        {werte.map((w) => (
-          <div class="wert-card">
-            <h3 class="wert-card__titel">{w.titel}</h3>
-            <p class="wert-card__text">{w.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--ink reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Bereit?</span>
-      <h2 class="section-title">Bereit für Ihren ersten Termin?</h2>
-      <p class="section-sub">
-        Wir freuen uns, Sie in unserer Praxis begrüßen zu dürfen.
-      </p>
-      <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary" style="margin-top:36px">Termin anfragen</a>
-    </div>
-  </section>
+  <CtaBand title="Bereit für Ihren ersten Termin?" />
 </Layout>
-
-<style>
-  .philo-lead {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: clamp(24px, 2.8vw, 32px);
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--ink);
-    padding-left: 24px;
-    border-left: 0.5px solid var(--gold);
-  }
-
-  .philo-body {
-    font-family: var(--ff-sans);
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--ink-mid);
-    margin-top: 32px;
-  }
-
-  .philo-closing {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: clamp(20px, 2.2vw, 26px);
-    font-weight: 400;
-    color: var(--ink);
-    margin-top: 32px;
-  }
-
-  .werte-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .wert-card {
-    background: var(--cream);
-    padding: 48px 36px;
-    transition: background .3s;
-  }
-
-  .wert-card:hover { background: var(--white); }
-
-  .wert-card__titel {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-
-  .wert-card__text {
-    font-family: var(--ff-sans);
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--ink-mid);
-    line-height: 1.7;
-  }
-
-  @media (max-width: 860px) {
-    .werte-grid { grid-template-columns: 1fr; }
-  }
-</style>

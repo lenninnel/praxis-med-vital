@@ -1,86 +1,75 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import standorte from '../../data/standorte.json';
+import PageHeader from '../../components/PageHeader.astro';
+import Reveal from '../../components/Reveal.tsx';
+import CtaBand from '../../components/CtaBand.astro';
+import { withBase } from '../../lib/base';
 
-const standort = standorte.find((s: any) => s.id === 'woerth')!;
+const s = standorte.find((x: any) => x.id === 'woerth')!;
+const details = [
+  { label: 'Adresse', value: `${s.address}, ${s.zip} ${s.city}` },
+  { label: 'Telefon', value: s.phone, href: `tel:${s.phonePlain}` },
+  { label: 'E-Mail', value: s.email, href: `mailto:${s.email}` },
+  { label: 'Parkplätze', value: s.parking },
+];
 ---
+<Layout
+  title="Standort Wörth am Main – med.vital"
+  description="Unsere Praxis in Wörth am Main: Adresse, Öffnungszeiten und Anfahrt."
+>
+  <PageHeader eyebrow="Standort" title={s.name} sub={`${s.address} · ${s.zip} ${s.city}`} />
 
-<Layout title="Standort Wörth am Main – Praxis Med Vital" description="Unsere Praxis in Wörth am Main: Adresse, Öffnungszeiten und Anfahrt.">
-  <section class="page-header">
+  <section class="section">
     <div class="container">
-      <span class="eyebrow">Standort</span>
-      <h1>{standort.name}</h1>
-      <p>{standort.address}, {standort.zip} {standort.city}</p>
-    </div>
-  </section>
+      <a href={withBase('/standorte')} class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-label text-ink-lt transition-colors hover:text-ink">← Alle Standorte</a>
 
-  <section class="sec sec--cream reveal">
-    <div class="container">
-      <a href={`${import.meta.env.BASE_URL}standorte`} class="back-link" style="margin-bottom:40px">← Alle Standorte</a>
-      <div class="standort-info" style="margin-top:24px">
-        <div>
-          <span class="eyebrow">Vor Ort</span>
-          <h2 class="section-title">Kontakt &amp; Adresse</h2>
+      <Reveal client:visible>
+        <div class="mt-10 grid gap-14 md:grid-cols-2">
+          <div>
+            <span class="eyebrow mb-5">Vor Ort</span>
+            <h2 class="font-serif text-h2 text-ink">Kontakt &amp; Adresse</h2>
+            <dl class="mt-8 divide-y divide-line border-y border-line">
+              {details.map((d) => (
+                <div class="grid grid-cols-[120px_1fr] gap-4 py-4">
+                  <dt class="font-sans text-[10px] font-semibold uppercase tracking-label text-ink-lt">{d.label}</dt>
+                  <dd class="font-sans text-[15px] font-light text-ink-mid">
+                    {d.href ? <a class="transition-colors hover:text-gold" href={d.href}>{d.value}</a> : d.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
 
-          <div style="margin-top:36px">
-            <div class="contact-detail">
-              <div class="contact-detail__icon">A</div>
-              <div class="contact-detail__text">
-                <h4>Adresse</h4>
-                <p>{standort.address}<br/>{standort.zip} {standort.city}</p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail__icon">T</div>
-              <div class="contact-detail__text">
-                <h4>Telefon</h4>
-                <p><a href={`tel:${standort.phonePlain}`}>{standort.phone}</a></p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail__icon">@</div>
-              <div class="contact-detail__text">
-                <h4>E-Mail</h4>
-                <p><a href={`mailto:${standort.email}`}>{standort.email}</a></p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail__icon">P</div>
-              <div class="contact-detail__text">
-                <h4>Parkplätze</h4>
-                <p>{standort.parking}</p>
-              </div>
-            </div>
+          <div>
+            <span class="eyebrow mb-5">Zeiten</span>
+            <h2 class="font-serif text-h2 text-ink">Öffnungszeiten</h2>
+            <table class="mt-8 w-full border-collapse">
+              {s.hours.map((h: any) => (
+                <tr class="border-b border-line">
+                  <td class="py-3.5 font-serif text-lg text-ink">{h.days}</td>
+                  <td class="py-3.5 text-right font-sans text-[14px] font-light text-ink-mid">{h.time}</td>
+                </tr>
+              ))}
+            </table>
+            <a href={withBase('/kontakt')} class="mt-8 inline-flex rounded-btn bg-gold px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">Termin anfragen</a>
           </div>
         </div>
+      </Reveal>
 
-        <div>
-          <span class="eyebrow">Zeiten</span>
-          <h2 class="section-title">Öffnungszeiten</h2>
-          <table class="hours-table" style="margin-top:24px">
-            {standort.hours.map((h: any) => (
-              <tr>
-                <td>{h.days}</td>
-                <td>{h.time}</td>
-              </tr>
-            ))}
-          </table>
-          <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary" style="margin-top:36px">Termin anfragen</a>
-        </div>
-      </div>
-
-      <div style="width:100%;height:340px;overflow:hidden;margin-top:56px;border:0.5px solid var(--border);">
+      <div class="mt-14 overflow-hidden rounded-card border border-line">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2575.5420883050356!2d9.153425276518748!3d49.794675571474464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd51b3e16e1c65%3A0xadef57eea0596f9b!2sPfarrer-Adam-Haus-Stra%C3%9Fe%205A%2C%2063939%20W%C3%B6rth%20am%20Main!5e0!3m2!1sde!2sde!4v1776924491518!5m2!1sde!2sde"
           width="100%"
-          height="340"
-          style="border:0;filter:grayscale(0.4) contrast(0.95);"
+          height="360"
+          style="border:0;filter:grayscale(0.35) contrast(0.97);"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Praxis Med Vital — Pfarrer-Adam-Haus-Str. 5a, 63939 Wörth am Main">
+          title="med.vital — Pfarrer-Adam-Haus-Str. 5a, 63939 Wörth am Main">
         </iframe>
       </div>
     </div>
   </section>
+  <CtaBand />
 </Layout>

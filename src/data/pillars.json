@@ -1,0 +1,55 @@
+{
+  "order": ["therapie", "training", "coaching"],
+  "therapie": {
+    "slug": "therapie",
+    "label": "Therapie",
+    "navTagline": "Gezielt behandeln. Nachhaltig verbessern.",
+    "kicker": "auf höchstem Niveau, individuell & ganzheitlich",
+    "intro": "In unserer Praxis verbinden wir klassische Physiotherapie mit innovativen, ganzheitlichen Methoden. Unser Ziel ist nicht die kurzfristige Symptombekämpfung, sondern eine nachhaltige Besserung — abgestimmt auf Sie und Ihre Ziele.",
+    "benefits": [
+      { "title": "Ganzheitlicher Ansatz", "text": "Wir behandeln den ganzen Menschen — nicht nur das Symptom, sondern seine Ursache." },
+      { "title": "Individuelle Befundung", "text": "Am Anfang steht ein sorgfältiger Erstbefund. Daraus entsteht Ihr persönlicher Therapieplan." },
+      { "title": "Nachhaltige Wirkung", "text": "Methoden, die über den Moment hinaus wirken — für mehr Beweglichkeit und Lebensqualität im Alltag." }
+    ],
+    "servicesTitle": "Unsere Therapiebereiche",
+    "servicesSource": "leistungen"
+  },
+  "training": {
+    "slug": "training",
+    "label": "Training",
+    "navTagline": "Gezielt stärken. Leistung steigern.",
+    "kicker": "für mehr Kraft, Vitalität & Lebensfreude",
+    "intro": "Training ist die natürliche Fortsetzung jeder guten Therapie. Auf modernen Geräten und mit fachlicher Begleitung bauen Sie gezielt Kraft, Ausdauer und Koordination auf — präventiv oder als Anschluss an Ihre Behandlung.",
+    "benefits": [
+      { "title": "Für jedes Level", "text": "Vom Wiedereinstieg nach Verletzung bis zum ambitionierten Training — wir holen Sie dort ab, wo Sie stehen." },
+      { "title": "Moderne Geräte", "text": "Gerätegestütztes Training auf professionellem Niveau, fachlich angeleitet und sicher." },
+      { "title": "Vielfalt", "text": "Von Prävention über Ausdauer bis zum freien Training — Sie wählen, was zu Ihrem Ziel passt." }
+    ],
+    "servicesTitle": "Unsere Trainingsleistungen",
+    "services": [
+      { "name": "Präventionstraining (§20 SGB V)", "text": "Gelenkschonendes Ganzkörpertraining zur Vorbeugung — von vielen Krankenkassen bezuschusst." },
+      { "name": "Gerätetraining (KGG)", "text": "Gerätegestützte Therapie zur gezielten Kräftigung und Rehabilitation." },
+      { "name": "Ausdauertraining", "text": "Aufbau von Kondition und Herz-Kreislauf-Funktion — in Ihrem Tempo." },
+      { "name": "Orthopädisches Zirkeltraining", "text": "Besonders gelenkschonendes Zirkeltraining — auch bei starken Einschränkungen geeignet." },
+      { "name": "Freies Training", "text": "Nutzen Sie unsere Trainingsfläche eigenständig nach fachlicher Einweisung." }
+    ]
+  },
+  "coaching": {
+    "slug": "coaching",
+    "label": "Coaching",
+    "navTagline": "Ziele definieren. Potenzial entfalten.",
+    "kicker": "für nachhaltige Gesundheit & ein bewusstes Leben",
+    "intro": "Gesundheit endet nicht an der Praxistür. Im Coaching schauen wir auf das große Ganze — Ernährung, Bewegung, Stress und Alltag — und entwickeln gemeinsam Gewohnheiten, die dauerhaft tragen.",
+    "benefits": [
+      { "title": "Ganzheitlicher Blick", "text": "Wir betrachten Gesundheit als Zusammenspiel von Körper, Bewegung und Lebensstil." },
+      { "title": "Alltagstauglich", "text": "Strategien, die sich in Ihren Alltag integrieren lassen — kein starres Programm." },
+      { "title": "Begleitung", "text": "Wir gehen den Weg mit Ihnen: nachvollziehbar, motivierend und auf Sie zugeschnitten." }
+    ],
+    "servicesTitle": "Unsere Coaching-Angebote",
+    "services": [
+      { "name": "Ernährungscoaching", "text": "Individuelle Strategien für eine gesunde, alltagstaugliche Ernährung — abgestimmt auf Ihre Ziele." },
+      { "name": "Stressmanagement & mentale Balance", "text": "Wege zu mehr Gelassenheit: Stress erkennen, regulieren und nachhaltig ausgleichen." },
+      { "name": "Lebensstil-Integration", "text": "Gesunde Gewohnheiten Schritt für Schritt verankern — Bewegung, Erholung und Ernährung im Einklang." }
+    ]
+  }
+}

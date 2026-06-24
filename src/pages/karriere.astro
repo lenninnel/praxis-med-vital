@@ -1,20 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import site from '../data/site.json';
+import PageHeader from '../components/PageHeader.astro';
+import Reveal from '../components/Reveal.tsx';
 
 const vorteile = [
-  {
-    titel: 'Zwei Standorte',
-    text: 'Wörth am Main und bald Erlenbach — Entwicklungsmöglichkeiten an beiden Standorten.',
-  },
-  {
-    titel: 'Spezialisierung',
-    text: 'Wir fördern Fortbildungen in Applied Kinesiology, Cranio Concept, Mulligan und weiteren Spezialmethoden.',
-  },
-  {
-    titel: 'Team',
-    text: 'Kleine Praxis, echtes Miteinander — drei Inhaber die selbst behandeln und immer ansprechbar sind.',
-  },
+  { titel: 'Zwei Standorte', text: 'Wörth am Main und bald Erlenbach — Entwicklungsmöglichkeiten an beiden Standorten.' },
+  { titel: 'Spezialisierung', text: 'Wir fördern Fortbildungen in Applied Kinesiology, Cranio Concept, Mulligan und weiteren Methoden.' },
+  { titel: 'Echtes Team', text: 'Kleine Praxis, echtes Miteinander — drei Inhaber, die selbst behandeln und immer ansprechbar sind.' },
 ];
 
 const stellen = [
@@ -28,176 +21,69 @@ const stellen = [
   },
   {
     titel: 'Initiativbewerbung',
-    ort: 'Wörth am Main · Erlenbach am Main',
+    ort: 'Wörth · Erlenbach',
     art: 'Alle Qualifikationen willkommen',
     text: 'Sie finden keine passende Stelle? Schicken Sie uns trotzdem Ihre Unterlagen — wir freuen uns über engagierte Menschen, die zu uns passen.',
     cta: 'Initiativ bewerben',
-    href: `mailto:${site.email}?subject=${encodeURIComponent('Initiativbewerbung Med Vital')}`,
+    href: `mailto:${site.email}?subject=${encodeURIComponent('Initiativbewerbung med.vital')}`,
   },
 ];
 ---
+<Layout
+  title="Karriere – med.vital"
+  description="Werde Teil unseres Teams. Offene Stellen und Initiativbewerbungen bei med.vital — Wörth am Main und Erlenbach."
+>
+  <PageHeader eyebrow="Karriere" title="Werde Teil unseres Teams" sub="Wir wachsen — und suchen Menschen, die Therapie genauso lieben wie wir." />
 
-<Layout title="Karriere – Praxis Med Vital" description="Werde Teil unseres Teams. Offene Stellen und Initiativbewerbungen in der Praxis Med Vital — Wörth am Main und Erlenbach am Main.">
-  <section class="page-header">
+  <section class="section">
     <div class="container">
-      <span class="eyebrow">Karriere</span>
-      <h1>Werde Teil unseres Teams</h1>
-      <p>Wir wachsen — und suchen Menschen, die Physiotherapie genauso lieben wie wir.</p>
-    </div>
-  </section>
-
-  <section class="sec sec--cream reveal">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:56px">
-        <span class="eyebrow">Warum Med Vital</span>
-        <h2 class="section-title">Was uns ausmacht</h2>
-      </div>
-      <div class="vorteile-grid">
-        {vorteile.map((v) => (
-          <div class="vorteil-card">
-            <h3 class="vorteil-card__titel">{v.titel}</h3>
-            <p class="vorteil-card__text">{v.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--white reveal">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:56px">
-        <span class="eyebrow">Offene Stellen</span>
-        <h2 class="section-title">Aktuell suchen wir</h2>
-      </div>
-      <div class="stellen-grid">
-        {stellen.map((s) => (
-          <article class="stelle-card">
-            <h3 class="stelle-card__titel">{s.titel}</h3>
-            <div class="stelle-card__meta">
-              <span class="stelle-card__tag">{s.ort}</span>
-              <span class="stelle-card__tag">{s.art}</span>
+      <Reveal client:visible>
+        <div class="text-center">
+          <span class="eyebrow eyebrow--center mb-5">Warum med.vital</span>
+          <h2 class="font-serif text-h2 text-ink">Was uns ausmacht</h2>
+        </div>
+        <div class="mx-auto mt-14 grid max-w-4xl gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-3">
+          {vorteile.map((v) => (
+            <div class="bg-cream p-10">
+              <h3 class="font-serif text-2xl text-ink">{v.titel}</h3>
+              <p class="mt-3 font-sans text-[14px] font-light leading-relaxed text-ink-mid">{v.text}</p>
             </div>
-            <p class="stelle-card__text">{s.text}</p>
-            <a href={s.href} class="btn-primary stelle-card__cta">{s.cta}</a>
-          </article>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
     </div>
   </section>
 
-  <section class="sec sec--ink reveal">
-    <div class="container text-center">
-      <span class="eyebrow">Persönlich</span>
-      <h2 class="section-title">Fragen zur Stelle?</h2>
-      <p class="section-sub">
-        Sprechen Sie uns einfach an — Sven, Chris oder Kai sind persönlich erreichbar.
-      </p>
-      <a href={`tel:${site.phonePlain}`} class="btn-primary" style="margin-top:36px">{site.phone}</a>
+  <section class="section bg-cream-dk">
+    <div class="container">
+      <Reveal client:visible>
+        <div class="text-center">
+          <span class="eyebrow eyebrow--center mb-5">Offene Stellen</span>
+          <h2 class="font-serif text-h2 text-ink">Aktuell suchen wir</h2>
+        </div>
+        <div class="mx-auto mt-14 grid max-w-4xl gap-8 md:grid-cols-2">
+          {stellen.map((s) => (
+            <article class="flex flex-col gap-5 rounded-card border border-line bg-cream p-10">
+              <h3 class="font-serif text-[26px] leading-tight text-ink">{s.titel}</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-pill border border-parchment px-3 py-1 font-sans text-[9px] font-medium uppercase tracking-label text-ink-mid">{s.ort}</span>
+                <span class="rounded-pill border border-parchment px-3 py-1 font-sans text-[9px] font-medium uppercase tracking-label text-ink-mid">{s.art}</span>
+              </div>
+              <p class="font-sans text-[14px] font-light leading-relaxed text-ink-mid">{s.text}</p>
+              <a href={s.href} class="mt-auto inline-flex w-fit rounded-btn bg-gold px-7 py-3.5 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">{s.cta}</a>
+            </article>
+          ))}
+        </div>
+      </Reveal>
     </div>
+  </section>
+
+  <section class="bg-sage px-[8%] py-24 text-center">
+    <Reveal client:visible>
+      <span class="eyebrow eyebrow--center mb-5 !text-cream/50">Persönlich</span>
+      <h2 class="font-serif text-h2 text-cream/95">Fragen zur Stelle?</h2>
+      <p class="mx-auto mt-4 max-w-md font-sans text-[15px] font-light text-cream/55">Sprechen Sie uns einfach an — Sven, Chris oder Kai sind persönlich erreichbar.</p>
+      <a href={`tel:${site.phonePlain}`} class="mt-8 inline-flex rounded-btn bg-cream px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors hover:bg-white">{site.phone}</a>
+    </Reveal>
   </section>
 </Layout>
-
-<style>
-  .vorteile-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .vorteil-card {
-    background: var(--cream);
-    padding: 48px 36px;
-    transition: background .3s;
-  }
-  .vorteil-card:hover { background: var(--white); }
-
-  .vorteil-card__titel {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-
-  .vorteil-card__text {
-    font-family: var(--ff-sans);
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--ink-mid);
-    line-height: 1.7;
-  }
-
-  .stellen-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    max-width: 960px;
-    margin: 0 auto;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .stelle-card {
-    background: var(--cream);
-    padding: 48px 44px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    transition: background .3s;
-  }
-  .stelle-card:hover { background: var(--white); }
-
-  .stelle-card__titel {
-    font-family: var(--ff-serif);
-    font-style: italic;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.15;
-  }
-
-  .stelle-card__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .stelle-card__tag {
-    display: inline-block;
-    padding: 5px 12px;
-    background: transparent;
-    border: 0.5px solid var(--parchment);
-    border-radius: 0;
-    font-family: var(--ff-sans);
-    font-size: 9px;
-    font-weight: 400;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--ink-mid);
-  }
-
-  .stelle-card__text {
-    font-family: var(--ff-sans);
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--ink-mid);
-    line-height: 1.75;
-  }
-
-  .stelle-card__cta {
-    margin-top: auto;
-    align-self: flex-start;
-  }
-
-  @media (max-width: 860px) {
-    .vorteile-grid,
-    .stellen-grid { grid-template-columns: 1fr; }
-    .stelle-card { padding: 36px 32px; }
-  }
-</style>

@@ -1,0 +1,53 @@
+---
+import { withBase } from '../lib/base';
+interface Props {
+  ratio?: string;        // e.g. '4 / 5', '16 / 9', '1 / 1'
+  label?: string;
+  sublabel?: string;
+  src?: string | null;   // when a real image exists, pass its path
+  alt?: string;
+  rounded?: boolean;
+  class?: string;
+}
+const {
+  ratio = '4 / 5',
+  label = 'Foto folgt',
+  sublabel = 'Platzhalter',
+  src = null,
+  alt = '',
+  rounded = true,
+  class: cls = '',
+} = Astro.props;
+const radius = rounded ? 'rounded-card' : '';
+---
+{src ? (
+  <img
+    src={withBase(src)}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    class={`h-full w-full object-cover ${radius} ${cls}`}
+    style={`aspect-ratio:${ratio}`}
+  />
+) : (
+  <div
+    class={`relative flex items-center justify-center overflow-hidden bg-cream-dk ${radius} ${cls}`}
+    style={`aspect-ratio:${ratio}`}
+    role="img"
+    aria-label={alt || label}
+  >
+    <div class="pointer-events-none absolute inset-3 rounded-[14px] border border-line/70"></div>
+    <div class="px-6 text-center text-ink-lt">
+      <svg class="mx-auto mb-4 opacity-50" viewBox="0 0 48 48" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="6" y="6" width="36" height="36" rx="3" />
+        <circle cx="18" cy="19" r="3" />
+        <path d="M6 33l10-10 15 15" />
+        <path d="M28 27l6-6 8 8" />
+      </svg>
+      <p class="font-serif text-lg text-ink-mid">{label}</p>
+      {sublabel && (
+        <p class="mt-1 font-sans text-[10px] font-semibold uppercase tracking-label text-ink-lt">{sublabel}</p>
+      )}
+    </div>
+  </div>
+)}
