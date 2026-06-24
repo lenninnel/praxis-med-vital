@@ -1,0 +1,17 @@
+---
+// Monochrome wordmark strip. Swap these text wordmarks for official logo SVGs
+// when available (kept as text to avoid trademark/asset issues for now).
+const kassen = ['AOK', 'Techniker Krankenkasse', 'BARMER', 'DAK·Gesundheit', 'IKK classic', 'Knappschaft', 'hkk'];
+---
+<section class="border-y border-line bg-white/60 px-[6%] py-10">
+  <div class="mx-auto max-w-6xl">
+    <p class="text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-lt">
+      Wir rechnen mit allen gesetzlichen Krankenkassen ab
+    </p>
+    <div class="mt-7 flex flex-wrap items-center justify-center gap-x-12 gap-y-5">
+      {kassen.map((k) => (
+        <span class="font-serif text-lg tracking-wide text-ink-mid/70 transition-colors duration-300 hover:text-ink">{k}</span>
+      ))}
+    </div>
+  </div>
+</section>
