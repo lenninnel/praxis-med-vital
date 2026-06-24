@@ -49,7 +49,7 @@ const behzeitNum = behandlungszeit.replace(/\s*Minuten?\s*$/i, '').trim();
                       <h3 class="acc-list__name">{l.name}</h3>
                       <p class="acc-list__desc">{l.desc}</p>
                       {l.detail && (
-                        <a href={l.detail} class="acc-list__link">Mehr erfahren →</a>
+                        <a href={import.meta.env.BASE_URL + l.detail.replace(/^\//, '')} class="acc-list__link">Mehr erfahren →</a>
                       )}
                     </li>
                   ))}

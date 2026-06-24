@@ -41,8 +41,8 @@ import Layout from '../../layouts/Layout.astro';
       </div>
 
       <div style="margin-top:40px">
-        <a href="/kontakt" class="btn-primary">Termin anfragen</a>
-        <a href="/leistungen#spezialisierung" class="btn-ghost btn-ghost--dark" style="margin-left:12px">← Zurück zu Spezialisierung</a>
+        <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary">Termin anfragen</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen#spezialisierung`} class="btn-ghost btn-ghost--dark" style="margin-left:12px">← Zurück zu Spezialisierung</a>
       </div>
     </div>
   </section>

@@ -19,7 +19,7 @@ const {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -30,22 +30,22 @@ const {
   <!-- Header -->
   <header class="site-header">
     <nav class="nav">
-      <a href="/" class="nav__brand">
+      <a href={import.meta.env.BASE_URL} class="nav__brand">
         <span class="nav__logo">Med <span>Vital</span></span>
         <span class="nav__tagline">Praxis &middot; Wörth am Main</span>
       </a>
 
       <div class="nav__links" id="nav-links">
-        <a href="/ueber-uns" class="nav__link">Über uns</a>
-        <a href="/team" class="nav__link">Team</a>
-        <a href="/leistungen" class="nav__link">Leistungen</a>
-        <a href="/faq" class="nav__link">FAQ</a>
-        <a href="/standorte" class="nav__link">Standorte</a>
-        <a href="/kontakt" class="nav__link">Kontakt</a>
+        <a href={`${import.meta.env.BASE_URL}ueber-uns`} class="nav__link">Über uns</a>
+        <a href={`${import.meta.env.BASE_URL}team`} class="nav__link">Team</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`} class="nav__link">Leistungen</a>
+        <a href={`${import.meta.env.BASE_URL}faq`} class="nav__link">FAQ</a>
+        <a href={`${import.meta.env.BASE_URL}standorte`} class="nav__link">Standorte</a>
+        <a href={`${import.meta.env.BASE_URL}kontakt`} class="nav__link">Kontakt</a>
       </div>
 
       <div class="nav__actions">
-        <a href="/kontakt" class="btn-primary nav__cta">Termin anfragen</a>
+        <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary nav__cta">Termin anfragen</a>
         <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen" aria-controls="nav-links" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -69,31 +69,31 @@ const {
       </div>
       <div class="footer-col">
         <h4 class="footer-col__title">Leistungen</h4>
-        <a href="/leistungen">Manuelle Therapie</a>
-        <a href="/leistungen">Lymphdrainage</a>
-        <a href="/leistungen">Krankengymnastik</a>
-        <a href="/leistungen">Heilpraktiker</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`}>Manuelle Therapie</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`}>Lymphdrainage</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`}>Krankengymnastik</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`}>Heilpraktiker</a>
       </div>
       <div class="footer-col">
         <h4 class="footer-col__title">Praxis</h4>
-        <a href="/ueber-uns">Über uns</a>
-        <a href="/team">Team</a>
-        <a href="/standorte">Standorte</a>
-        <a href="/karriere">Karriere</a>
-        <a href="/kontakt">Kontakt</a>
+        <a href={`${import.meta.env.BASE_URL}ueber-uns`}>Über uns</a>
+        <a href={`${import.meta.env.BASE_URL}team`}>Team</a>
+        <a href={`${import.meta.env.BASE_URL}standorte`}>Standorte</a>
+        <a href={`${import.meta.env.BASE_URL}karriere`}>Karriere</a>
+        <a href={`${import.meta.env.BASE_URL}kontakt`}>Kontakt</a>
       </div>
       <div class="footer-col">
         <h4 class="footer-col__title">Kontakt</h4>
         <a href={`tel:${site.phonePlain}`}>{site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
-        <a href="/impressum">Impressum</a>
-        <a href="/datenschutz">Datenschutz</a>
+        <a href={`${import.meta.env.BASE_URL}impressum`}>Impressum</a>
+        <a href={`${import.meta.env.BASE_URL}datenschutz`}>Datenschutz</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; {new Date().getFullYear()} Praxis Med Vital &middot; Wehrheim, Kenner &amp; Hurth GbR</span>
       <span>
-        <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a>
+        <a href={`${import.meta.env.BASE_URL}impressum`}>Impressum</a> &middot; <a href={`${import.meta.env.BASE_URL}datenschutz`}>Datenschutz</a>
       </span>
     </div>
   </footer>
@@ -102,7 +102,7 @@ const {
   <div class="cookie-banner" id="cookie-banner">
     <p class="cookie-banner__text">
       Wir verwenden technisch notwendige Cookies.
-      <a href="/datenschutz">Datenschutzerklärung</a>
+      <a href={`${import.meta.env.BASE_URL}datenschutz`}>Datenschutzerklärung</a>
     </p>
     <div class="cookie-banner__actions">
       <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookie-accept">Akzeptieren</button>

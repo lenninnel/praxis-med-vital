@@ -23,8 +23,8 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
         Behandlungsmethoden — individuell auf Sie abgestimmt.
       </p>
       <div class="hero__actions">
-        <a href="/kontakt" class="btn-primary">Termin anfragen</a>
-        <a href="/leistungen" class="btn-ghost">Unsere Leistungen →</a>
+        <a href={`${import.meta.env.BASE_URL}kontakt`} class="btn-primary">Termin anfragen</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`} class="btn-ghost">Unsere Leistungen →</a>
       </div>
       <a href={`tel:${site.phonePlain}`} class="hero__tel">
         <span class="hero__tel-icon" aria-hidden="true">📞</span>
@@ -73,7 +73,7 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
         <p style="font-size:15px;font-weight:300;color:var(--ink-mid);margin-top:14px">
           Mit unserem besonders gelenkschonenden orthopädisch-koordinativen Trainingszirkel haben wir zusätzliche Möglichkeiten, Patienten intensiver zu behandeln — selbst starke Einschränkungen können hier trainiert werden.
         </p>
-        <a href="/ueber-uns" class="btn-ghost btn-ghost--dark" style="margin-top:28px">Mehr erfahren →</a>
+        <a href={`${import.meta.env.BASE_URL}ueber-uns`} class="btn-ghost btn-ghost--dark" style="margin-top:28px">Mehr erfahren →</a>
       </div>
       <div style="background:var(--g50);border-radius:6px;padding:48px 36px;text-align:center">
         <span style="font-size:48px;display:block;margin-bottom:16px;opacity:.7">✦</span>
@@ -112,7 +112,7 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
         ))}
       </div>
       <div style="text-align:center;margin-top:40px">
-        <a href="/team" class="btn-ghost btn-ghost--dark">Zum Team →</a>
+        <a href={`${import.meta.env.BASE_URL}team`} class="btn-ghost btn-ghost--dark">Zum Team →</a>
       </div>
     </div>
   </section>
@@ -130,7 +130,7 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
     <div class="container" style="margin-top:48px">
       <div class="kategorien-grid">
         {kategorien.map((kat: any) => (
-          <a href={`/leistungen#${kat.id}`} class="kategorie-card">
+          <a href={`${import.meta.env.BASE_URL}leistungen#${kat.id}`} class="kategorie-card">
             <span class="kategorie-card__num">{kat.num}</span>
             <h3 class="kategorie-card__title">{kat.titel}</h3>
             <p class="kategorie-card__desc">{kat.beschreibung}</p>
@@ -144,7 +144,7 @@ const woerth = standorte.find((s: any) => s.id === 'woerth')!;
         ))}
       </div>
       <div style="text-align:center;margin-top:40px">
-        <a href="/leistungen" class="btn-ghost btn-ghost--dark">Alle Leistungen →</a>
+        <a href={`${import.meta.env.BASE_URL}leistungen`} class="btn-ghost btn-ghost--dark">Alle Leistungen →</a>
       </div>
     </div>
   </section>

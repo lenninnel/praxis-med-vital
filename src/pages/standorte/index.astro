@@ -29,7 +29,7 @@ import standorte from '../../data/standorte.json';
                 <p style="font-size:14px;font-weight:300;color:var(--ink-mid)">
                   Tel: <a href={`tel:${s.phonePlain}`} style="color:var(--g700)">{s.phone}</a>
                 </p>
-                <a href={`/standorte/${s.id}`} class="btn-ghost btn-ghost--dark" style="margin-top:20px">Details ansehen →</a>
+                <a href={`${import.meta.env.BASE_URL}standorte/${s.id}`} class="btn-ghost btn-ghost--dark" style="margin-top:20px">Details ansehen →</a>
               </>
             ) : (
               <p style="font-size:14px;font-weight:300;color:var(--ink-mid)">
