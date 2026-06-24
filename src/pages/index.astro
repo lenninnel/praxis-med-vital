@@ -6,28 +6,22 @@ import pillars from '../data/pillars.json';
 import standorte from '../data/standorte.json';
 import faqs from '../data/faq.json';
 import Reveal from '../components/Reveal.tsx';
-import Button from '../components/Button.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import PillarCard from '../components/PillarCard.astro';
 import LocationCard from '../components/LocationCard.astro';
 import TeamCard from '../components/TeamCard.astro';
 import FaqAccordion from '../components/FaqAccordion.tsx';
 import CountUp from '../components/CountUp.tsx';
-import Marquee from '../components/Marquee.tsx';
 import Testimonials from '../components/Testimonials.tsx';
+import Journey from '../components/Journey.tsx';
+import TrustStrip from '../components/TrustStrip.astro';
+import Button from '../components/Button.astro';
 import { withBase } from '../lib/base';
 
 const pillarImages: Record<string, string> = {
-  therapie: '/img/therapie.png',
-  training: '/img/training.png',
-  coaching: '/img/coaching.png',
+  therapie: '/img/therapie.png', training: '/img/training.png', coaching: '/img/coaching.png',
 };
 const pillarList = pillars.order.map((slug) => ({ slug, image: pillarImages[slug], ...(pillars as any)[slug] }));
-
-const methods = [
-  'Manuelle Therapie', 'Lymphdrainage', 'Applied Kinesiology', 'Cranio Concept',
-  'Krankengymnastik', 'Bobath', 'Atlas Therapie', 'CMD', 'Trainingstherapie', 'Prävention',
-];
 
 const reviews = [
   { text: 'Einfach super! Ich kann diese Praxis wirklich sehr empfehlen. Das ganze Team ist mega nett und total engagiert — dort ist man in besten Händen.', author: 'Patient · Google Bewertung' },
@@ -35,56 +29,44 @@ const reviews = [
 ];
 ---
 <Layout headerOffset={false}>
-  {/* ============ HERO ============ */}
-  <section class="relative grid min-h-[100svh] grid-cols-1 md:grid-cols-[1fr_1.08fr]">
-    <div class="relative z-10 flex flex-col justify-center px-[8%] pb-20 pt-32 md:pt-[88px]">
+  {/* ============ FULL-BLEED CINEMATIC HERO ============ */}
+  <section class="relative min-h-[100svh] w-full overflow-hidden bg-ink">
+    <img src={withBase('/img/hero-room.png')} alt="Ruhiger Behandlungsraum bei med.vital" class="absolute inset-0 h-full w-full object-cover animate-kenburns" />
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-ink/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30"></div>
+
+    <div class="relative z-10 flex min-h-[100svh] flex-col justify-center px-[8%] pb-28 pt-[88px]">
       <Reveal client:load>
-        <span class="eyebrow mb-7">{site.tagline}</span>
-        <h1 class="font-serif text-display text-ink">
-          High-End Therapie —<br /><em class="italic text-gold">direkt bei Ihnen</em>
+        <span class="inline-flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-cream/65">
+          <span class="h-px w-7 bg-gold-lt"></span>{site.tagline}
+        </span>
+        <h1 class="mt-7 max-w-[15ch] font-serif text-cream" style="font-size:clamp(2.75rem,6.5vw,5.5rem);line-height:1.0;letter-spacing:-0.01em">
+          High-End Therapie —<br /><em class="italic text-gold-lt">direkt bei Ihnen</em>
         </h1>
-        <p class="lede mt-7 text-[17px]">
+        <p class="mt-8 max-w-xl font-sans text-[17px] font-light leading-relaxed text-cream/80">
           Ganzheitliche Therapie, modernes Training und persönliches Coaching — individuell auf
           Sie abgestimmt, in Wörth am Main und Erlenbach.
         </p>
-        <div class="mt-9 space-y-5">
-          <div class="flex items-start gap-4">
-            <span class="mt-0.5 grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-gold/40 text-gold">
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 9 7 13 15 5"/></svg>
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <a href={withBase(site.nav.cta.href)} class="rounded-btn bg-gold px-9 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors duration-300 hover:bg-gold-dk">Termin vereinbaren</a>
+          <a href={`tel:${site.phonePlain}`} class="group inline-flex items-center gap-3 font-serif text-2xl italic text-cream/90 transition-colors hover:text-gold-lt">
+            <span class="grid h-10 w-10 place-items-center rounded-full border border-cream/30 transition-colors group-hover:border-gold-lt">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </span>
-            <div>
-              <p class="font-sans text-[14px] font-semibold text-ink">Individuell. Präzise. Auf höchstem Niveau.</p>
-              <p class="font-sans text-[13px] font-light text-ink-mid">Moderne Methoden, abgestimmt auf Ihren Körper und Ihre Ziele.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <span class="mt-0.5 grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-gold/40 text-gold">
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 16s5-4.6 5-8a5 5 0 0 0-10 0c0 3.4 5 8 5 8z"/><circle cx="9" cy="8" r="1.6"/></svg>
-            </span>
-            <div>
-              <p class="font-sans text-[14px] font-semibold text-ink">2× in Ihrer Nähe</p>
-              <p class="font-sans text-[13px] font-light text-ink-mid">Wörth am Main — und bald auch Erlenbach.</p>
-            </div>
-          </div>
-        </div>
-        <div class="mt-10 flex flex-wrap items-center gap-7">
-          <Button href={site.nav.cta.href} variant="primary">Termin vereinbaren</Button>
-          <a href={`tel:${site.phonePlain}`} class="font-serif text-2xl text-ink-mid transition-colors hover:text-gold">{site.phone}</a>
+            {site.phone}
+          </a>
         </div>
       </Reveal>
     </div>
 
-    {/* cinematic hero image */}
-    <div class="relative min-h-[46vh] overflow-hidden bg-cream-dk md:min-h-full">
-      <img src={withBase('/img/hero-room.png')} alt="Ruhiger Behandlungsraum bei med.vital" class="absolute inset-0 h-full w-full object-cover animate-kenburns" />
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-cream/35 via-transparent to-transparent"></div>
-    </div>
-
-    <div class="pointer-events-none absolute bottom-7 left-[8%] z-10 hidden items-center gap-3 text-ink-mid md:flex">
-      <span class="font-sans text-[10px] font-semibold uppercase tracking-label">Entdecken</span>
-      <span class="block h-8 w-px bg-gradient-to-b from-gold to-transparent"></span>
+    <div class="pointer-events-none absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-cream/60">
+      <span class="font-sans text-[9px] font-semibold uppercase tracking-label">Entdecken</span>
+      <span class="h-10 w-px animate-pulse bg-gradient-to-b from-gold-lt to-transparent"></span>
     </div>
   </section>
+
+  {/* ============ KRANKENKASSEN TRUST ============ */}
+  <TrustStrip />
 
   {/* ============ STATS ============ */}
   <section class="bg-stone px-[8%] py-16">
@@ -108,12 +90,25 @@ const reviews = [
     </div>
   </section>
 
-  {/* ============ PILLARS (image cards) ============ */}
+  {/* ============ INTERACTIVE JOURNEY (signature) ============ */}
   <section class="section">
     <div class="container">
       <Reveal client:visible>
+        <SectionHeading center eyebrow="Ihr Weg bei med.vital" title="Von der Diagnose bis zum Alltag"
+          sub="Therapie, Training und Coaching greifen ineinander — ein durchdachter Weg, der über die Behandlung hinaus trägt." />
+      </Reveal>
+      <div class="mt-14">
+        <Journey client:visible />
+      </div>
+    </div>
+  </section>
+
+  {/* ============ PILLARS (image cards) ============ */}
+  <section class="section bg-cream-dk">
+    <div class="container">
+      <Reveal client:visible>
         <SectionHeading center eyebrow="Leistungen" title="Drei Wege zu Ihrer Gesundheit"
-          sub="Therapie, Training und Coaching greifen ineinander — vom ersten Befund bis zum nachhaltigen Alltag." />
+          sub="Wählen Sie den Bereich, der zu Ihnen passt — oder lassen Sie uns gemeinsam den richtigen finden." />
       </Reveal>
       <Reveal client:visible delay={0.05}>
         <div class="mt-14 grid gap-6 md:grid-cols-3">
@@ -125,51 +120,40 @@ const reviews = [
     </div>
   </section>
 
-  {/* ============ METHODS MARQUEE ============ */}
-  <Marquee client:visible items={methods} />
-
-  {/* ============ ÜBER UNS ============ */}
-  <section class="section">
-    <div class="container">
+  {/* ============ FULL-BLEED STATEMENT (moody) ============ */}
+  <section class="relative overflow-hidden bg-ink">
+    <img src={withBase('/img/coaching.png')} alt="" class="absolute inset-0 h-full w-full object-cover opacity-70 animate-kenburns" />
+    <div class="absolute inset-0 bg-ink/70"></div>
+    <div class="relative z-10 px-[8%] py-32 text-center">
       <Reveal client:visible>
-        <div class="grid items-center gap-16 lg:grid-cols-2">
-          <div>
-            <SectionHeading eyebrow="Über uns" title="Mehr als klassische Physiotherapie"
-              sub="In unserer Praxis verbinden wir bewährte Physiotherapie mit innovativen, ganzheitlichen Methoden. Unser Ziel ist nachhaltige Besserung — nicht nur Symptombekämpfung." />
-            <p class="lede mt-5 text-[15px]">
-              Jeder Mensch erhält bei uns einen individuellen Plan. Mit unserem besonders
-              gelenkschonenden orthopädisch-koordinativen Trainingszirkel können selbst starke
-              Einschränkungen trainiert werden.
-            </p>
-            <Button href="/ueber-uns" variant="ghost" class="mt-8" arrow>Mehr erfahren</Button>
-          </div>
-          <div class="relative flex items-center justify-center rounded-card border border-line bg-cream-dk px-10 py-16 text-center">
-            <div>
-              <span class="font-serif text-6xl text-gold">+</span>
-              <p class="mx-auto mt-5 max-w-sm font-serif text-2xl italic leading-snug text-ink">
-                Ganzheitlich &amp; individuell — wir behandeln den ganzen Menschen, nicht nur das Symptom.
-              </p>
-            </div>
-          </div>
-        </div>
+        <span class="inline-flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-cream/60">
+          <span class="h-px w-7 bg-gold-lt"></span>Über uns
+        </span>
+        <h2 class="mx-auto mt-6 max-w-3xl font-serif text-cream" style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.1">
+          Mehr als klassische Physiotherapie — wir behandeln den <em class="italic text-gold-lt">ganzen Menschen</em>.
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl font-sans text-[16px] font-light leading-relaxed text-cream/70">
+          Bewährte Physiotherapie, verbunden mit innovativen, ganzheitlichen Methoden. Unser Ziel ist
+          nachhaltige Besserung — nicht nur Symptombekämpfung.
+        </p>
+        <a href={withBase('/ueber-uns')} class="mt-9 inline-flex items-center gap-2 border-b border-gold-lt pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-cream transition-colors hover:text-gold-lt">
+          Unsere Philosophie →
+        </a>
       </Reveal>
     </div>
   </section>
 
   {/* ============ STANDORTE ============ */}
-  <section class="section bg-stone-lt">
+  <section class="section">
     <div class="container">
       <Reveal client:visible>
         <SectionHeading center eyebrow="Standorte" title="2× in Ihrer Nähe"
           sub="Persönliche Therapie an zwei Standorten im Main-Tal — kurze Wege, vertraute Gesichter." />
         <div class="mt-14 grid gap-8 md:grid-cols-2">
           {standorte.map((s: any) => (
-            <LocationCard
-              name={s.name} status={s.status} address={s.address} zip={s.zip} city={s.city}
+            <LocationCard name={s.name} status={s.status} address={s.address} zip={s.zip} city={s.city}
               phone={s.phone} phonePlain={s.phonePlain} email={s.email}
-              image={s.id === 'woerth' ? '/img/standort-woerth.png' : null}
-              href={`/standorte/${s.id}`}
-            />
+              image={s.id === 'woerth' ? '/img/standort-woerth.png' : null} href={`/standorte/${s.id}`} />
           ))}
         </div>
       </Reveal>
@@ -177,7 +161,7 @@ const reviews = [
   </section>
 
   {/* ============ TEAM ============ */}
-  <section class="section">
+  <section class="section bg-stone-lt">
     <div class="container">
       <Reveal client:visible>
         <SectionHeading center eyebrow="Unser Team" title="Kompetenz trifft Leidenschaft"
@@ -188,21 +172,17 @@ const reviews = [
               bio={m.bio} tags={m.tags} initials={m.initials} photo={m.photo} />
           ))}
         </div>
-        <div class="mt-12 text-center">
-          <Button href="/team" variant="ghost" arrow>Zum Team</Button>
-        </div>
+        <div class="mt-12 text-center"><Button href="/team" variant="ghost" arrow>Zum Team</Button></div>
       </Reveal>
     </div>
   </section>
 
   {/* ============ TESTIMONIALS ============ */}
-  <section class="section bg-sage-lt">
+  <section class="section">
     <div class="container">
       <Reveal client:visible>
         <SectionHeading center eyebrow="Patientenstimmen" title="Was unsere Patienten sagen" />
-        <div class="mt-12">
-          <Testimonials client:visible items={reviews} />
-        </div>
+        <div class="mt-12"><Testimonials client:visible items={reviews} /></div>
         <div class="mt-10 text-center">
           <a href="https://maps.google.com/?q=Pfarrer-Adam-Haus-Str.+5a,+63939+W%C3%B6rth+am+Main" target="_blank" rel="noopener noreferrer"
              class="inline-flex border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-ink transition-colors hover:text-gold">
@@ -214,31 +194,31 @@ const reviews = [
   </section>
 
   {/* ============ FAQ TEASER ============ */}
-  <section class="section">
+  <section class="section bg-cream-dk">
     <div class="container">
       <Reveal client:visible>
         <SectionHeading center eyebrow="Häufige Fragen" title="Rund um Ihren Termin"
           sub="Die wichtigsten Antworten von der Rezeptannahme bis zur ersten Behandlung." />
-        <div class="mt-12">
-          <FaqAccordion client:visible items={faqs} limit={4} />
-        </div>
-        <div class="mt-12 text-center">
-          <Button href="/faq" variant="ghost" arrow>Alle Fragen ansehen</Button>
-        </div>
+        <div class="mt-12"><FaqAccordion client:visible items={faqs} limit={4} /></div>
+        <div class="mt-12 text-center"><Button href="/faq" variant="ghost" arrow>Alle Fragen ansehen</Button></div>
       </Reveal>
     </div>
   </section>
 
-  {/* ============ CTA ============ */}
-  <section class="bg-sage px-[8%] py-24 text-center">
-    <Reveal client:visible>
-      <p class="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-cream/45">Kontakt</p>
-      <h2 class="mx-auto mt-4 max-w-2xl font-serif text-h2 text-cream/95">Vereinbaren Sie Ihren Termin.</h2>
-      <div class="mt-9 flex flex-wrap items-center justify-center gap-8">
-        <a href={`tel:${site.phonePlain}`} class="font-serif text-3xl italic text-cream/90 transition-colors hover:text-gold-lt">{site.phone}</a>
-        <span class="text-cream/20">·</span>
-        <a href={withBase('/kontakt')} class="border-b border-gold pb-1 font-sans text-[11px] font-semibold uppercase tracking-label text-gold-lt transition-colors hover:text-cream">Zum Kontaktformular</a>
-      </div>
-    </Reveal>
+  {/* ============ FULL-BLEED CTA ============ */}
+  <section class="relative overflow-hidden bg-ink">
+    <img src={withBase('/img/training.png')} alt="" class="absolute inset-0 h-full w-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/75 to-ink/60"></div>
+    <div class="relative z-10 px-[8%] py-28 text-center">
+      <Reveal client:visible>
+        <span class="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-cream/50">Kontakt</span>
+        <h2 class="mx-auto mt-4 max-w-2xl font-serif text-cream" style="font-size:clamp(2rem,4.5vw,3.5rem);line-height:1.1">Vereinbaren Sie Ihren Termin.</h2>
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-8">
+          <a href={`tel:${site.phonePlain}`} class="font-serif text-3xl italic text-cream/90 transition-colors hover:text-gold-lt">{site.phone}</a>
+          <span class="text-cream/25">·</span>
+          <a href={withBase('/kontakt')} class="rounded-btn bg-gold px-8 py-4 font-sans text-[11px] font-semibold uppercase tracking-label text-white transition-colors hover:bg-gold-dk">Zum Kontaktformular</a>
+        </div>
+      </Reveal>
+    </div>
   </section>
 </Layout>
