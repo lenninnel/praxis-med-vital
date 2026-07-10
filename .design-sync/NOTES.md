@@ -1,0 +1,8 @@
+# Design-Sync Notizen — Praxis Med Vital
+
+- **Styles-only-Sync (Entscheidung 2026-07-10):** Das Repo ist eine Astro-Website ohne React-Komponentenbibliothek — kein Storybook, keine bundlebaren Komponenten. Auf Nachfrage entschied der Nutzer: nur Styles/Tokens/Fonts/Guidelines syncen. Kein `_ds_bundle.js`, keine `components/`, kein `_ds_sync.json` (kein Anker — jeder Re-Sync baut das Bundle neu und lädt alles hoch; bei diesem kleinen Umfang unkritisch).
+- **Bundle-Bau:** `ds-bundle/styles.css` = @font-face-Block (selbst gehostete woff2) + kompletter Inhalt von `src/styles/global.css`. Bei Änderungen an `global.css` einfach neu zusammensetzen und hochladen.
+- **Fonts:** Von Google Fonts als woff2 geladen (Latin + Latin-Ext): Cormorant Garamond (400/500 normal, 300/400/500 italic), Jost (300/400/500). Download braucht einen Chrome-User-Agent, sonst liefert die CSS2-API kein woff2. Achtung: eine `while read`-Schleife über curl kann Einträge verschlucken — nach dem Download Dateizahl und `wOF2`-Magic prüfen.
+- **Token-Benennung:** `--sage:#6b5c4a` trägt den Namen aus der früheren Grün-Palette, ist aber der aktive Warm-Stone-Ton (Kern-Palette: Cream `#f5f0e8`, Ink `#1a100a`, Warm Stone `#6b5c4a`). Nutzer-Vorgabe: `--g900`–`--g50`, `--amber`/`--amber-dk` und `.sec--g900` sind Legacy und in Guidelines/Conventions als „nicht für neue Designs" markiert. Verwendung wurde geprüft (2026-07-10): `--gold` und `--sage` sind auf den aktuellen Seiten aktiv in Gebrauch und bleiben im Token-Export.
+- **Verifikation:** Render-Test-HTML gegen `ds-bundle/styles.css` mit headless Chrome (`--headless --screenshot`) — prüft, dass @font-face-Pfade funktionieren und Sektionen/Buttons/Eyebrows korrekt rendern.
+- `ds-bundle/` ist Build-Output und gitignored.

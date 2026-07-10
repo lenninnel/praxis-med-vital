@@ -1,0 +1,7 @@
+{
+  "projectId": "a5733b5f-e8b6-4c4c-acb2-2665c1c0ad6c",
+  "projectName": "Praxis Med Vital",
+  "shape": "styles-only",
+  "readmeHeader": ".design-sync/conventions.md",
+  "notes": "Astro-Website ohne React-Komponentenbibliothek — Sync umfasst nur styles.css (Tokens + Klassen-Vokabular), Fonts und Guidelines. Keine components/, kein _ds_bundle.js, kein _ds_sync.json (kein Anker — jeder Re-Sync baut und lädt alles neu hoch)."
+}
